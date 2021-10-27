@@ -14,8 +14,9 @@ client.on('messageCreate', message => {
      if (
        message.content == `<@${client.user.id}>`
      ){
-      message.channel.send('ok')
-     }
+     	let embd = new Discord.MessageEmbed()
+     	.setDescription('Help Himiko');
+      message.channel.send({embeds: [embd]})
      if (message.author.bot) return;
      if (!message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
      if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
