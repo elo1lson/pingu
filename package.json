@@ -1,0 +1,20 @@
+{
+  "name": "Open-OsBot",
+  "version": "1.0.0",
+  "description": "Runtime for writing back-end JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node": "^16.13.0"
+  },
+  "dependencies": {
+    "@discordjs/rest": "0.1.0-canary.0",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.2.0"
+  }
+}
