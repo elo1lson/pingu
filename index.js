@@ -1,7 +1,7 @@
 //Constantes globais
 const Discord = require("discord.js"); 
 const client = new Discord.Client({intents: 32767});
-const config = require("./config.json");
+const admin = require("./config/admin.json");
 const object = require("./object.json")
 const cor = require("chalk")
 const fs = require("fs")
@@ -16,7 +16,7 @@ fs.readdirSync(testFolder).forEach(file => {
 const databaseStatus = require("./atividades.json")
 
 //Login do bot
-client.login(config.token);
+client.login(admin.token);
 
 //Ligando o bot
 
@@ -96,7 +96,7 @@ client.on('messageCreate', message => {
      let prefixes = JSON.parse(fs.readFileSync("./database/prefixes.json", "utf8"));
     if(!prefixes[message.guild.id]) {
     prefixes[message.guild.id] = {
-      prefix: config.defaultPrefix
+      prefix: admin.defaultPrefix
      }
     }
     let prefix = prefixes[message.guild.id].prefix;
