@@ -5,8 +5,32 @@ const admin = require("./config/admin.json");
 const object = require("./object.json")
 const cor = require("chalk")
 const fs = require("fs")
-const testFolder = "./commands/"
 
+
+
+const testFolder = "./commands/"
+const emoji = require("./config/emoji.json")
+const express = require('express');
+const app = express();
+app.get('/', (request, response) => {
+	const ping = new Date();
+	ping.setHours(ping.getHours() - 3);
+	console.log(
+		`🔻| Ping recebido - ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`
+	);
+response.send(`
+o
+`);
+});
+app.listen(process.env.PORT);
+
+
+initialTime = 1
+function time(){
+    initialTime++;
+    console.log("Já passou" + initialTime);
+}
+setInterval(time, 1000);
 //Desnecessário
 fs.readdirSync(testFolder).forEach(file => {
 	console.log(file);
@@ -62,7 +86,7 @@ client.on('messageCreate', message => {
       let prefixes = JSON.parse(fs.readFileSync("./database/prefixes.json", "utf8"));
       if(!prefixes[message.guild.id]) {
       	prefixes[message.guild.id] = {
-      		prefix: config.defaultPrefix
+      		prefix: admin.prefix
       		
       	}
       	
@@ -70,25 +94,20 @@ client.on('messageCreate', message => {
       let prefix = prefixes[message.guild.id].prefix;
       let pfp = client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024});
       
-      let embedtwo = new Discord.MessageEmbed()
-       .setDescription(`Ah, não se esqueça de visitar meu website :D \[Clique aqui](http://himikobot.github.io)`)
-       .setColor('RED')
-       .setThumbnail(pfp)
       let embed = new Discord.MessageEmbed()
        .setAuthor(`Ajudinha da ${client.user.username}`)
-       .setColor('RED')
+       .setColor('BLACK')
        .setThumbnail(pfp)
-       .addField(`<:global:904156862566506506> Meu prefix Global:`,` <:seta:904384277431603200> \`${prefix}\``)
-       .addField(`<:sat:904158064708575262> Meu prefix nesse servidor:`,` <:seta:904384277431603200> \`${prefix}\``)
+       .addField(`${emoji.pasta} Meu prefix Global:`,` ${emoji.setaVerde} \`${admin.prefix}\``)
+       .addField(`${emoji.ramo} Meu prefix nesse servidor:`,` ${emoji.setaVerde} \`${prefix}\``)
        .setFooter(`Espero ter te ajudado ${message.author.username} :D`)
        .setTimestamp()
-       .setThumbnail('https://cdn.discordapp.com/avatars/864914513274470410/b502451a275aef8d735ba3f13ad51b23.png?size=2048')
-       message.author.send(`hd`)
-      message.reply({embeds: [embed, embedtwo]}).then(msg => {
+       .setThumbnail(`https://cdn.discordapp.com/avatars/864914513274470410/b502451a275aef8d735ba3f13ad51b23.png?size=2048`)
+       message.reply({embeds: [embed]}).then(msg => {
             setTimeout( () => {
 
                 msg.delete()
-            }, 20000 * 3)
+            }, 10000 * 12)
         })
      }
      if (message.author.bot) return;
@@ -96,7 +115,7 @@ client.on('messageCreate', message => {
      let prefixes = JSON.parse(fs.readFileSync("./database/prefixes.json", "utf8"));
     if(!prefixes[message.guild.id]) {
     prefixes[message.guild.id] = {
-      prefix: admin.defaultPrefix
+      prefix: admin.prefix
      }
     }
     let prefix = prefixes[message.guild.id].prefix;

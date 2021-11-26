@@ -12,4 +12,4 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig)
   let hora = new Date();
   hora.setHours(hora.getHours() - 3);
-	console.log(`🗂 | FireBase Conectada - ${hora.getUTCHours()}:${hora.getUTCMinutes()}:${hora.getUTCSeconds()}`)
+	console.log(`| FireBase Conectada - ${hora.getUTCHours()}:${hora.getUTCMinutes()}:${hora.getUTCSeconds()}`)
