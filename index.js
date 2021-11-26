@@ -19,7 +19,7 @@ app.get('/', (request, response) => {
 		`🔻| Ping recebido - ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`
 	);
 response.send(`
-o
+Logado 
 `);
 });
 app.listen(process.env.PORT);
