@@ -10,16 +10,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/helper-compilation-targets": "^7.16.0",
+    "@babel/helper-compilation-targets": "^7.16.3",
     "node": "^16.13.0"
   },
   "dependencies": {
     "@discordjs/rest": "0.1.0-canary.0",
     "chalk": "^4.1.2",
     "discord-api-types": "^0.24.0",
+    "discord-banner": "^1.6.7",
+    "discord-reply": "^0.1.2",
     "discord.js": "^13.2.0",
     "express": "^4.17.1",
-    "firebase": "^9.2.0",
+    "firebase": "^9.5.0",
     "install": "^0.13.0",
     "mysql2": "^2.3.2",
     "quick.db": "^7.1.3"

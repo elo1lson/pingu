@@ -1,45 +1,16 @@
-const Discord = require('discord.js');
-  const fs = require('fs');
-  const config = require('../config.json');
-  
-  module.exports.run = async (client, message, args, prefix) => {
-  	const embederror = new Discord.MessageEmbed()
-  		.setTitle(`Como definir um Prefixo personalizado\n`)
-  		.setColor(`RANDOM`)
-  		.setDescription(`<:chat:885695323656310804> **Use**: ${prefix}setprefix <Seu Novo Prefixo>\n`)
-  		.addField(`<:info:885687139810037841> Observação:`, `Esse prefix sera aplicado em todos os comandos!\n\nAo definir um prefix personalizado será criado um arquivo em meu banco de dados com o seu prefix`);
-  	pre = "ok";
-  	ha = `${message.guild.id}`
-  	fs.writeFile(`./database/${ha}.json`, JSON.stringify(pre), (err) => {
-  		if (err) console.log(err)
-  	});
-  	let prefixes = JSON.parse(fs.readFileSync("./database/prefixes.json", "utf8"));
-  	if (message.channel.type == 'dm') return;
-  	if (!prefixes[message.guild.id]) {
-  		prefixes[message.guild.id] = {
-  			prefix: config.defaultPrefix
-  		}
-  	}
-  	let prefix0 = prefixes[message.guild.id].prefix;
-  	if (!message.member.permissions.has("MANAGE_GUILD")) return message.reply("Você não pode trocar o prefixo deste servidor, pois vc não tem a permissão necessária `MANAGE_GUILD`");
-  	if (!message.guild.me.permissions.has("ADMINISTRATOR")) {
-  		return message.reply(`:x: | Eu não tenho a permissão: ADMINISTRATOR`)
-  	}
-  
-  	if (!args[0]) return message.reply({ embeds: [embederror] })
-  
-  	prefixes[message.guild.id] = {
-  		prefix: args[0]
-  	}
-  
-  	fs.writeFile("./database/prefixes.json", JSON.stringify(prefixes), (err) => {
-  		if (err) console.log(err)
-  	});
-  
-  	let embed = new Discord.MessageEmbed()
-  		.setTitle("Prefix definido com sucesso!")
-  		.setColor("RANDOM")
-  		.setDescription(`<:checked:885686349443792917>	Definido para **${args[0]}**`)
-  		.addField(`<:info:885687139810037841>  Info`, `Agora so responderei pelo prefix **${args[0]}**`)
-  	message.channel.send({ embeds: [embed] })
-  }
+const Discord = require("discord.js")
+
+module.exports.run = async (client, message, args) => {
+	let embd = new Discord.MessageEmbed()
+		.setAuthor(`Introdução ao Registro`)
+		.setColor('RED')
+    .setTimestamp()
+		.setFooter(`Atenciosamente ${message.author.username}`)
+		.setThumbnail(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRltv4vmTC-lpSLoHyTGNkMyzT8WjPx98GTSQ&usqp=CAU`)
+	  .setDescription(`Leia atentamente as informações abaixo\n\nAntes de acessar qualquer canal para enviar mensagens neste servidor e necessário você tem faça o seu __REGISTRO/CADASTRO__, achamos isso necessário por questões de segurança e praticidade, para acessar os canais deste servidor, vá ate o canal <#913019577141698600>, e clique nos emojis correspondente a cada pergunta\n\n`)
+    .addField(`O que acontecerá se eu não me registrar?`,`A resposta e clara, você nao terá acesso aos canais do servidor, ficara limitado a 2 canais de texto que não podera enviar mensagens`)
+    .addField(`Alguem pode me registrar?`,`A resposta e sim, mais **NÃO** iremos fazer isso, por que isso cabe a **VOCÊ**`)
+    .addField(`Avisos Extras:`,`Membros que ficarem até 1 semana sem fazer fazer confirmação de adesão(O mesmo citado nos tópicos acima) serão automaticamente removidos deste servidor!\n\nE reforçando novamente, infelizmente essa burocracia é por questão de segurança, e também porque estamos lidando com __IFUNNER'S__.`)
+
+	message.channel.send({ embeds: [embd] })
+}
