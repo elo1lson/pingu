@@ -2,7 +2,7 @@
 const Discord = require("discord.js"); 
 const client = new Discord.Client({intents: 32767});
 const admin = require("./config/admin.json");
-const object = require("./object.json")
+//const object = require("./object.json")
 const cor = require("chalk")
 const fs = require("fs")
 
@@ -28,7 +28,7 @@ app.listen(process.env.PORT);
 initialTime = 1
 function time(){
     initialTime++;
-    console.log("Já passou" + initialTime);
+ //   console.log("Já passou" + initialTime);
 }
 setInterval(time, 1000);
 //Desnecessário

@@ -11,7 +11,9 @@ module.exports.run = async (client, message, args) => {
 		]
 	let i = 0
 	i = Math.floor(Math.random() * aray.length)
-	mencao = message.mentions.users.first();
+	autor = `${message.author}`
+  dev = `<@539945189901336586>`
+  mencao = message.mentions.users.first();
 	let embedCheck = new Discord.MessageEmbed()
 		.setDescription(`${message.author} acabou de beijar ${mencao}`)
 		.setImage(aray[i])
@@ -22,11 +24,12 @@ module.exports.run = async (client, message, args) => {
   .setColor(cor)
   if(!mencao){
 		message.channel.send({embeds: [embedErro]})
-	}else{
-		message.channel.send({embeds: [embedCheck]})
-	}
-	if(mencao == `<@539945189901336586>`){
-		message.reply('2')
-	}
+	}else if(args[0] == dev ){
+		message.channel.send(`Hey ${message.author} você não pode beijar <@539945189901336586>`)
+	}else if(args[0] == autor){
+    message.reply("Tá carente? Compra um harmite")
+  }else{
+    message.channel.send({embeds: [embedCheck]})
+  }
 
 }
