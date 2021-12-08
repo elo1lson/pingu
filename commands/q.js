@@ -22,14 +22,11 @@ module.exports.run = async (client, message, args) => {
 	let embedErro = new Discord.MessageEmbed()
 		.setDescription(`${message.author.username} lebmbre-se que voce precisa marcar um usuário  valido para beijar!`)
 		.setColor(cor)
-	if(!mencao) {
-		message.channel.send({ embeds: [embedErro] })
-	}else if(dev){
-		message.channel.send(`Hey ${message.author} você não pode beijar <@539945189901336586>`)
-	}else if(autor) {
-		message.reply("Tá carente? Compra um harmite")
+	if(!args[0]){
+		message.channel.send("Marque Alguem")
 	}else{
-		message.channel.send({ embeds: [embedCheck] })
+		if (mencao == dev) {
+			message.channel.send("dev")
+		}
 	}
-
 }

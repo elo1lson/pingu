@@ -1,13 +1,17 @@
 const Discord = require("discord.js")
+const db = require("quick.db")
 
 module.exports.run = async (client, message, args) => {
-	let embd = new Discord.MessageEmbed()
-		.setAuthor(`${message.guild.name} - Pegue seu cargo`)
-		.setColor('RED')
-		.setTimestamp()
-		.setDescription(`No fim da mensagem selecione o emoji que  corresponde a sua resposta`)
-		.addField(`Você é:`,`\n\n💙 | Homem\n💜 | Mulher\n🤍 | Panela de pressão`)
-		.setFooter(`Atenciosamente ${message.author.username} | ${message.guild.name}`)
+	bank = await db.fetch(`bank`)
+	for (var i in bank) {
+    var foods = db.fetch(`bank`)
+    var foodsArray = Array.prototype.slice.call(foods, 0);
+    console.log(foodsArray, 0)
+    console.log(foodsArray.sort())
+		console.log(bank[i].money)
+	}
 
-	message.channel.send({ embeds: [embd] })
+	// Resultado: maria, josé, joão
+
+	message.reply(`${bank}`)
 }

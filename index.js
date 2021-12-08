@@ -25,12 +25,6 @@ Logado
 app.listen(process.env.PORT);
 
 
-initialTime = 1
-function time(){
-    initialTime++;
- //   console.log("Já passou" + initialTime);
-}
-setInterval(time, 1000);
 //Desnecessário
 fs.readdirSync(testFolder).forEach(file => {
 	console.log(file);
@@ -40,7 +34,10 @@ fs.readdirSync(testFolder).forEach(file => {
 const databaseStatus = require("./atividades.json")
 
 //Login do bot
-client.login(admin.token);
+
+const my = process.env['Token']
+client.login(my);
+const mySecret = process.env['Token']
 
 //Ligando o bot
 
@@ -67,11 +64,6 @@ client.once('ready', async () =>{
     name: ok,
     member: 'id',
   };
- fs.writeFile("./object.json", JSON.stringify(sampleObject, null, 4),
-(err) => {
-  if (err) { console.error(err); return;
-  }; 
- console.log("File has been created"); });
 })
 
 

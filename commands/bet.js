@@ -4,7 +4,9 @@ module.exports.run = async (client, message, args, prefix) => {	content = args[0
 	user = message.author.id
 	balance = await db.fetch(`bank.${user}.money`) //Variável do banco de dados
 	if (!db.fetch(`bank.${user}`)) {
-		db.set(`bank.${user}`, { money: 1000, lotto: 0 })
+		db.set(`bank.${user}`, { money: 1000, lotto: 0, name: `${message.author.username}`})
+		a = db.fetch(`bank`)
+		console.log(a)
 	}
 	value = args[0]
 	content = (content >= 0) && (content <= balance)
