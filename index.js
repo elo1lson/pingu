@@ -119,8 +119,10 @@ client.on('messageCreate', message => {
 
     try {
         const commandFile = require(`./commands/${command}.js`)
-        commandFile.run(client, message, args, prefix); 
+        commandFile.run(client, message, args, prefix);
     } catch (err) {
     console.error(cor.red('- - >') + cor.yellow(err));
   }
 });
+
+

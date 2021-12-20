@@ -2,114 +2,13 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 module.exports.run = async (client, message, args, prefix) => {
 	let user = `${message.author.id}`
-	balance = db.get(`bank.${user}.money`)
-		
+	let mencao = message.mentions.users.first()
 	let argsZero = args[0]
-		
-	let argsOne = args[1]
-		
-	let image = client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-		
-	let nulo = new Discord.MessageEmbed()
-		.setTitle(`:bank: Banco ${client.user.username}`)
-		.setColor('00ffff')
-		.setDescription(`<:no:915054924725882892> | ${message.author} use \`\`${prefix}\`\`bet <valor> para fazer uma aposta`)
-		
-	let MenosZero = new Discord.MessageEmbed()
-		.setTitle(`:bank: Banco ${client.user.username}`)
-		.setColor('00ffff')
-		.setDescription(`<:no:915054924725882892>  | ${message.author} deixe de ser engraçadinho, você nao pode apostar \`\`${argsZero}\`\``)
-		
-	let Balanceout = new Discord.MessageEmbed()
-		.setTitle(`:bank: Banco ${client.user.username}`)
-		.setColor('00ffff')
-		.setDescription(`<:no:915054924725882892> | ${message.author} você não possui esse saldo para poder apostar`)
-		
-	if (argsZero) {
-		if (argsZero <= 0) {
-			
-		message.reply({embeds: [MenosZero]})
-		
-			
-		}else if(argsZero >= balance){
-			
-		message.reply({embeds: [Balanceout]})
-		
-			
-		}else if(((argsZero > 0) && (argsZero < balance)) == true){
-			
-			let arrayOne = ['0','1']
-			let i = 0
-			i = Math.floor(Math.random() * arrayOne.length)
-				if (i == 0) {
-					await db.add(`bank.${user}.money`,`${argsZero}`)
-						
-					newBalance = await db.get(`bank.${user}.money`)
-						
-					balance = await db.get(`bank.${user}.money`)
-					
-					let Win = new Discord.MessageEmbed()
-						.setTitle(`:bank: Banco ${client.user.username}`)
-						.setColor('00ffff')
-						.setDescription(`🥳 Parabéns ${message.author} voce ganhou essa aposta, verifique o **extrato** abaixo para mais detalhes`)
-						.addField(`Extrato:`, `**💰 | Saldo:** \`\`${newBalance}\`\`\n**🎰 | Resultado:** \`\`${i}\`\`\n**➕ | Você ganhou:** \`\`${argsZero}\`\``)
-						
-					message.reply({embeds :[Win]})
-				} else {
-					await db.subtract(`bank.${user}.money`,`${argsZero}`)
-					newBalance = await db.get(`bank.${user}.money`)
-					
-					let lost = new Discord.MessageEmbed()
-						.setTitle(`:bank: Banco ${client.user.username}`)
-						.setColor('00ffff')
-						.setDescription(`😥 Infelizmente você perdeu essa aposta, olhe o extrato para mais detalhes`)
-						.addField(`Extrato:`,`**Saldo:** \`\`${newBalance}\`\`\nResultado: \`\`${i}\`\`\n**Você perdeu:** \`\`${argsZero}\`\``)
-					
-					message.reply({embeds :[lost]})
-				}
-		}else if(argsZero == 'all'){
-			if(balance <= 0){
-				let allZero = new Discord.MessageEmbed()
-					.setTitle(`:bank: Banco ${client.user.username}`)
-					.setColor('00ffff')
-					.setDescription(`${message.author} parace que você está sem saldo, peça para alguem lhe doar moedas através do comando \`\`${prefix}\`\`pay`)
-				message.reply({embeds:[allZero]})
-			}else{
-				if (i == 0) {
-						let arrayTwo = ['0','1','2']
-					let i = 0
-					i = Math.floor(Math.random() * arrayTwo.length)
-					await db.add(`bank.${user}.money`,`${balance}`)
-					newBalance = await db.get(`bank.${user}.money`)
-					
-					let embedAllWin = new Discord.MessageEmbed()
-						.setTitle(`:bank: Banco ${client.user.username}`)
-						.setColor('00ffff')
-						.setDescription(`🥳 Parabéns ${message.author} voce ganhou essa aposta, verifique o **extrato** abaixo para mais detalhes`)
-						.addField(`Extrato:`,`**Saldo:** \`\`${newBalance}\`\`\n**Resultado:** \`\`${i}\`\`\n**Você ganhou:** \`\`${balance}\`\``)
-						
-					message.reply({embeds: [embedAllWin]})
-					
-				}else{
-					await db.subtract(`bank.${user}.money`,`${balance}`)
-						
-					newBalance = await db.get(`bank.${user}.money`)
-						
-					let embedAllLost = new Discord.MessageEmbed()
-						.setTitle(`:bank: Banco ${client.user.username}`)
-						.setColor('00ffff')
-						.setDescription(`😥 ${message.author} Infelizmente você perdeu essa aposta, agora voce tem \`\`${newBalance}\`\` moedas`)
-						
-					message.reply({embeds: [embedAllLost]})
-					
-				}	
-			}
-		}else{
-			
-			message.reply({embeds: [nulo]})
-			
-		}
-	}else{
-		message.reply({embeds:[nulo]})
+	let admin = `<@539945189901336586>`
+	
+	if (message.author.id == admin) {
+		message.reply("Em quem você quer dar ban?")
+	} else {
+		message.reply("Voce não tem permissão pra fazer isso!")
 	}
 }
