@@ -1,23 +1,41 @@
-const capture = function(arg){
-	const argZero = new Object()
+const aposta = require("./aposta.js")
+const capture = function(arg, args, balance){
+	const arg = new Object()
 	if (arg > 0) {
 		
 		argZero.type = "number"
+		arg.size = `${arg.lenght}`
+		arg.exist = true
+		arg.content = arg
+		arg.aposta = aposta(args, balance)
 		
 	}else if(arg < 0){
 		
-		argZero.type = "negative"
-		argZero.size = `${arg.lenght}`
+		arg.type = "negative"
+		arg.size = `${arg.lenght}`
+		arg.exist = true
+		arg.content = arg
 		
 	}else if(arg == 0){
 		
-		argZero.type = "zero"
-		argZero.size = `${arg.lenght}`
+		arg.type = "zero"
+		arg.size = `${arg.lenght}`
+		arg.exist = true 
+		arg.content = arg
+		
+	}else if(arg == undefined){
+		
+		arg.type = null
+		arg.size = null 
+		arg.exist = false 
+		arg.content = undefined 
 		
 	}else{
 		
-		argZero.type = "letter"
-		argZero.size = `${arg.lenght}`
+		arg.type = "letter"
+		arg.size = `${arg.lenght}`
+		arg.exist = true
+		arg.content = arg 
 		
 	}
 	
