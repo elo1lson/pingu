@@ -1,44 +1,45 @@
 const aposta = require("./aposta.js")
-const capture = function(arg, args, balance){
-	const arg = new Object()
+const capture = function(arg, balance) {
+	const args = new Object()
 	if (arg > 0) {
-		
-		argZero.type = "number"
-		arg.size = `${arg.lenght}`
-		arg.exist = true
-		arg.content = arg
-		arg.aposta = aposta(args, balance)
-		
-	}else if(arg < 0){
-		
-		arg.type = "negative"
-		arg.size = `${arg.lenght}`
-		arg.exist = true
-		arg.content = arg
-		
-	}else if(arg == 0){
-		
-		arg.type = "zero"
-		arg.size = `${arg.lenght}`
-		arg.exist = true 
-		arg.content = arg
-		
-	}else if(arg == undefined){
-		
-		arg.type = null
-		arg.size = null 
-		arg.exist = false 
-		arg.content = undefined 
-		
-	}else{
-		
-		arg.type = "letter"
-		arg.size = `${arg.lenght}`
-		arg.exist = true
-		arg.content = arg 
-		
+
+		args.type = "number"
+		args.exist = true
+		args.content = arg
+		args.aposta = aposta(arg, balance)
+
+	} else if (arg < 0) {
+
+		args.type = "negative"
+		args.exist = true
+		args.content = arg
+		args.aposta = aposta(arg, balance)
+
+	} else if (arg == 0) {
+
+		args.type = "zero"
+		args.exist = true
+		args.content = arg
+		args.aposta = aposta(arg, balance)
+
+	} else if (arg == undefined) {
+
+		args.type = null
+		args.size = null
+		args.exist = false
+		args.content = undefined
+		args.aposta = aposta(arg, balance)
+
+	} else {
+
+		args.type = "letter"
+		args.exist = true
+		args.content = arg
+		type = args.type
+		args.aposta = aposta(arg, balance)
+
 	}
-	
-	return argZero
+
+	return args
 }
 module.exports = capture

@@ -1,4 +1,4 @@
-var aposta = function(args, balance) {
+var aposta = function(arg, balance, ) {
 	let saldo = null
 
 	if (arg <= balance) {
@@ -9,21 +9,19 @@ var aposta = function(args, balance) {
 
 		saldo = "maxout"
 
-	} else if (arg <= 0) {
+	} else if (arg < 0) {
 
 		saldo = "minout"
 
 	} else if (arg == "all") {
 
-		arg = "all"
+		saldo = "all"
 
 	} else {
-		saldo = false
+		saldo = "letter"
 
 	}
 	return saldo
 
 }
 module.exports = aposta
-
-blacklist = db.get(`blacklist.${user}`)
