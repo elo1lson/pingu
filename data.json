@@ -1,0 +1,69 @@
+{
+	"global":{
+		"banco":{
+			"id_usuario":{
+				"saldo": 0,
+				"poupanca": 0,
+				"items": ["0","0"],
+				"estatisticas":{
+					"total_doado": 0,
+					"total_recebido": 0,
+					"total_ganho": 0,
+					"total_perdido": 0,
+					"total_saldo": 0,
+					"total_trabalho": 0,
+					"total_loteria": 0,
+					"total_daily": 0,
+					"total_numero_aposta": 0
+				}
+			}
+		},
+		"loteria":{
+			"valor": 0,
+			"valor_max": 0,
+			"valor_total": 0
+		},
+		"loja":{
+			"ouro": 100,
+			"diamante": 1000
+		}
+	},
+	"local":{
+		"servidores":{
+			"id_server":{
+				"bank":{
+					"id":{
+						"saldo": 0
+						
+					}
+				},
+				"loteria":{
+					"premio": 0
+				},
+				"estatisticas":{
+					
+				}
+			}
+		}
+	},
+	"bot":{
+		"admin":{
+			"id": "",
+			"nome": ""
+		},
+		"banidos":{
+			"id":{
+				"id": "",
+				"nome": "",
+				"motivo": "",
+				"admin": ""
+			}
+		},
+		"prefix":{
+			"id_server":{
+				"prefix": "prefixo",
+				"nome": ""
+			}
+		}
+	}
+}

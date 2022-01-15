@@ -1,12 +1,73 @@
 //Constantes globais
+const fs = require("fs");
+token = "./config/admin"
+const Cluster = require("discord-hybrid-sharding");
+const Discord = require("discord.js");
+const client = new Discord.Client({
+ 	shards: Cluster.data.SHARD_LIST,        //  A Array of Shard list, which will get spawned
+	shardCount: Cluster.data.TOTAL_SHARDS, // The Number of Total Shards
+});
+const usev13 = true; //When you do not use v13, turn this value to false
+client.cluster = new Cluster.Client(client, usev13); //Init the CLient & So we can also access broadcastEval...
+client.login(token.token);
+
+
+/*
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+client.categories = fs.readdirSync(`./commands/`);
+
+fs.readdirSync('./commands/').forEach(local => {
+    const comandos = fs.readdirSync(`./commands/${local}`).filter(arquivo => arquivo.endsWith('.js'))
+
+    for(let file of comandos) {
+        let puxar= require(`./commands/${local}/${file}`)
+
+        if(puxar.name) {
+            client.commands.set(puxar.name, puxar)
+        } 
+        if(puxar.aliases && Array.isArray(puxar.aliases))
+        puxar.aliases.forEach(x => client.aliases.set(x, puxar.name))
+    } 
+});
+
+client.on("messageCreate", async (message) => {
+
+    let prefix = config.prefix;
+  
+      if (message.author.bot) return;
+      if (message.channel.type == 'dm') return;     
+  
+       if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
+    
+      if(message.author.bot) return;
+      if(message.channel.type === 'dm') return;
+  
+      if(!message.content.startsWith(prefix)) return;
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  
+      let cmd = args.shift().toLowerCase()
+      if(cmd.length === 0) return;
+      let command = client.commands.get(cmd)
+      if(!command) command = client.commands.get(client.aliases.get(cmd)) 
+    
+  try {
+      command.run(client, message, args)
+  } catch (err) { 
+ 
+     console.error('Erro:' + err); 
+  }
+      });
+
+
+
 const Discord = require("discord.js"); 
 const client = new Discord.Client({intents: 32767});
+console.log(client)	
+console.log(client.alloweMentions)
 const admin = require("./config/admin.json");
-//const object = require("./object.json")
 const cor = require("chalk")
 const fs = require("fs")
-
-
 
 const testFolder = "./commands/"
 const emoji = require("./config/emoji.json")
@@ -15,12 +76,8 @@ const app = express();
 app.get('/', (request, response) => {
 	const ping = new Date();
 	ping.setHours(ping.getHours() - 3);
-	console.log(
-		`🔻| Ping recebido - ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`
-	);
-response.send(`
-Logado 
-`);
+	console.log(`Ping: ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`);
+	response.send("3");
 });
 app.listen(process.env.PORT);
 
@@ -72,9 +129,6 @@ client.on('messageCreate', message => {
        message.content == `<@${client.user.id}>`
      ){
 
-    /*  const database = require("./database/prefixes.json")
-      io = database[message.guild.id]
-      if(!database)*/
       let prefixes = JSON.parse(fs.readFileSync("./database/prefixes.json", "utf8"));
       if(!prefixes[message.guild.id]) {
       	prefixes[message.guild.id] = {
@@ -124,5 +178,4 @@ client.on('messageCreate', message => {
     console.error(cor.red('- - >') + cor.yellow(err));
   }
 });
-
-
+*/
