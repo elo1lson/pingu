@@ -3,7 +3,10 @@
 	const lib = require("../libs/modules.js")
 	
 	
-	module.exports.run = async (client, message, args, prefix) => {
+	module.exports = {
+		name: "bet",
+		aliases: ["b","be"],
+		run: async (client, message, args, prefix) => {
 		let user = `${message.author.id}`
 		balance = db.get(`bank.${user}.money`)
 	  const a = new lib.blacklist(user)
@@ -123,3 +126,4 @@
 			message.reply({embeds:[nulo]})
 		}
 	}
+}

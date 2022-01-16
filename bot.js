@@ -1,18 +1,17 @@
-//Constantes globais
-const fs = require("fs");
-token = "./config/admin"
+const token = process.env['TOKEN']
+
 const Cluster = require("discord-hybrid-sharding");
 const Discord = require("discord.js");
 const client = new Discord.Client({
- 	shards: Cluster.data.SHARD_LIST,        //  A Array of Shard list, which will get spawned
-	shardCount: Cluster.data.TOTAL_SHARDS, // The Number of Total Shards
+	shards: Cluster.data.SHARD_LIST,
+	shardCount: Cluster.data.TOTAL_SHARDS,
+	intents: 32767
 });
-const usev13 = true; //When you do not use v13, turn this value to false
-client.cluster = new Cluster.Client(client, usev13); //Init the CLient & So we can also access broadcastEval...
-client.login(token.token);
+console.log(client)
+const usev13 = true;
+client.cluster = new Cluster.Client(client, usev13);
 
-
-/*
+/*eventos do bot acima do CLIENT.LOGIN(...)*/
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.categories = fs.readdirSync(`./commands/`);
@@ -59,8 +58,8 @@ client.on("messageCreate", async (message) => {
   }
       });
 
-
-
+client.login(token);
+/*
 const Discord = require("discord.js"); 
 const client = new Discord.Client({intents: 32767});
 console.log(client)	
