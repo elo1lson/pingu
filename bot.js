@@ -1,19 +1,11 @@
+//*
 const token = process.env['TOKEN']
-
-const Cluster = require("discord-hybrid-sharding");
-const Discord = require("discord.js");
-const client = new Discord.Client({
-	shards: Cluster.data.SHARD_LIST,
-	shardCount: Cluster.data.TOTAL_SHARDS,
-	intents: 32767
-});
-console.log(client)
+const Cluster = require('discord-hybrid-sharding');
+const client = require('./structures/client.js');
 const usev13 = true;
-client.cluster = new Cluster.Client(client, usev13);
 
-/*eventos do bot acima do CLIENT.LOGIN(...)*/
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
+//*
+client.cluster = new Cluster.Client(client, usev13);
 client.categories = fs.readdirSync(`./commands/`);
 
 fs.readdirSync('./commands/').forEach(local => {
