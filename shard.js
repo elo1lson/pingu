@@ -5,14 +5,13 @@ const manager = new Cluster.Manager("./index.js", {
 	token: token,
 	usev13: true,
 });
-const web = './index.html'
 const express = require('express');
 const app = express();
 app.get('/', (request, response) => {
 	const ping = new Date();
 	ping.setHours(ping.getHours() - 3);
 	console.log(`Ping: ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`);
-	response.sendFile(web);
+	response.send("ooo");
 });
 
 manager.on('message', (shard, message) => {

@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const Cluster = require('discord-hybrid-shardin')
+const Cluster = require('discord-hybrid-sharding')
 class Client extends Discord.Client {
 	constructor(options) {
 		super({
@@ -11,4 +11,9 @@ class Client extends Discord.Client {
 		this.aliases = new Discord.Collection()
 	}
 }
+const usev13 = true;
+
+//*
+Client = new Client()
+Client.cluster = new Cluster.Client(Client, usev13);
 module.exports = Client
