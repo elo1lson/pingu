@@ -1,7 +1,7 @@
 //*
 const token = process.env['TOKEN']
 const Cluster = require('discord-hybrid-sharding');
-const client = require('./scr/structures/client.js');
+const client = require('./scr/structures/client/client.js');
 const fs = require("fs")
 const config = require("./config.json")
 client.categories = fs.readdirSync(`./scr/commands/`);
@@ -19,6 +19,7 @@ fs.readdirSync('./scr/commands/').forEach(local => {
         puxar.aliases.forEach(x => client.aliases.set(x, puxar.name))
     } 
 });
+//nsole.log(client)
 
 client.on("messageCreate", async (message) => {
 

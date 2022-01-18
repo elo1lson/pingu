@@ -1,12 +1,13 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 console.log(Command)
-const b = new Command({
-  name: 'b',
+const a = new Command({
+  name: 'ping',
 	description: 'Mostra o ping',
 	aliases: ['pin'],
 	run: async(client, message, args) => {
-		message.reply("oi")
+    console.log(client)
+    message.reply(`${client.ws.ping}`)
 	}
 })
-module.exports = b
+module.exports = a

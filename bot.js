@@ -1,10 +1,10 @@
-//*
+/*
 const token = process.env['TOKEN']
 const Cluster = require('discord-hybrid-sharding');
 const client = require('./scr/structures/client/client.js');
 const usev13 = true;
 
-/*
+
 client.cluster = new Cluster.Client(client, usev13);
 client.categories = fs.readdirSync(`./scr/commands/`);
 
