@@ -12,7 +12,7 @@ fs.readdirSync('./scr/commands/').forEach(local => {
     for(let file of comandos) {
         let puxar= require(`./scr/commands/${local}/${file}`)
 
-        if(puxar.name) {
+	        if(puxar.name) {
             client.commands.set(puxar.name, puxar)
         } 
         if(puxar.aliases && Array.isArray(puxar.aliases))

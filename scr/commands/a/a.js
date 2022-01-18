@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const Command = require('../../structures/command.js')
+const Command = require('../../structures/command/command.js')
 console.log(Command)
 const a = new Command({
   name: 'a',

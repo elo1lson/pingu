@@ -7,4 +7,3 @@ class Command{
 	}
 }
 module.exports = Command
-console.log(`Da classe A ${Command}`)

@@ -1,18 +1,18 @@
 //*
 const token = process.env['TOKEN']
 const Cluster = require('discord-hybrid-sharding');
-const client = require('./structures/client.js');
+const client = require('./scr/structures/client/client.js');
 const usev13 = true;
 
-//*
+/*
 client.cluster = new Cluster.Client(client, usev13);
-client.categories = fs.readdirSync(`./commands/`);
+client.categories = fs.readdirSync(`./scr/commands/`);
 
 fs.readdirSync('./commands/').forEach(local => {
-    const comandos = fs.readdirSync(`./commands/${local}`).filter(arquivo => arquivo.endsWith('.js'))
+    const comandos = fs.readdirSync(`./scr/commands/${local}`).filter(arquivo => arquivo.endsWith('.js'))
 
     for(let file of comandos) {
-        let puxar= require(`./commands/${local}/${file}`)
+        let puxar= require(`./scr/commands/${local}/${file}`)
 
         if(puxar.name) {
             client.commands.set(puxar.name, puxar)
@@ -20,7 +20,7 @@ fs.readdirSync('./commands/').forEach(local => {
         if(puxar.aliases && Array.isArray(puxar.aliases))
         puxar.aliases.forEach(x => client.aliases.set(x, puxar.name))
     } 
-});
+});*/
 
 client.on("messageCreate", async (message) => {
 
