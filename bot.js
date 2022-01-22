@@ -20,7 +20,7 @@ fs.readdirSync('./commands/').forEach(local => {
         if(puxar.aliases && Array.isArray(puxar.aliases))
         puxar.aliases.forEach(x => client.aliases.set(x, puxar.name))
     } 
-});*/
+});
 
 client.on("messageCreate", async (message) => {
 
