@@ -7,7 +7,10 @@
 //Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-
+const eco = require('/scr/modules/index.js')
+new eco({id: `${message.author.id}`})
+a = message.author.id
+eco.pay(a, '6')
 //Instanciando a classe
 module.exports = new Command({
   name: 'ping',

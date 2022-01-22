@@ -1,0 +1,1 @@
+module.exports = Economy = require('./economy/index.js')
