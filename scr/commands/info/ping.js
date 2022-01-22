@@ -7,10 +7,7 @@
 //Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const eco = require('/scr/modules/index.js')
-new eco({id: `${message.author.id}`})
-a = message.author.id
-eco.pay(a, '6')
+
 //Instanciando a classe
 module.exports = new Command({
   name: 'ping',
@@ -20,7 +17,12 @@ module.exports = new Command({
   author: 'tomori',
 	run: async(client, message, args) => {
 		var user = message.author
-		
+
+
+    const eco = require('../../modules/index.js')
+		logg = new eco({ id: `${message.author.id}` })
+		logg.pay(`${message.author.id}`,`701`)
+		console.log(logg)
 		var footer = user.avatarURL({
 			dinamyc: true,
 			format: 'png',

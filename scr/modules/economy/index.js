@@ -1,7 +1,8 @@
-const pay = require('./met/pay.js')
+const db = require('quick.db')
 class Econ {
-	constructor(opt = {}) {
-		this.id = opt.id
-	}
-	add(id, value)
+	constructor(opt = {}){
+		this.id = opt.id;
+    }
+    pay = require('./met/pay.js')
 }
+module.exports = Econ
