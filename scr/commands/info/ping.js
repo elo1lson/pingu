@@ -20,8 +20,12 @@ module.exports = new Command({
 
 
     const eco = require('../../modules/index.js')
-		logg = new eco({ id: `${message.author.id}` })
-		logg.pay(`${message.author.id}`,`701`)
+		logg = new eco({
+		id: `${message.author.id}`,
+		met: 'totalpay',
+		value: 1
+		})
+		logg.reg(`${message.author.id}, 4, "totalpay"`)
 		console.log(logg)
 		var footer = user.avatarURL({
 			dinamyc: true,
