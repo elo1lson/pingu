@@ -1,43 +1,33 @@
 const db = require('quick.db')
-class Econ {
-	constructor(opt = {}) {
-		this.id = opt.id;
-		this.met = opt.met;
-		this.val = opt.value;
+module.exports = class Ecom {
+	constructor(id) {
+		this.id = id;
 	}
-	reg(id, val, met) {
-		if (met != typeof "string"){
-			return new TypeError("Metodo invalido")
-		}
-		try {
-			switch (this.met) {
-				case "nlost":
-					db.add(`stats.global.${id}.nlost`, `${val}`)
-					break;
-				case "nwin":
-					db.add(`stats.global.${id}.nwin`, `${val}`)
-					break;
-				case "totallost":
-					db.add(`stats.global.${id}.totallost`, `${val}`)
-					break;
-				case "totalwin":
-					db.add(`stats.global.${id}.totalwin`, `${val}`)
-					break;
-				case "totalpay":
-					db.add(`stats.global.${id}.totalpay`, `${val}`)
-					console.log("okkk")
-					break;
-				case "totalreceived":
-					break;
-				default:
-					this.val + this.val
+	registry(met, value) {
+		//|console.log('ID: ' + this.id)
+		//|console.log('Valor: ' + value)
+		//|console.log('Metodo: ' + met)
+		var mets = [
+		'nwin',
+		'nlost',
+		'totalpay',
+		'totalreceived',
+		'totalwin',
+		'totallost',
+		'totallotto'
+	]
+		mets.forEach(i => {
+			if (i = met) {
+				return met = true
 			}
+		})
+		if (met) {
+			console.log('Verificar: ' + met)
+			db.add(`stats.global.ecom.${this.id}.${met}`, `${value}`)
+			var check = db.get(`stats.global.ecom.${this.id}.${met}`)
+			//|console.log(check)
 
-
-		} catch (e) {
-			console.log('Erro:' + e)
 		}
-	}
 
+	}
 }
-module.exports = Econ

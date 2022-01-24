@@ -7,6 +7,7 @@
 //Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
+const Tomori = require('../../modules/index.js')
 
 //Instanciando a classe
 module.exports = new Command({
@@ -16,6 +17,8 @@ module.exports = new Command({
 	usage: 'none',
 	author: 'tomori',
 	run: async (client, message, args) => {
+		b = new Tomori("botinfo")
+		console.log(b)
 		let notsend = new Discord.MessageEmbed()
 			.setTitle(`:information_source: Sobre Mim`)
 			.setColor('#FF0000')
