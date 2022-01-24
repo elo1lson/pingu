@@ -8,5 +8,8 @@ module.exports = class Tomori {
 		db.add(`config.stats.${this.cmd}`,`1`)
 		db.add(`config.stats.geral`,`1`)
 		console.log("Adicionei")
+		return db.get(`config.stats.geral`)
+
+
 	}
 }
