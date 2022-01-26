@@ -7,7 +7,7 @@
 //Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../modules/index.js')
+//const Stats = require('../../modules/index.js')
 //Instanciando a classe
 module.exports = new Command({
 	name: 'ping',
@@ -17,7 +17,7 @@ module.exports = new Command({
 	author: 'tomori',
 	run: async (client, message, args) => {
 		var user = message.author
-		let count = new Stats.Tomori("botinfo")
+	//	let count = new Stats.Tomori("botinfo")
 		var footer = user.avatarURL({
 			dinamyc: true,
 			format: 'png',

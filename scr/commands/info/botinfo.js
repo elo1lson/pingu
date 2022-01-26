@@ -20,7 +20,7 @@
 				if(args.length > 0){
 					return
 				}
-				let count = new Stats.Tomori("botinfo")
+		//		let count = new Stats.Tomori("botinfo")
 				let Geral = await db.get(`config.stats.geral`)		
 				let libs = require('../../../package.json')
 				libs = libs.dependencies

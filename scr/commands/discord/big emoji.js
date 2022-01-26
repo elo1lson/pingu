@@ -1,16 +1,18 @@
-//| 19/01/2022 - tomorii
-//| 68 linhas
-//| Github: elo1lson
-//| Discord: tomorii#8894
-//| Sinta-se a vontade para usar esse código
-
-//| Constantes para uso
+/*
+19/01/2022 - tomorii
+68 linhas
+Github: elo1lson
+Discord: tomorii#8894
+Sinta-se a vontade para usar esse código
+*/
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
+const Stats = require('../../modules/index.js')
+
 //| Instanciando a classe
 module.exports = new Command({
 	name: 'bigemoji',
-	description: 'Mostra sua foto de perfil',
+	description: 'Envia um emoji como foto',
 	aliases: ['big-emoji','baixaremoji'],
 	usage: {
 		op: 'none',
@@ -18,6 +20,7 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
+		
     let erro = new Discord.MessageEmbed()
     .setColor('#FF0000')
     .setTitle(`Sintaxe da ${client.user.username}`)

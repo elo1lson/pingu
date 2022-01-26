@@ -1,4 +1,4 @@
-	//18/01/2022 - tomorii
+//26/01/2022 - tomorii
 //49 linhas
 //Github: elo1lson
 //Discord: tomorii#8894
@@ -8,6 +8,7 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const snekfetch = require('snekfetch');
+const Stats = require('../../modules/index.js')
 
 //Instanciando a classe
 module.exports = new Command({
@@ -17,24 +18,25 @@ module.exports = new Command({
 	usage: {
 		op: 'none',
 		ob: '<texto>'
-		},
+	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
+		let count = new Stats.Tomori("achievement")
+
 		let not = new Discord.MessageEmbed()
-		.setTitle('❔ Como usar?')
-		.setColor('#00FF00')
-		.setDescription(`\`\`achievement\`\` => Envia uma imagem com uma conquista do minecraft`)
-		.addFields(
+			.setTitle('❔ Como usar?')
+			.setColor('#00FF00')
+			.setDescription(`\`\`achievement\`\` => Envia uma imagem com uma conquista do minecraft`)
+			.addFields(
 			{
 				name: ':books: Exemplos:',
-				value: `\`\`${prefix}${this.name}\`\` Eu amo a ${client.user.username}\n\`\`${prefix}${this.name}\`\` Eu sou legal`
+				value: `\`\`${prefix}$achievement\`\` Eu amo a ${client.user.username}\n\`\`${prefix}$achievement\`\` Eu sou legal`
 			},
 			{
 				name: ':twisted_rightwards_arrows: Aliases:',
 				value: `\`\`conquista\`\``
-			}
-			)
-		if(!args.join(" ")) return message.reply({embeds: [not]})
+			})
+		if (!args.join(" ")) return message.reply({ embeds: [not] })
 		let [title, contents] = args.join(" ").split("|");
 		if (!contents)[title, contents] = ["Conquista desbloqueada!", title];
 		let rnd = Math.floor((Math.random() * 39) + 1);
@@ -46,4 +48,4 @@ module.exports = new Command({
 		const url = `https://www.minecraftskinstealer.com/achievement/a.php?i=${rnd}&h=${encodeURIComponent(title)}&t=${encodeURIComponent(contents)}`;
 		snekfetch.get(url).then(r => message.channel.send({ files: [{ attachment: r.body }] }));
 	}
-})		
+})
