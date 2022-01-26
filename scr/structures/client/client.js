@@ -2,7 +2,6 @@
 //Instanciando o client
 const fs = require('fs')
 const BaseClient = require('./base.js')
-const Stats = require('../../modules/index.js')
 const NewClient = new BaseClient({
 	intents: 32767,
 	allowedMentions: {
@@ -16,7 +15,6 @@ fs.readdirSync(`/home/runner/Open-OsBot/scr/commands/`).forEach(local => {
 		let puxar = require(`/home/runner/Open-OsBot/scr/commands/${local}/${file}`)
 
 		if (puxar.name) {
-			let count = new Stats.Tomori(`${puxar.name}`)
 
 			NewClient.commands.set(puxar.name, puxar)
 		}
