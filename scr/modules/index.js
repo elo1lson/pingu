@@ -1,4 +1,2 @@
-module.exports ={
-	Economy = require('./economy/index.js'),
-	Tomori = require('./stast.js')
-}
+exports.Economy = require('./economy/index.js')
+exports.Tomori = require('./stats.js')
