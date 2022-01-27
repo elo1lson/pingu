@@ -7,7 +7,7 @@
 		//Constantes para uso
 		const Discord = require('discord.js')
 		const Command = require('../../structures/command/command.js')
-		const Stats = require('../../modules/index.js')
+		//const Stats = require('../../modules/index.js')
 		const db = require('quick.db')
 		//Instanciando a classe
 		module.exports = new Command({

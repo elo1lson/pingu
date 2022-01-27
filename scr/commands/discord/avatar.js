@@ -10,7 +10,7 @@ Sinta-se a vontade para usar esse código
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../modules/index.js')
+//onst Stats = require('../../modules/index.js')
 
 //Instanciando a classe
 module.exports = new Command({
@@ -22,8 +22,8 @@ module.exports = new Command({
 		ob: 'none'
 	},
 	author: 'tomori',
-	run: async (client, message, args) => {
-		let count = new Stats.Tomori("botinfo")
+	run: async (client, message, args, prefix) => {
+	//	let count = new Stats.Tomori("botinfo")
 
 		let syntax = new Discord.MessageEmbed()
 			.setTitle('❔ Como usar?')
@@ -32,7 +32,7 @@ module.exports = new Command({
 			.addFields(
 			{
 				name: ':books: Exemplos:',
-				value: `\`\`${prefix}$avatar\`\` ${client.user}\n\`\`${prefix}$avatar\`\``
+				value: `\`\`${prefix}avatar\`\` ${client.user}\n\`\`${prefix}$avatar\`\``
 			},
 			{
 				name: ':twisted_rightwards_arrows: Aliases:',

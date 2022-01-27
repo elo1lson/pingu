@@ -2,7 +2,7 @@ const token = process.env['TOKEN'];
 const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
-const Stats = require('.scr/modules/index.js')
+const Stats = require('./scr/modules/index.js')
 
 const client = require('./scr/structures/client/client.js');
 const config = require("./config.json")
@@ -29,9 +29,10 @@ client.on("messageCreate", async (message) => {
   if (cmd.length === 0) return;
   let command = client.commands.get(cmd)
   if (!command) command = client.commands.get(client.aliases.get(cmd))
+  console.log(command)
   try {
     command.run(client, message, args, prefix).then(setcmd =>{
-    	setcmd = new Stats.Tomori(cmd)
+    	setcmd = new Stats.Tomori(command.name)
     	console.log(setcmd)
     })
   } catch (err) {
