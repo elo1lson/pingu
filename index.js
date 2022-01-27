@@ -6,7 +6,7 @@ const Stats = require('./scr/modules/index.js')
 
 const client = require('./scr/structures/client/client.js');
 const config = require("./config.json")
-client.categories = fs.readdirSync(`./scr/commands/`);
+//lient.categories = fs.readdirSync(`./scr/commands/`);
 const simplydjs = require("simply-djs");
 client.on("messageCreate", async (message) => {
   // messageCreate Event

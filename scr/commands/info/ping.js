@@ -16,6 +16,7 @@ module.exports = new Command({
 	usage: 'none',
 	author: 'tomori',
 	run: async (client, message, args) => {
+    console.log(client.category)
 		var user = message.author
 	//	let count = new Stats.Tomori("botinfo")
 		var footer = user.avatarURL({
