@@ -17,7 +17,8 @@ module.exports = new Command({
 	author: 'tomori',
 	run: async (client, message, args) => {
     console.log(client.category)
-		var user = message.author
+    console.log(client.category.get("discord"))		
+      var user = message.author
 	//	let count = new Stats.Tomori("botinfo")
 		var footer = user.avatarURL({
 			dinamyc: true,

@@ -11,15 +11,15 @@ const NewClient = new BaseClient({
 })
 fs.readdirSync(`/home/runner/Open-OsBot/scr/commands/`).forEach(local => {
 	const comandos = fs.readdirSync(`/home/runner/Open-OsBot/scr/commands/${local}`).filter(arquivo => arquivo.endsWith('.js'))
-	for (let file of comandos) {
+  for (let file of comandos) {
 		let puxar = require(`/home/runner/Open-OsBot/scr/commands/${local}/${file}`)
-
-		if (puxar.name) {
-
+  if(puxar.name) {
 			NewClient.commands.set(puxar.name, puxar)
 		}
 		if (puxar.aliases && Array.isArray(puxar.aliases))
 			puxar.aliases.forEach(x => NewClient.aliases.set(x, puxar.name))
 	}
 });
+console.log(NewClient.categories)
+
 module.exports = NewClient
