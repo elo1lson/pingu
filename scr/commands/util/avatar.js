@@ -1,20 +1,11 @@
-/*
-18/01/2022 - tomorii
-83 linhas  
-Github: elo1lson
-Discord: tomorii#8894
-Sinta-se a vontade para usar esse código
-*/
-
-//Constantes para uso
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
-//onst Stats = require('../../modules/index.js')
 
-//Instanciando a classe
 module.exports = new Command({
+	category: 'util',
 	name: 'avatar',
+	category: 'discord',
 	description: 'Mostra sua foto de perfil',
 	aliases: ['avt', 'pfp'],
 	usage: {
@@ -23,7 +14,6 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
-	//	let count = new Stats.Tomori("botinfo")
 
 		let syntax = new Discord.MessageEmbed()
 			.setTitle('❔ Como usar?')
@@ -80,4 +70,3 @@ module.exports = new Command({
 		message.reply({ embeds: [EmbedAvatar], components: [row] })
 	}
 })
-//<3

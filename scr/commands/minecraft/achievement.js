@@ -4,14 +4,13 @@
 //Discord: tomorii#8894
 //Sinta-se a vontade para usar esse código
 
-//Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const snekfetch = require('snekfetch');
 const Stats = require('../../modules/index.js')
 
-//Instanciando a classe
 module.exports = new Command({
+	category: 'minecraft',
 	name: 'achievement',
 	description: 'Envia uma imagem com uma conquista do minecraft',
 	aliases: ['conquista'],

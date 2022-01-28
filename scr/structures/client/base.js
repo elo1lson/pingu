@@ -15,6 +15,7 @@ class Baseclient extends Discord.Client {
         this.aliases = new Discord.Collection();
         this.description = new Discord.Collection();
         this.author = new Discord.Collection();
+   
        // this.category = new Discord.Collection()
 
     }

@@ -12,6 +12,7 @@ const Stats = require('../../modules/index.js')
 const num_conv = require('number-to-words');
 //Instanciando a classe
 module.exports = new Command({
+	category: 'fun',
 	name: 'bit',
 	description: 'Mostra o ping do Bot',
 	aliases: ['pin', 'botping'],

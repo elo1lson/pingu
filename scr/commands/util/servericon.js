@@ -3,9 +3,10 @@ const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
-	name: 'contador',
+	category: 'util',
+	name: 'servericon,
 	description: 'Mostra o icone do servidor',
-	aliases: ['servericon', 'iconserver'],
+	aliases: ['iconserver'],
 	usage: {
 		op: 'none',
 		ob: 'none'

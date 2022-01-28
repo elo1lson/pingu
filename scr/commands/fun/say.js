@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
+	category: 'fun',
 	name: 'say',
 	description: 'Mostra o icone do servidor',
 	aliases: ['falar','fale'],

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
+	category: 'discord',
 	name: 'serverinfo',
 	aliases: ['svinfo', 'a'],
 	run: async (client, message, args) => {

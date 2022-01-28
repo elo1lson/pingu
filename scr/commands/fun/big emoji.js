@@ -11,6 +11,7 @@ const Stats = require('../../modules/index.js')
 
 //| Instanciando a classe
 module.exports = new Command({
+	category: 'fun',
 	name: 'bigemoji',
 	description: 'Envia um emoji como foto',
 	aliases: ['big-emoji','baixaremoji'],

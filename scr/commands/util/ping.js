@@ -1,41 +1,26 @@
-//18/01/2022 - tomorii
-//38 linhas
-//Github: elo1lson
-//Discord: tomorii#8894
-//Sinta-se a vontade para usar esse código
-
-//Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-//const Stats = require('../../modules/index.js')
-//Instanciando a classe
+
 module.exports = new Command({
+	category: 'util',
 	name: 'ping',
 	description: 'Mostra o ping do Bot',
 	aliases: ['pin', 'botping'],
 	usage: 'none',
 	author: 'tomori',
 	run: async (client, message, args) => {
-    console.log(client.category)
-    console.log(client.category.get("discord"))		
-      var user = message.author
-	//	let count = new Stats.Tomori("botinfo")
+		var user = message.author
 		var footer = user.avatarURL({
-			dinamyc: true,
-			format: 'png',
-			size: 1024
+			dinamyc: true
 		})
 
 		if (footer === null) footer = client.user.displayAvatarURL({
-			dinamyc: true,
-			format: 'png',
-			size: 1024
-
+			dinamyc: true
 		})
 
 		var embed = new Discord.MessageEmbed()
 			.setTitle(`Ping!`)
-			.setColor('RED')
+			.setColor('#FF0000')
 			.setDescription(`Meu ping está em: ${client.ws.ping}`)
 			.setFooter(`By toto`, `${footer}`)
 		console.log(message.channel.type)
@@ -43,8 +28,9 @@ module.exports = new Command({
 			var embedtwo = new Discord.MessageEmbed()
 				.setTitle('🏓 Pong!')
 				.setColor('#FF0000')
-				.setDescription(`💻 | Api: ${m.createdTimestamp - message.createdTimestamp}ms\n⏱ | Gateway: ${client.ws.ping}ms\n🛰 | Shard: ${client.shards}`)
-				.setFooter(`By toto`, `${footer}`)
+				.setDescription(`💻 | Api: ${m.createdTimestamp - message.createdTimestamp}ms\n⏱ | Gateway: ${client.ws.ping}ms\n🛰 |  Shard: ${client.cluster.id}`)
+				.setFooter(`${message.author}`, `${footer}`)
+				.setTimestamp()
 			m.edit({ embeds: [embedtwo] })
 			m.react('🖥')
 		})
