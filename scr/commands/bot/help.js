@@ -113,7 +113,7 @@ module.exports = new Command({
 			})
 			Eight.on('collect', r => {
 				m.edit({ embeds: [msgembed] })
-			})*/
+			})*/	
 		})
 
 
