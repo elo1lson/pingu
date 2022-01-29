@@ -1,4 +1,4 @@
-const db = require('quick.db')
+	const db = require('quick.db')
 module.exports = class Tomori {
 	constructor(cmd) {
 		this.cmd = cmd

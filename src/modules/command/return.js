@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 module.exports = class Return {
 	constructor(args) {
 		this.args = args

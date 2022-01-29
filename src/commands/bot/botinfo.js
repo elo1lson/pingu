@@ -5,9 +5,9 @@ const db = require('quick.db')
 module.exports = new Command({
 	name: 'botinfo',
 	description: 'Mostra o ping do Bot',
-	category: 'bot',
+	category: 'Bot',
 	aliases: ['infobot'],
-	usage: 'none',	
+	usage: 'none',
 	author: 'tomori',
 	run: async (client, message, args) => {
 		if (args.length > 0) {
@@ -47,12 +47,18 @@ module.exports = new Command({
 			},
 			{
 				name: 'Links Úteis:',
-				value: '<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n[Developer](https://github.com/elo1lson)'
+				value: '<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)'
 			})
-			.setFooter(`${message.author}`, `${footer}`)
+			.setFooter(`${message.author.tag}`, `${footer}`)
 			.setTimestamp()
-		message.reply({ embeds: [notsend] }).then(m => {
-			m.react('▶️')
-		})
+		try {
+			message.reply({ embeds: [notsend] }).then(m => {
+				m.react('▶️')
+				
+			})
+		} catch (e) {
+			message.reply({content: '❌ Ocorreu um erro ao tentar executar esse comando'})
+		}
+
 	}
 })

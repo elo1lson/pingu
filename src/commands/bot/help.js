@@ -52,11 +52,11 @@ module.exports = new Command({
 			// constribuir a mensagem aqui
 			let cmds = categories[cat]
 			// .addField('Inline field title', 'Some value here', true)
-			msgembed.addField(`${cat}`, `\`\`${cmds.join(' - ')}\`\``, true)
+			msgembed.addField(`:bookmark: ${cat}`, `\`\`${cmds.join(' - ')}\`\``, true)
 		}
 		message.reply({ embeds: [msgembed] }).then(async (m) => {
 			await m.react('❌')
-			const del = (reaction, user) => reaction.emoji.name === "◀️" && user.id === message.author.id;
+			const del = (reaction, user) => reaction.emoji.name === "️❌" && user.id === message.author.id;
 			const Del = m.createReactionCollector(del)
 			Del.on('collect', r => {
 				m.delete()
