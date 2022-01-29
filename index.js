@@ -2,9 +2,9 @@ const token = process.env['TOKEN'];
 const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
-const Stats = require('./scr/modules/index.js')
+const Stats = require('./src/modules/index.js')
 
-const client = require('./scr/structures/client/client.js');
+const client = require('./src/structures/client/client.js');
 const config = require("./config.json")
 //lient.categories = fs.readdirSync(`./scr/commands/`);
 const simplydjs = require("simply-djs");

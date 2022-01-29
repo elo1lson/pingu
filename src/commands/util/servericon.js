@@ -4,7 +4,7 @@ const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
 	category: 'util',
-	name: 'servericon,
+	name: 'servericon',
 	description: 'Mostra o icone do servidor',
 	aliases: ['iconserver'],
 	usage: {

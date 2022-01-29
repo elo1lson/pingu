@@ -14,7 +14,7 @@ const NewClient = new BaseClient({
 	}
 })
 
-const basePath = "/home/runner/Open-OsBot/src"
+const basePath = "/home/runner/OpenOsBot/src"
 
 fs.readdirSync(`${basePath}/commands/`).forEach(local => {
 
@@ -31,5 +31,5 @@ fs.readdirSync(`${basePath}/commands/`).forEach(local => {
 		}
 
 	}
-})	
+})
 module.exports = NewClient
