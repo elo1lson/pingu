@@ -5,7 +5,7 @@ const fs = require('fs')
 const Discord = require('discord.js')
 const Command = require('./../command/command.js')
 
-const BaseClient = require('./base.js')
+const BaseClient = require('./BaseClient.js')
 const NewClient = new BaseClient({
 	intents: 32767,
 	allowedMentions: {
