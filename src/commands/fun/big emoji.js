@@ -1,15 +1,7 @@
-/*
-19/01/2022 - tomorii
-68 linhas
-Github: elo1lson
-Discord: tomorii#8894
-Sinta-se a vontade para usar esse código
-*/
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const Stats = require('../../modules/index.js')
 
-//| Instanciando a classe
 module.exports	= new Command({
 	category: 'Fun',
 	name: 'bigemoji',
@@ -20,10 +12,10 @@ module.exports	= new Command({
 		ob: '<emoji>'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix) => {
+	run: async (client, message, args, prefix, cor) => {
 		
     let erro = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor(cor)
     .setTitle(`Sintaxe da ${client.user.username}`)
     .setDescription(`\`\`${prefix}bigemoji\`\` => Sabe aqueles emojis do servidor? Sabia que eu posso aumentar o tamanho dele e você pode baixa-lo?`)
     .addFields(

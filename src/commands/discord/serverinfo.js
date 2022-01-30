@@ -5,7 +5,7 @@ module.exports = new Command({
 	category: 'Discord',
 	name: 'serverinfo',
 	aliases: ['svinfo'],
-	run: async (client, message, args) => {
+	run: async (client, message, args, cor) => {
 		const serverName = message.guild.name
 		const serverId = message.guild.id
 		const memberCount = message.guild.members.cache.filter(member => !member.user.bot).size;
@@ -19,7 +19,7 @@ module.exports = new Command({
     if(!icon) icon = client.user.displayAvatarURL({dinamyc: true})
 		if (description === null) description = 'Sem descrição'
 		let server = new Discord.MessageEmbed()
-			.setColor('#FF0000')
+			.setColor(cor)
 			.setTitle(`:triangular_flag_on_post:  ${serverName}`)
 			.setThumbnail(`${icon}`)
 			.addFields(

@@ -4,7 +4,7 @@ const db = require('quick.db')
 
 module.exports = new Command({
 	name: 'botinfo',
-	description: 'Mostra informações do bot',
+	description: 'Mostra o ping do Bot',
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
@@ -12,8 +12,7 @@ module.exports = new Command({
 		op: "none"
 	},
 	author: 'tomori',
-	run: async (client, message, args) => {
-		let cor = db.get(`config.color`)
+	run: async (client, message, args, cor) => {
 		if (args.length > 0) {
 			return
 		}

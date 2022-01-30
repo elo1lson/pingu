@@ -2,19 +2,23 @@ const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
-	category: 'fun',
+	category: 'Fun',
 	name: 'say',
-	description: 'Mostra o icone do servidor',
+	description: 'Me faça falar algo...',
 	aliases: ['falar','fale'],
 	usage: {
 		op: 'none',
-		ob: 'say <texto>'
+		ob: '<texto>'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix) => {
+	run: async (client, message, args, prefix, cor) => {
+		let footer = message.author.avatarURL({dinamyc: true})
+		if(footer === null){
+			footer = client.user.displayAvatarURL({dinamyc: true})
+		}
 		let embed = new Discord.MessageEmbed()
 		.setTitle(`Sintaxe da ${client.user.username}`)
-		.setColor(`#FF0000`)
+		.setColor(cor)
 		.setDescription(`\`\`${prefix}say\`\` => Faça eu falar alguma coisa!`)
 		.addFields(
 			{
@@ -30,7 +34,7 @@ module.exports = new Command({
 				value: `\`\`falar, fale\`\``
 			}
 			)
-		.setFooter(`By toto`,`${client.user.avatarURL({dinamyc: true})}`)
+		.setFooter(`${message.author.tag}`,`${footer}`)
 		
 		if (!args[0]) {
 			return message.reply({embeds: [embed]}).then(msg => {
@@ -39,7 +43,7 @@ module.exports = new Command({
 		}
 		if (args.length > 0){
 			message.delete()
-			message.channel.send(`${args.join(" ")}`)
+			message.channel.send(`${args.join(" ")}\nEnviado por ${message.author}`)
 		}
 	}
 })

@@ -3,22 +3,19 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
 
-//| Instanciando a classe
 module.exports = new Command({
-	category: 'fun',
-	name: 't',
-	description: 'Mostra sua foto de perfil',
-	aliases: ['avt', 'pfp'],
+	category: 'Fun',
+	name: 'tictactoe',
+	description: 'Que tal jogar um jogo da velha??',
+	aliases: ['jogodavelha'],
 	usage: {
-		op: '<@usuario>',
-		ob: 'none'
+		op: 'none',
+		ob: '<@usuário>'
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-// messageCreate Event
-
-simplydjs.chatbot(client, message, {
-  chid: 912886408778236005
-});
+		simplydjs.chatbot(client, message, {
+			chid: 912886408778236005
+		});
 	}
 })
