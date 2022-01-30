@@ -4,12 +4,12 @@ const db = require('quick.db')
 
 module.exports = new Command({
 	name: 'botinfo',
-	description: 'Mostra o ping do Bot',
+	description: 'Mostra informações do bot',
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
 		ob: "none",
-		op: none
+		op: "none"
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {

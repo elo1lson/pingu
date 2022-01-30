@@ -4,7 +4,7 @@ const db = require('quick.db')
 module.exports = new Command({
 	category: 'Bot',
 	name: 'help',
-	description: 'Mostra ajuda',
+	description: 'Mostra a ajuda do bot',
 	aliases: ['ajuda'],
 	usage: {
 		op: 'none',
@@ -12,6 +12,7 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
+		if(args.lenght > 0) return 
 		let cor = db.get(`config.color`)
 		let footer = message.author.avatarURL({ dinamyc: true })
 		if (footer === null) {
