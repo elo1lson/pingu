@@ -2,11 +2,10 @@ const Discord = require('discord.js');
 const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
-	category: 'discord',
+	category: 'Discord',
 	name: 'serverinfo',
-	aliases: ['svinfo', 'a'],
+	aliases: ['svinfo'],
 	run: async (client, message, args) => {
-		console.clear()
 		const serverName = message.guild.name
 		const serverId = message.guild.id
 		const memberCount = message.guild.members.cache.filter(member => !member.user.bot).size;
@@ -63,9 +62,5 @@ module.exports = new Command({
 		message.reply({ embeds: [server] }).then(msg => {
 			msg.react('▶️')
 		})
-		a = message.guild
-    b = message.guild.roles
-	//	console.log(a)
-    console.log(b)
 	}
 })

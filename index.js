@@ -3,18 +3,10 @@ const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
 const Stats = require('./src/modules/index.js')
-
 const client = require('./src/structures/client/client.js');
 const config = require("./config.json")
-//lient.categories = fs.readdirSync(`./scr/commands/`);
 const simplydjs = require("simply-djs");
 client.on("messageCreate", async (message) => {
-  // messageCreate Event
-  /*
-  simplydjs.chatbot(client, message, {
-    chid: "912886408778236005",
-    name: "tomori" // default: Your bot name
-  });*/
   let prefix = config.prefix;
 
   if (message.author.bot) return;

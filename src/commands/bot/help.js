@@ -1,6 +1,8 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
+const db = require('quick.db')
 module.exports = new Command({
+	category: 'Bot',
 	name: 'help',
 	description: 'Mostra ajuda',
 	aliases: ['ajuda'],
@@ -10,6 +12,7 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
+		let cor = db.get(`config.color`)
 		let footer = message.author.avatarURL({ dinamyc: true })
 		if (footer === null) {
 			footer = client.user.displayAvatarURL({ dinamyc: true })
@@ -23,7 +26,6 @@ module.exports = new Command({
 			if (!cmd.category) return
 			if (cmd.category === undefined) return // não funciona adicionar a categoria aqui por padrão
 
-			console.log(cmd.category);
 
 			if (categories[cmd.category] === undefined) {
 				categories[cmd.category] = new Array()
@@ -43,7 +45,7 @@ module.exports = new Command({
 		let msgembed = new Discord.MessageEmbed()
 		.setTitle(`Lista de comandos`)
 			.setDescription(`${message.author} confira minha lista de comandos separadas por categorias\n\nClique em ❌ a qualquer momento para apagar essa mensagem`)
-			.setColor('#FF0000')
+			.setColor(cor)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 			.setFooter(`${message.author.tag}`, `${footer}`)
 
