@@ -1,4 +1,4 @@
-const token = process.env['TOKEN'];
+const token = process.env.TOKEN
 const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
