@@ -1,5 +1,5 @@
 const Cluster = require("discord-hybrid-sharding");
-const token = process.env['TOKEN']
+const token = process.env.TOKEN
 const manager = new Cluster.Manager("./index.js", {
 	mode: "process",
 	token: token,
