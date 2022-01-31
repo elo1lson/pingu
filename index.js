@@ -24,7 +24,7 @@ client.on('interactionCreate', async interaction => {
 
 client.on("messageCreate", async (message) => {
   let prefix = config.prefix;
-  let cor = new bot.Database()
+  let cor = "#841384"
   if (message.author.bot) return;
   if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (message.author.bot) return;
