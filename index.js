@@ -2,10 +2,10 @@ const token = process.env['TOKEN'];
 const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
-const Stats = require('./src/modules/index.js')
+const bot = require('./src/modules/index.js')
 const client = require('./src/structures/client/NewClient.js');
 const config = require("./config.json")
-const simplydjs = require("simply-djs");
+const simplydjs = require("simply-djs")
 
 client.on('interactionCreate', async interaction => {
   console.log("Interação criada")
@@ -24,8 +24,7 @@ client.on('interactionCreate', async interaction => {
 
 client.on("messageCreate", async (message) => {
   let prefix = config.prefix;
-  let cor = await db.get(`config.color`)
-  console.log(cor)
+  let cor = new bot.Database()
   if (message.author.bot) return;
   if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (message.author.bot) return;
@@ -39,7 +38,7 @@ client.on("messageCreate", async (message) => {
   if (!command) command = client.commands.get(client.aliases.get(cmd))
   try {
     command.run(client, message, args, prefix, cor).then(setcmd =>{
-    	setcmd = new Stats.Tomori(command.name)
+    	setcmd = new bot.Stats(command.name)
     	console.log(setcmd)
     })
   } catch (err) {
