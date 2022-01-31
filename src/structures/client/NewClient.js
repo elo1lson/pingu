@@ -14,7 +14,6 @@ const NewClient = new BaseClient({
 	}
 })
 
-/*
 fs.readdirSync(`../../commands/`).forEach(local => {
 
 	const commands = fs.readdirSync(`../../commands/${local}`).filter(f => f.endsWith('.js'))
@@ -30,5 +29,5 @@ fs.readdirSync(`../../commands/`).forEach(local => {
 		}
 
 	}
-})*/
+})
 module.exports = NewClient
