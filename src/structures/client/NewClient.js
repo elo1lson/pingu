@@ -15,12 +15,12 @@ const NewClient = new BaseClient({
 })
 
 
-fs.readdirSync(`./../../commands/`).forEach(local => {
+fs.readdirSync(`../../commands/`).forEach(local => {
 
-	const commands = fs.readdirSync(`./../../commands/${local}`).filter(f => f.endsWith('.js'))
+	const commands = fs.readdirSync(`../../commands/${local}`).filter(f => f.endsWith('.js'))
 
 	for (let file of commands) {
-		let cmd = require(`./../../commands/${local}/${file}`)
+		let cmd = require(`../../commands/${local}/${file}`)
 		if (cmd.name) {
 			NewClient.commands.set(cmd.name, cmd)
 		}
