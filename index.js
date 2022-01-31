@@ -2,9 +2,9 @@ const token = process.env.TOKEN
 const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
-const bot = require('./src/modules/index.js')
-const client = require('./src/structures/client/NewClient.js');
-const config = require("./config.json")
+const bot = require('app/src/modules/index.js')
+const client = require('app/src/structures/client/NewClient.js');
+const config = require("app/config.json")
 const simplydjs = require("simply-djs")
 
 client.on('interactionCreate', async interaction => {
