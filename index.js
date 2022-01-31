@@ -4,7 +4,7 @@ const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
 const bot = require('./src/modules/index.js')
 const client = require('./src/structures/client/NewClient.js');
-const config = require("./config.json")
+const config = require("app/config.json")
 const simplydjs = require("simply-djs")
 
 client.on('interactionCreate', async interaction => {
