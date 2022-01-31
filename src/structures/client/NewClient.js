@@ -1,33 +1,36 @@
 //Por favor, não meixa nesse código
 //Instanciando o client
 const fs = require('fs')
+const path = require('path');
 
 const Discord = require('discord.js')
 const Command = require('./../command/command.js')
 
 const BaseClient = require('./BaseClient.js')
 const NewClient = new BaseClient({
-	intents: 32767,
-	allowedMentions: {
-		parse: ["users", "roles"],
-		repliedUser: false
-	}
+    intents: 32767,
+    allowedMentions: {
+        parse: ["users", "roles"],
+        repliedUser: false
+    }
 })
 
-fs.readdirSync(`/app/src/commands/`).forEach(local => {
+const commands_path = path.join(__dirname, "..",  "..", "commands");
 
-	const commands = fs.readdirSync(`/app/src/commands/${local}`).filter(f => f.endsWith('.js'))
+fs.readdirSync(commands_path).forEach(local => {
+    const files = fs.readdirSync(path.join(commands_path, local));
 
-	for (let file of commands) {
-		let cmd = require(`/app/src/commands/${local}/${file}`)
-		if (cmd.name) {
-			NewClient.commands.set(cmd.name, cmd)
-		}
+    let command;
+    for (let file of files ) {
+        if(file.endsWith(".js")){
+            command = require(path.join(commands_path, local, file));
 
-		if (cmd.aliases && Array.isArray(cmd.aliases)) {
-			cmd.aliases.forEach(x => NewClient.aliases.set(x, cmd.name))
-		}
+            NewClient.commands.set(command.name, command);
+            for(let aliase of command.aliases)
+                NewClient.aliases.set(aliase, command.name);
+        }
+    }
 
-	}
-})
-module.exports = NewClient
+});
+
+module.exports = NewClient 
