@@ -6,10 +6,26 @@ const Stats = require('./src/modules/index.js')
 const client = require('./src/structures/client/NewClient.js');
 const config = require("./config.json")
 const simplydjs = require("simply-djs");
-const cor = db.get(`config.color`)
+
+client.on('interactionCreate', async interaction => {
+  console.log("Interação criada")
+	if (!interaction.isCommand()) return;
+
+	const { commandName } = interaction;
+
+	if (commandName === 'ping') {
+		await interaction.reply('Pong!');
+	} else if (commandName === 'server') {
+		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+	} else if (commandName === 'user') {
+		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+	}
+});
+
 client.on("messageCreate", async (message) => {
   let prefix = config.prefix;
-
+  let cor = await db.get(`config.color`)
+  console.log(cor)
   if (message.author.bot) return;
   if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (message.author.bot) return;

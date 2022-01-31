@@ -6,6 +6,7 @@ module.exports = new Command({
 	name: 'serverinfo',
 	aliases: ['svinfo'],
 	run: async (client, message, args, cor) => {
+    console.log('Balor' + cor)
 		const serverName = message.guild.name
 		const serverId = message.guild.id
 		const memberCount = message.guild.members.cache.filter(member => !member.user.bot).size;

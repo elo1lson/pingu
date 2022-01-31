@@ -5,7 +5,7 @@ const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
 	category: 'Fun',
-	name: 'tictactoe',
+	name: 'ti',
 	description: 'Que tal jogar um jogo da velha??',
 	aliases: ['jogodavelha'],
 	usage: {
@@ -15,7 +15,7 @@ module.exports = new Command({
 	author: 'tomori',
 	run: async (client, message, args) => {
 		simplydjs.chatbot(client, message, {
-			chid: 912886408778236005
+			chid: 817408280845615121
 		});
 	}
 })
