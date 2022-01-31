@@ -1,1 +1,1 @@
-tomorii:run node shard.js
+tomoriirun: node shard.js
