@@ -1,5 +1,5 @@
 const db = require('quick.db')
-module.exports = class Stats {
+class Stats {
 	constructor(cmd) {
 		this.cmd = cmd
 		this.stats()
@@ -9,8 +9,6 @@ module.exports = class Stats {
 		db.add(`config.stats.geral`,`1`)
 		console.log('Registrando estatísticas')
 		return db.get(`config.stats.geral`)
-
-
 	}
 	total(){
 		return db.get(`config.stats.geral`)
@@ -21,3 +19,4 @@ module.exports = class Stats {
 		return cmd
 	}
 }
+module.export = Stats

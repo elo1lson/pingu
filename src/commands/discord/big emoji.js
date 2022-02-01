@@ -1,10 +1,18 @@
+/*
+19/01/2022 - tomorii
+68 linhas
+Github: elo1lson
+Discord: tomorii#8894
+Sinta-se a vontade para usar esse código
+*/
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../helpers/stats.js')
+const Stats = require('../../modules/index.js')
 
-module.exports	= new Command({
-	category: 'Fun',
+//| Instanciando a classe
+module.exports = new Command({
 	name: 'bigemoji',
+  category: 'discord',
 	description: 'Envia um emoji como foto',
 	aliases: ['big-emoji','baixaremoji'],
 	usage: {
@@ -12,10 +20,10 @@ module.exports	= new Command({
 		ob: '<emoji>'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix, cor) => {
+	run: async (client, message, args, prefix) => {
 		
     let erro = new Discord.MessageEmbed()
-    .setColor(cor)
+    .setColor('#FF0000')
     .setTitle(`Sintaxe da ${client.user.username}`)
     .setDescription(`\`\`${prefix}bigemoji\`\` => Sabe aqueles emojis do servidor? Sabia que eu posso aumentar o tamanho dele e você pode baixa-lo?`)
     .addFields(

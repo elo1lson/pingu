@@ -1,24 +1,28 @@
+//18/01/2022 - tomorii
+//38 linhas
+//Github: elo1lson
+//Discord: tomorii#8894
+//Sinta-se a vontade para usar esse código
+
+//Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../helpers/stats.js')
+const Stats = require('../../modules/index.js')
+
 const num_conv = require('number-to-words');
+//Instanciando a classe
 module.exports = new Command({
-	category: 'Fun',
-	name: 'emojitext',
-	description: 'Envia um texto em emojis.',
-	aliases: ['textoemoji'],
-	usage: {
-		op: 'none',
-		ob: '<texto>'
-	},
+	name: 'bit',
+	description: 'Mostra o ping do Bot',
+  category: "discord",
+	aliases: ['pin', 'botping'],
+	usage: 'none',
 	author: 'tomori',
-	run: async (client, message, args, prefix, cor) => {
+	run: async (client, message, args, prefix) => {
 		let output = args.join(' ');
 		if (!output)
-			return message.reply('Humm.... que tal inserir algo? tipo uma frase.')
-		const erro = new Discord.MessageEmbed()
-			.setTitle('Ocorreu um erro ao enviar a mensagem.')
-			.setColor(cor)
+			return message.reply("Nao")
+
 		let bigtext_arr = new Array();
 		for (let i = 0; i < output.length; i++) {
 			let isnumber = await parseInt(output[i]);
@@ -33,12 +37,14 @@ module.exports = new Command({
 				} else bigtext_arr.push('   ');
 			}
 		}
+
 		try {
-			await message.channel.send({content: `${message.author}`})
 			await message.channel.send(bigtext_arr.join(''));
 			return message.delete()
 		} catch (e) {
-			return message.reply({embeds: [erro]});
+			return message.channel.send(new Discord.MessageEmbed()
+				.setTitle('Ocorreu um erro ao enviar a mensagem.')
+				.setColor('#FF0000'));
 		}
 
 

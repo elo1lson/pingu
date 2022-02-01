@@ -7,7 +7,7 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const snekfetch = require('snekfetch');
-const Stats = require('../../modules/index.js')
+const Stats = require('../../helpers/stats.js')
 
 module.exports = new Command({
 	category: 'minecraft',

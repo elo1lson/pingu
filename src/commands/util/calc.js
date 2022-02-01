@@ -6,7 +6,6 @@ const Command = require('../../structures/command/command.js')
 
 //| Instanciando a classe
 module.exports = new Command({
-	category: 'fun',
 	name: 'calc',
 	description: 'Mostra sua foto de perfil',
 	aliases: ['avt', 'pfp'],
