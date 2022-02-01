@@ -19,6 +19,7 @@ const firebaseConfig = {
   measurementId: "G-H4T8B74CK1"
 };
 try{
+firebase.initializeApp(firebaseConfig)
 console.log("Firebase logada")
 }catch (e){
 console.log(e)
