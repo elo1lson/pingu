@@ -1,7 +1,0 @@
-{
-  "run": {
-    "type": "file",
-    "file": "A.html",
-    "ignoreCurrent": true
-  }
-}

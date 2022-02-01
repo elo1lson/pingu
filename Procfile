@@ -1,1 +1,1 @@
-tomoriirun: node shard.js
+worker: node shard.js
