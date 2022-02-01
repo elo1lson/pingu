@@ -7,7 +7,6 @@
 //Constantes para uso
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../modules/index.js')
 
 const num_conv = require('number-to-words');
 //Instanciando a classe

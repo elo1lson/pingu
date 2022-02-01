@@ -7,7 +7,6 @@ Sinta-se a vontade para usar esse código
 */
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../modules/index.js')
 
 //| Instanciando a classe
 module.exports = new Command({
