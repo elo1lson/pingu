@@ -6,7 +6,7 @@ const bot = require('./src/modules/index.js')
 const client = require('./src/structures/client/NewClient.js');
 const config = process.env.PREFIX //require("/config.json")
 const simplydjs = require("simply-djs")
-const firebase = require('firebase')
+//const firebase = require('firebase')
 
 client.on('interactionCreate', async interaction => {
   console.log("Interação criada")
