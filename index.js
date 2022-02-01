@@ -6,7 +6,8 @@ const bot = require('./src/modules/index.js')
 const client = require('./src/structures/client/NewClient.js');
 const config = process.env.PREFIX //require("/config.json")
 const simplydjs = require("simply-djs")
-const fire = require('./src/modules/firebase/InitFirebase.jd')
+const fire = require('./src/modules/firebase/InitFirebase.js')
+fire.fire()
 client.on('interactionCreate', async interaction => {
   console.log("Interação criada")
 	if (!interaction.isCommand()) return;
