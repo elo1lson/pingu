@@ -7,23 +7,7 @@ const client = require('./src/structures/client/NewClient.js');
 const config = process.env.PREFIX //require("/config.json")
 const simplydjs = require("simply-djs")
 const firebase = require('firebase')
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDaBjQQgDmon2dlHr-QmquI8tKIbuzXV1Q",
-  authDomain: "stellar-62f9f.firebaseapp.com",
-  databaseURL: "https://stellar-62f9f-default-rtdb.firebaseio.com",
-  projectId: "stellar-62f9f",
-  storageBucket: "stellar-62f9f.appspot.com",
-  messagingSenderId: "82409429792",
-  appId: "1:82409429792:web:09de1d8e52cc428bec1545",
-  measurementId: "G-H4T8B74CK1"
-};
-try{
-firebase.initializeApp(firebaseConfig)
-console.log("Firebase logada")
-}catch (e){
-console.log(e)
-}
+
 client.on('interactionCreate', async interaction => {
   console.log("Interação criada")
 	if (!interaction.isCommand()) return;
