@@ -1,11 +1,3 @@
-/*
-18/01/2022 - tomorii
-80 linhas  
-Github: elo1lson
-Discord: tomorii#8894
-Sinta-se a vontade para usar esse código
-*/
-
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
@@ -20,11 +12,11 @@ module.exports = new Command({
 		ob: 'none'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix) => {
+	run: async (client, message, args, prefix, cor) => {
 
 		let syntax = new Discord.MessageEmbed()
 			.setTitle('❔ Como usar?')
-			.setColor('#00FF00')
+			.setColor(cor)
 			.setDescription(`\`\`avatar\`\` => Envia a imagem do seu perfil!`)
 			.addFields(
 			{
@@ -72,6 +64,7 @@ module.exports = new Command({
 
 		const EmbedAvatar = new Discord.MessageEmbed()
 			.setDescription(`**📸 Olha aqui seu avatar**`)
+			.setColor(cor)
 			.setImage(`${avatar}`)
 			.setFooter(`By toto`,`${client.user.avatarURL({dinamy: true})}`)
 		message.reply({ embeds: [EmbedAvatar], components: [row] })
@@ -79,18 +72,3 @@ module.exports = new Command({
 		console.log(client.commands);
 	}
 })
-
-//<3
-/*
-const fs = require('fs')
-var arry = []
-fs.readdirSync('/home/runner/Open-OsBot/scr/commands/discord/').forEach(c =>{
-	for (prop of c) {
-		content = require(`/home/runner/Open-OsBot/scr/commands/discord/${c}`)
-      arry.push(content.name)
-    if(arry[content.name]){
-      console.log("temmm")
-    }
-
-	}
-})*/

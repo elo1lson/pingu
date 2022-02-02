@@ -1,10 +1,9 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const db = require('quick.db')
 
 module.exports = new Command({
 	name: 'botinfo',
-	description: 'Mostra o ping do Bot',
+	description: 'Informações sobre o bot',
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
@@ -13,10 +12,6 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, cor) => {
-  console.log('A cor é: ' + cor)
-		if (args.length > 0) {
-			return
-		}
 		let user = message.author
 		let footer = user.avatarURL({
 			dinamyc: true,

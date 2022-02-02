@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const db = require('quick.db')
 
 module.exports = new Command({
 	category: 'Bot',
@@ -12,9 +11,8 @@ module.exports = new Command({
 		ob: 'help'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix) => {
+	run: async (client, message, args, prefix, cor) => {
 		if (args.lenght > 0) return
-		let cor = db.get(`config.color`)
 		let footer = message.author.avatarURL({ dinamyc: true })
 		if (footer === null) {
 			footer = client.user.displayAvatarURL({ dinamyc: true })
@@ -58,27 +56,6 @@ module.exports = new Command({
 			// .addField('Inline field title', 'Some value here', true)
 			msgembed.addField(`:bookmark: ${cat}`, `\`\`${cmds.join(' - ')}\`\``, true)
 		}
-		message.reply({ embeds: [msgembed] }).then(async (m) => {
-			await m.react('❌')
-			const filter = (reaction, user) => { return reaction.emoji.name === '❌' && user.id === message.author.id; };
-			m.awaitReactions({ filter, max: 4, time: 60000, errors: ['time'] })
-				.then(collected => m.delete())
-				.catch(collected => {
-					console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-				});
-		})
-		// Aqui envia uma mensagem só, com tudo
-		//	message.reply({ content: "Chupa meu saco", embeds: [msg] })
-
-		// let a = new Discord.MessageEmbed()
-		// 			.setDescription(`Para saber meus comandos, reaja ao emoji de cada categoria.`)
-		// 			.setColor('#FF0000')
-		// 			.addFields(
-		// 			{
-		// 				name: 'Teste',
-		// 				value: `teste`
-		// 			}
-
-
+		message.reply({embeds: [msgembed]})
 	}
 })
