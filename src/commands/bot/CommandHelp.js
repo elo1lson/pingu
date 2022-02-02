@@ -61,11 +61,11 @@ module.exports = new Command({
 		message.reply({ embeds: [msgembed] }).then(async (m) => {
 			await m.react('❌')
 			const filter = (reaction, user) => { return reaction.emoji.name === '❌' && user.id === message.author.id; };
-			const Del = m.createReactionCollector(filter)
-			Del.on('collect', (reaction, user) => {
-				m.delete()
-				message.delete()
-			})
+			m.awaitReactions({ filter, max: 4, time: 60000, errors: ['time'] })
+				.then(collected => m.delete())
+				.catch(collected => {
+					console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
+				});
 		})
 		// Aqui envia uma mensagem só, com tudo
 		//	message.reply({ content: "Chupa meu saco", embeds: [msg] })
