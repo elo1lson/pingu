@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const db = require('quick.db')
+
 module.exports = new Command({
 	category: 'Bot',
 	name: 'help',
@@ -12,7 +13,7 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
-		if(args.lenght > 0) return 
+		if (args.lenght > 0) return
 		let cor = db.get(`config.color`)
 		let footer = message.author.avatarURL({ dinamyc: true })
 		if (footer === null) {
@@ -44,7 +45,7 @@ module.exports = new Command({
 		})
 
 		let msgembed = new Discord.MessageEmbed()
-		.setTitle(`Lista de comandos`)
+			.setTitle(`Lista de comandos`)
 			.setDescription(`${message.author} confira minha lista de comandos separadas por categorias\n\nClique em ❌ a qualquer momento para apagar essa mensagem`)
 			.setColor(cor)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
@@ -59,9 +60,9 @@ module.exports = new Command({
 		}
 		message.reply({ embeds: [msgembed] }).then(async (m) => {
 			await m.react('❌')
-			const del = (reaction, user) => reaction.emoji.name === "️❌" && user.id === message.author.id;
-			const Del = m.createReactionCollector(del)
-			Del.on('collect', r => {
+			const filter = (reaction, user) => { return reaction.emoji.name === '❌' && user.id === message.author.id; };
+			const Del = m.createReactionCollector(filter)
+			Del.on('collect', (reaction, user) => {
 				m.delete()
 				message.delete()
 			})
@@ -80,4 +81,4 @@ module.exports = new Command({
 
 
 	}
-})	
+})
