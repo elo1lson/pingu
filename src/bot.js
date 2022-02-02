@@ -34,9 +34,9 @@ client.on("messageCreate", async (message) => {
   let command = client.commands.get(cmd)
   if (!command) command = client.commands.get(client.aliases.get(cmd))
   try {
-    command.run(client, message, args, prefix, cor).then(setcmd =>{
+    command.run(client, message, args, prefix, cor)/*.then(setcmd =>{
     	setcmd = new bot.Stats(command.name)
-    	console.log(setcmd)
+    	console.log(setcmd)*/
     })
   } catch (err) {
     console.error('Erro:' + err);
