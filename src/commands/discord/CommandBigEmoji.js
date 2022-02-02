@@ -11,7 +11,7 @@ const Command = require('../../structures/command/command.js')
 //| Instanciando a classe
 module.exports = new Command({
 	name: 'bigemoji',
-  category: 'discord',
+  category: 'Discord',
 	description: 'Envia um emoji como foto',
 	aliases: ['big-emoji','baixaremoji'],
 	usage: {
@@ -19,7 +19,7 @@ module.exports = new Command({
 		ob: '<emoji>'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix) => {
+	run: async (client, message, args, prefix, cor) => {
 		
     let erro = new Discord.MessageEmbed()
     .setColor('#FF0000')
@@ -45,7 +45,7 @@ module.exports = new Command({
     }
     let emoji = message.guild.emojis.cache.find(emoji => emoji.name === args[0].split(":")[1]);
     let embed = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor(cor)
     .setTitle(`Emoji ${args[0].split(":")[1]}`)
     .setImage(`${emoji.url}`)
     .setFooter(`By toto`,`${client.user.avatarURL({dinamyc: true})}`)
