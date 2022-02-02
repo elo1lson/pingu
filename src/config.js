@@ -1,7 +1,7 @@
 module.exports = {
 	prefix: process.env.PREFIX,
 	token: process.env.TOKEN,
-	cor: prompt.env.COLOR,
+	cor: process.env.COLOR,
 	firebase: {
 		apiKey: process.env.API_KEY,
 		authDomain: process.env.PROJECT_ID + ".firebaseapp.com",
