@@ -36,8 +36,8 @@ client.on("messageCreate", async (message) => {
   try {
     command.run(client, message, args, prefix, cor)/*.then(setcmd =>{
     	setcmd = new bot.Stats(command.name)
-    	console.log(setcmd)*/
-    })
+    	console.log(setcmd)
+    })*/
   } catch (err) {
     console.error('Erro:' + err);
   }
