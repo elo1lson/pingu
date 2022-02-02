@@ -1,7 +1,7 @@
 	const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 module.exports = new Command({
-	name: 'help',
+	name: 'hep',
 	description: 'Mostra ajuda',
 	aliases: ['ajuda'],
 	usage: {
