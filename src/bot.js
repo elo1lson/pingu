@@ -3,7 +3,7 @@ const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
 const client = require('./structures/client/NewClient.js');
 
-const { prefix, token } = require("./config.js");
+const { prefix, token, cor } = require("./config.js");
 
 client.on('interactionCreate', async interaction => {
   console.log("Interação criada")
@@ -21,7 +21,6 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.on("messageCreate", async (message) => {
-  let cor = "#841384"
   if (message.author.bot) return;
   if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (message.author.bot) return;

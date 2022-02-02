@@ -32,7 +32,7 @@ module.exports = new Command({
 		let newcomp = comp - 28
 		let notsend = new Discord.MessageEmbed()
 			.setTitle(`:information_source: Sobre Mim`)
-			.setColor(`${cor}`)
+			.setColor(cor)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 			.setDescription(`Sou a <:toto:934042191414833173> ${client.user.username}, estou tentando trazer alegria para todos, atualmente eu faço parte de mais de **${client.guilds.cache.size}** servidores, e cuido de **${client.users.cache.size}** lindas pessoas, e já  executei **${Geral}** comandos desde que fui criada!\n\nFui desenolvida em <:js:935134807631999006>** [JavaScript](https://g.co/kgs/fiDGbJ)** utilizando <:djs:935139154340237322> **[Discord.js](https://github.com/discordjs/discord.js)**, e sou totalmente <:open_source:935141228889124875> **Open Source**! Se você quiser ver meu código fonte ou contribuir para a minha criação, clique [aqui](https://github.com/elo1lson/Open-Os_Bot)`)
 			.addFields(
@@ -51,12 +51,9 @@ module.exports = new Command({
 			.setFooter(`${message.author.tag}`, `${footer}`)
 			.setTimestamp()
 		try {
-			message.reply({ embeds: [notsend] }).then(m => {
-				m.react('▶️')
-				
-			})
+			message.reply({ embeds: [notsend] })
 		} catch (e) {
-			message.reply({content: '❌ Ocorreu um erro interno ao tentar executar esse comando'})
+			message.reply({ content: '❌ Ocorreu um erro interno ao tentar executar esse comando' })
 		}
 
 	}
