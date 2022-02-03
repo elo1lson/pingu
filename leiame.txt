@@ -1,0 +1,1 @@
+Esse projeto foi descontinuado devido a muitos bugs de codigo, achei melhor migrar somente o codigo necessário para outro repositório
