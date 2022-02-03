@@ -5,7 +5,6 @@ module.exports = class Embed extends(
 ) {
 	constructor(user, data = {}) {
 		super(data);
-		
 		this.setTimestamp();
 		this.setColor(process.env.COLOR);
 		this.setFooter({
