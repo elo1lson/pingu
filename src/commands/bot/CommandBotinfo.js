@@ -12,6 +12,7 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
+                let Geral = 9999
 		let libs = require('../../../package.json')
 		libs = libs.dependencies
 		let newlib = "<:chip:935164784154935326> "
