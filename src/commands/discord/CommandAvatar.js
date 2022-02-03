@@ -3,7 +3,7 @@ const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
-	name: 'avatar',
+	name: 'avatarr',
 	description: 'Mostra sua foto de perfil',
   category: 'discord',
 	aliases: ['avt', 'pfp'],
@@ -61,8 +61,9 @@ module.exports = new Command({
 				.setURL(`${avatar}`)
 				.setStyle('LINK')
 			);
-		const user = message.author
-		const EmbedAvatar = new  Embed(client, user)
+    
+        var a = message.author
+    const EmbedAvatar = await new Embed(a)
 			.setDescription(`**📸 Olha aqui seu avatar**`)
 			.setImage(`${avatar}`)
 		message.reply({ embeds: [EmbedAvatar], components: [row] })

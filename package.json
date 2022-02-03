@@ -16,7 +16,6 @@
   "dependencies": {
     "@discordjs/builders": "^0.11.0",
     "@discordjs/rest": "0.1.0-canary.0",
-    "chalk": "^4.1.2",
     "config.js": "^0.1.0",
     "discord-api-types": "^0.24.0",
     "discord-banner": "^1.6.7",

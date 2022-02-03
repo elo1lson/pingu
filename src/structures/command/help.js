@@ -1,4 +1,4 @@
-
+/*
 const fs = require("fs")
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
@@ -45,4 +45,4 @@ module.exports = new Command({
 			})
 		})
 	}
-})
+})*/
