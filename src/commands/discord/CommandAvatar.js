@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
-
+const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'avatar',
 	description: 'Mostra sua foto de perfil',
@@ -61,14 +61,12 @@ module.exports = new Command({
 				.setURL(`${avatar}`)
 				.setStyle('LINK')
 			);
-
-		const EmbedAvatar = new Discord.MessageEmbed()
+		const user = message.author
+		const EmbedAvatar = new  Embed(client, user)
 			.setDescription(`**📸 Olha aqui seu avatar**`)
-			.setColor(cor)
 			.setImage(`${avatar}`)
-			.setFooter(`By toto`,`${client.user.avatarURL({dinamy: true})}`)
 		message.reply({ embeds: [EmbedAvatar], components: [row] })
     
-		console.log(client.commands);
+		//console.log(client.commands);
 	}
 })
