@@ -1,45 +1,47 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-
+const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
-	category: 'fun',
+	category: 'Fun',
 	name: 'say',
-	description: 'Mostra o icone do servidor',
-	aliases: ['falar','fale'],
+	description: 'Me faça falar!',
+	aliases: ['falar', 'fale'],
 	usage: {
 		op: 'none',
-		ob: 'say <texto>'
+		ob: '<texto>'
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
-		let embed = new Discord.MessageEmbed()
-		.setTitle(`Sintaxe da ${client.user.username}`)
-		.setColor(`#FF0000`)
-		.setDescription(`\`\`${prefix}say\`\` => Faça eu falar alguma coisa!`)
-		.addFields(
+		let u = message.author
+		let embed = new Embed(u)
+			.setTitle(`Sintaxe da ${client.user.username}`)
+			.setDescription(`\`\`${prefix}say\`\` => Faça eu falar alguma coisa!`)
+			.addFields(
 			{
 				name: ':grey_question: Como usar?',
 				value: `\`\`${prefix}say\`\` <texto>`
 			},
 			{
-				name:`:pencil: Exemplo:`,
+				name: `:pencil: Exemplo:`,
 				value: `\`\`${prefix}say\`\` a ${client.user.username} é minha amiga❤\n\`\`${prefix}say\`\` Eu gosto de batatas🍟`
 			},
 			{
 				name: ':compass: Aliases:',
 				value: `\`\`falar, fale\`\``
-			}
-			)
-		.setFooter(`By toto`,`${client.user.avatarURL({dinamyc: true})}`)
-		
+			})
 		if (!args[0]) {
-			return message.reply({embeds: [embed]}).then(msg => {
+			return message.reply({ embeds: [embed] }).then(msg => {
 				msg.react('❓')
 			})
 		}
-		if (args.length > 0){
-			message.delete()
-			message.channel.send(`${args.join(" ")}`)
+		if (args.length > 0) {
+			try {
+				message.delete()
+				message.channel.send(`${args.join(" ")}\n\N __Pedido por:__ ${message.author}`)
+			} catch (e) {
+				message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
+				console.log('Erro no comando Say: ' + e)
+			}
 		}
 	}
 })
