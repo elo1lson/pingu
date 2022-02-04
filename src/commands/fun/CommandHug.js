@@ -39,7 +39,7 @@ module.exports = new Command({
 			let i = Math.floor(Math.random() * array.length)
 			let hug = new Embed(u)
 			.setDescription(`${message.author} acaba de dar um abraço enorme em ${mencao}`)
-			.setImage(`${arra[i]}`)
+			.setImage(`${array[i]}`)
 		try{
 			message.reply({embeds: [hug]}).then(m=> {
 				m.react('	❤')
