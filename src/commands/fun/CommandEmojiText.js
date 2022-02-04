@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Stats = require('../../helpers/stats.js')
 const num_conv = require('number-to-words');
 module.exports = new Command({
 	category: 'Fun',
@@ -12,13 +11,11 @@ module.exports = new Command({
 		ob: '<texto>'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix, cor) => {
+	run: async (client, message, args, prefix) => {
 		let output = args.join(' ');
+		let u = message.author
 		if (!output)
 			return message.reply('Humm.... que tal inserir algo? tipo uma frase.')
-		const erro = new Discord.MessageEmbed()
-			.setTitle('Ocorreu um erro ao enviar a mensagem.')
-			.setColor(cor)
 		let bigtext_arr = new Array();
 		for (let i = 0; i < output.length; i++) {
 			let isnumber = await parseInt(output[i]);
@@ -34,14 +31,12 @@ module.exports = new Command({
 			}
 		}
 		try {
-			await message.channel.send({content: `${message.author}`})
+			await message.channel.send({ content: `${message.author}` })
 			await message.channel.send(bigtext_arr.join(''));
 			return message.delete()
 		} catch (e) {
-			return message.reply({embeds: [erro]});
+			message.reply({content: '❌ Ocorreu um erro ao tentar executar esse comando' })
+			console.log('Erro no comando TextEmoji: ' + e)
 		}
-
-
 	}
-
 })
