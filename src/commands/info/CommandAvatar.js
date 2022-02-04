@@ -5,7 +5,7 @@ const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'avatar',
 	description: 'Mostra sua foto de perfil',
-	category: 'discord',
+	category: 'Info',
 	aliases: ['avt', 'pfp'],
 	usage: {
 		op: '<@usuario>',
