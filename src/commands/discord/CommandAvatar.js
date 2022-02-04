@@ -3,9 +3,9 @@ const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
-	name: 'avatarr',
+	name: 'avatar',
 	description: 'Mostra sua foto de perfil',
-  category: 'discord',
+	category: 'discord',
 	aliases: ['avt', 'pfp'],
 	usage: {
 		op: '<@usuario>',
@@ -13,10 +13,9 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix, cor) => {
-
-		let syntax = new Discord.MessageEmbed()
+		let u = message.author
+		let syntax = new Embed(u)
 			.setTitle('❔ Como usar?')
-			.setColor(cor)
 			.setDescription(`\`\`avatar\`\` => Envia a imagem do seu perfil!`)
 			.addFields(
 			{
@@ -27,9 +26,7 @@ module.exports = new Command({
 				name: ':twisted_rightwards_arrows: Aliases:',
 				value: `\`\`pfp, avt\`\``
 			})
-			.setFooter(`By toto`,`${client.user.avatarURL({dinamyc: true})}`)
-
-		let	 user = message.mentions.users.first()
+		let user = message.mentions.users.first()
 
 		if (args.length > 0 && !message.mentions.users.first()) {
 			return message.reply({
@@ -52,7 +49,6 @@ module.exports = new Command({
 			dinamyc: true,
 			format: 'png',
 			size: 2048
-
 		})
 		const row = new MessageActionRow()
 			.addComponents(
@@ -61,13 +57,14 @@ module.exports = new Command({
 				.setURL(`${avatar}`)
 				.setStyle('LINK')
 			);
-    
-        var a = message.author
-    const EmbedAvatar = await new Embed(a)
+		const EmbedAvatar = new Embed(u)
 			.setDescription(`**📸 Olha aqui seu avatar**`)
 			.setImage(`${avatar}`)
-		message.reply({ embeds: [EmbedAvatar], components: [row] })
-    
-		//console.log(client.commands);
+		try {
+			message.reply({ embeds: [EmbedAvatar], components: [row] })
+		} catch (e) {
+			message.reply({content: '❌ Ocorreu um erro ao tentar executar esse comando'})
+			console.log('Erro no comando Avatar: ' + e)
+		}
 	}
 })

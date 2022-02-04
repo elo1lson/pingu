@@ -40,7 +40,7 @@ module.exports = new Command({
 		let u = message.author
 		let msgembed = new Embed(u)
 			.setTitle(`Lista de comandos`)
-			.setDescription(`${message.author} confira minha lista de comandos separadas por categorias\n\nClique em ❌ a qualquer momento para apagar essa mensagem`)
+			.setDescription(`${message.author} confira minha lista de comandos separadas por categorias\n\n`)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 
 		for (let cat in categories) {
@@ -50,6 +50,7 @@ module.exports = new Command({
 			// .addField('Inline field title', 'Some value here', true)
 			msgembed.addField(`:bookmark: ${cat}`, `\`\`${cmds.join(' - ')}\`\``, true)
 		}
+		msgembed.addField(`:link: Links Úteis:`,`<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)`)
 		message.reply({embeds: [msgembed]})
 	}
 })
