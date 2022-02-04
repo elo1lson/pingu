@@ -33,7 +33,7 @@ module.exports = new Command({
 			//pt 2
 			]
 			let mencao = message.mentions.users.first()
-			if(!mecao) return message.reply({content: "Marque um usuario para abraçar"})
+			if(!mencao) return message.reply({content: "Marque um usuario para abraçar"})
 			if(args[1]) return
 			let u = message.author
 			let i = Math.floor(Math.random() * array.length)
