@@ -3,7 +3,7 @@ const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 const snekfetch = require('snekfetch');
 module.exports = new Command({
-	category: 'minecraft',
+	category: 'Minecraft',
 	name: 'achievement',
 	description: 'Envia uma imagem com uma conquista do minecraft',
 	aliases: ['conquista'],
