@@ -12,7 +12,7 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-                let Geral = 9999
+		let Geral = `\`\`Erro\`\``
 		let libs = require('../../../package.json')
 		libs = libs.dependencies
 		let newlib = "<:chip:935164784154935326> "
@@ -42,7 +42,7 @@ module.exports = new Command({
 		try {
 			message.reply({ embeds: [notsend] })
 		} catch (e) {
-			message.reply({ content: '❌ Ocorreu um erro interno ao tentar executar esse comando' })
+			message.reply({content: '❌ Ocorreu um erro interno ao tentar executar esse comando' })
 		}
 
 	}
