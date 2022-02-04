@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Command = require('../../structures/command/command.js')
-const Embed = require('../../structure/client/ClientEmbed.js')
+const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	category: 'Info',
 	name: 'serverinfo',
