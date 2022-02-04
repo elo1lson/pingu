@@ -41,9 +41,7 @@ module.exports = new Command({
 			.setDescription(`${message.author} acaba de dar um abraço enorme em ${mencao}`)
 			.setImage(`${array[i]}`)
 		try{
-			message.reply({embeds: [hug]}).then(m=> {
-				m.react('	❤')
-			})
+			message.reply({embeds: [hug]})
 		} catch (e) {
 			console.log('Erro no comando Hug: ' + e)
 			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
