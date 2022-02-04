@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Embed = require ('../../structures/client/ClientEmbed.js')
+const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	category: 'Bot',
 	name: 'help',
@@ -50,7 +50,12 @@ module.exports = new Command({
 			// .addField('Inline field title', 'Some value here', true)
 			msgembed.addField(`:bookmark: ${cat}`, `\`\`${cmds.join(' - ')}\`\``, true)
 		}
-		msgembed.addField(`:link: Links Úteis:`,`<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)`)
-		message.reply({embeds: [msgembed]})
+		msgembed.addField(`:link: Links Úteis:`, `<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)`)
+		try {
+			message.reply({ embeds: [msgembed] })
+		} catch (e) {
+			console.log('Erro no comando Avatar: ' + e)
+			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
+		}
 	}
 })

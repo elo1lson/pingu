@@ -12,7 +12,7 @@ module.exports = new Command({
 		ob: 'none'
 	},
 	author: 'tomori',
-	run: async (client, message, args, prefix, cor) => {
+	run: async (client, message, args, prefix) => {
 		let u = message.author
 		let syntax = new Embed(u)
 			.setTitle('❔ Como usar?')

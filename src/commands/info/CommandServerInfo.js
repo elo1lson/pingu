@@ -1,11 +1,13 @@
 const Discord = require('discord.js');
 const Command = require('../../structures/command/command.js')
-
+const Embed = require('../../structure/client/ClientEmbed.js')
 module.exports = new Command({
-	category: 'Discord',
+	category: 'Info',
 	name: 'serverinfo',
 	aliases: ['svinfo'],
-	run: async (client, message, args, cor) => {
+	run: async (client, message, args) => {
+		if(args.lenght > 0) return
+		const u = message.author
 		const serverName = message.guild.name
 		const serverId = message.guild.id
 		const memberCount = message.guild.members.cache.filter(member => !member.user.bot).size;
@@ -15,11 +17,10 @@ module.exports = new Command({
 		const channelvoice = message.guild.channels.cache.filter(a => a.type === 'GUILD_VOICE').size
 		const chaneltext = channels - channelvoice //message.guild.channels.cache.filter(a => a.type === 'GUILD_TEXT').size
 		let description = message.guild.description
-    let icon = message.guild.iconURL()
-    if(!icon) icon = client.user.displayAvatarURL({dinamyc: true})
+		let icon = message.guild.iconURL()
+		if (!icon) icon = client.user.displayAvatarURL({ dinamyc: true })
 		if (description === null) description = 'Sem descrição'
-		let server = new Discord.MessageEmbed()
-			.setColor(cor)
+		let server = new Embed(u)
 			.setTitle(`:triangular_flag_on_post:  ${serverName}`)
 			.setThumbnail(`${icon}`)
 			.addFields(
@@ -54,11 +55,15 @@ module.exports = new Command({
 			{
 				name: ':stopwatch: Criado em:',
 				value: `<t:${~~(message.guild.createdTimestamp / 1000)}>`
-			},{
-        name: ':newspaper: Recursos do servidor:',
-        value: `\`\`${message.guild.features.join('\n')}\`\``
-      })
-			.setFooter(`By toto`,`${client.user.avatarURL({dinamyc: true})}`)
-		message.reply({ embeds: [server] })
+			}, {
+				name: ':newspaper: Recursos do servidor:',
+				value: `\`\`${message.guild.features.join('\n')}\`\``
+			})
+		try {
+			message.reply({ embeds: [server] })
+		} catch (e) {
+			console.log('Erro no comando ServerInfo: ' + e)
+			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
+		}
 	}
 })

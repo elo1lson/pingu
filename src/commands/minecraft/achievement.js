@@ -1,14 +1,7 @@
-	//26/01/2022 - tomorii
-//49 linhas
-//Github: elo1lson
-//Discord: tomorii#8894
-//Sinta-se a vontade para usar esse código
-
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
+const Embed = require('../../structures/client/ClientEmbed.js')
 const snekfetch = require('snekfetch');
-const Stats = require('../../helpers/stats.js')
-
 module.exports = new Command({
 	category: 'minecraft',
 	name: 'achievement',
@@ -20,11 +13,9 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
-		let count = new Stats.Tomori("achievement")
-
-		let not = new Discord.MessageEmbed()
+		let u = message.author
+		let not = new Embed(u)
 			.setTitle('❔ Como usar?')
-			.setColor('#00FF00')
 			.setDescription(`\`\`achievement\`\` => Envia uma imagem com uma conquista do minecraft`)
 			.addFields(
 			{
@@ -45,6 +36,12 @@ module.exports = new Command({
 		if (args.join(" ").toLowerCase().includes("cake")) rnd = 10;
 		if (title.length > 24 || contents.length > 22) return message.channel.send("Você inseriu mais de 22 caracteres.");
 		const url = `https://www.minecraftskinstealer.com/achievement/a.php?i=${rnd}&h=${encodeURIComponent(title)}&t=${encodeURIComponent(contents)}`;
-		snekfetch.get(url).then(r => message.channel.send({ files: [{ attachment: r.body }] }));
+
+		try {
+			snekfetch.get(url).then(r => message.channel.send({ files: [{ attachment: r.body }] }));
+		} catch (e) {
+			console.log('Erro no comando Achievement: ' + e)
+			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
+		}
 	}
 })
