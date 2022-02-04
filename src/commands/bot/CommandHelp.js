@@ -37,8 +37,8 @@ module.exports = new Command({
 			//   description: cmd.description,
 			// })
 		})
-
-		let msgembed = new Embed()
+		let u = message.author
+		let msgembed = new Embed(u)
 			.setTitle(`Lista de comandos`)
 			.setDescription(`${message.author} confira minha lista de comandos separadas por categorias\n\nClique em ❌ a qualquer momento para apagar essa mensagem`)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
