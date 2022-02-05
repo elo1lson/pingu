@@ -5,8 +5,8 @@ const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'hug',
 	category: 'Fun',
-	description: 'Envia um emoji como foto',
-	aliases: ['big-emoji', 'baixaremoji'],
+	description: 'Que tal dar um abraço virtual naquele seu amigo?',
+	aliases: ['abracar', 'abraçar'],
 	usage: {
 		op: 'none',
 		ob: '<usuario>'
