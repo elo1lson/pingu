@@ -23,12 +23,13 @@ module.exports = new Command({
 			"https://img.wattpad.com/98621f187a60062b6dbacc20b8db54e7ed081d80/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f3231536372516276532d323034413d3d2d313031373538373033342e313635653932623536336463396664323835353836363537303439382e676966"
 			]
 			let mencao = message.mentions.users.first()
-			if (mencao.id == client.user.id) {
+			if (mencao == client.user) {
 				return message.reply({content: "Own❤ que fofo, agradeço sua intenção, mais você não pode me abraçar🦆"})
 			} else
 			if(mencao.id == message.author.id){
 				return message.reply({content: "Tá carente?🤔 compra um hamirti porra"})
 			}
+			if(args[1]) return
 			if(!mencao) return message.reply({content: "Marque um usuario para abraçar"})
 			if(args[1]) return
 			let u = message.author
