@@ -25,22 +25,19 @@ module.exports = new Command({
 				let embed = new Discord.MessageEmbed(message.author)
 					.setTimestamp()
 					.setAuthor(`Função executada por ${message.author.username}`)
-					.setColor(colors.default)
+					.setColor(cor)
 					.addField('📩 Entrada', `\`\`\`js\n${args.join(" ")}\`\`\``)
 					.addField('🚩 Saída', `\`\`\`js\n${result.slice(0, 1010)}\n\`\`\``)
-					.setFooter(`• Autor: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 1024 })) // Define a embed com as informações do eval
 
 				if (result.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${result.slice(1010, 2020)}\n\`\`\``); // Se o eval for maior que os 1010 de caracteris, ele adicionará um field
 
-				m.edit(`${emojis.IconUnread} **|** ${message.author}, você teve sucesso ao executar o código!`, { embed: embed }); // Notificará ao usuário sobe o eval
+				m.edit(`**|** ${message.author}, você teve sucesso ao executar o código!`, { embed: embed }); // Notificará ao usuário sobe o eval
 			} catch (e) {
 				let embed = new Discord.MessageEmbed(message.author)
 					.setTimestamp()
 					.setAuthor(`Função executada por ${message.author.username}`)
 					.setDescription('```js\n' + e.stack.slice(0, 2000) + '```')
 					.setColor(cor)
-					.setFooter(`• Autor: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 1024 })); // Define a embed com as informações de erro
-
 				m.edit(`**|** ${message.author}, você teve falha ao executar o código!`, { embed: embed }); // Notificará ao usuário sobre o erro no eval
 			}; // Caso ocorra um erro, ele irá retornar essa ação
 		});
