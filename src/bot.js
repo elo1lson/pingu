@@ -20,15 +20,9 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 client.once('ready', async (c) =>{
-	client.user.setPresence({activites: [{
-		name: ".help",
-		type: "PLAYING"
-		
-	}],
-	status: 'dnd'
-		
-	})
-	console.log(`Logado comk ${c.username}`)
+	client.user.setActivity(".help", {type: "PLAYING"})
+	client.user.setStatus('dnd')
+	console.log(`Logado comk ${c}`)
 })
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
