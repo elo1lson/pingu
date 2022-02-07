@@ -1,4 +1,4 @@
-const firebase = require("firebase"); // Exporta a dependência do firebase
+ // Exporta a dependência do firebase
 const fs = require("fs"); // Exporta a dependência do fs(File System)
 const generatePassword = require("generate-password"); // Exporta a dependência do generate-password
 const fetch = require("node-fetch"); // Exporta a dependência do node-fetch
