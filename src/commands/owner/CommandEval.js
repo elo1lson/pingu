@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 module.exports = new Command({
@@ -12,7 +13,7 @@ module.exports = new Command({
 			try {
 				let beforeRunning = Date.now(); // Define a data de execução
 				let result = eval(args.join(' ')); // Gera os argumentos do eval
-				message.reply({content: '```js\n' + result + '```'})
+		//		message.reply({content: '```js\n' + result + '```'})
 				if (result instanceof Promise) {
 					m.edit('O código retornou uma promise - aguardando ela ser resolvida...')
 					await result
