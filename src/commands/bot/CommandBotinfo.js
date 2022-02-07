@@ -57,13 +57,3 @@ module.exports = new Command({
 	}
 })
 //2022 - Eloilson
-
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
-
-	if (interaction.commandName === 'ping') {
-		
-
-		await interaction.reply({ content: 'Pong!', components: [row] });
-	}
-});
