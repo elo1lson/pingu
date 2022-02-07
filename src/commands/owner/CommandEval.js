@@ -31,14 +31,14 @@ module.exports = new Command({
 
 				if (result.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${result.slice(1010, 2020)}\n\`\`\``); // Se o eval for maior que os 1010 de caracteris, ele adicionará um field
 
-				m.edit(`**|** ${message.author}, você teve sucesso ao executar o código!`, { embed: embed }); // Notificará ao usuário sobe o eval
+				m.edit(`**|** ${message.author}, você teve sucesso ao executar o código!`, { embeds: embed }); // Notificará ao usuário sobe o eval
 			} catch (e) {
 				let embed = new Discord.MessageEmbed(message.author)
 					.setTimestamp()
 					.setAuthor(`Função executada por ${message.author.username}`)
 					.setDescription('```js\n' + e.stack.slice(0, 2000) + '```')
 					.setColor(cor)
-				m.edit(`**|** ${message.author}, você teve falha ao executar o código!`, { embed: embed }); // Notificará ao usuário sobre o erro no eval
+				m.edit(`**|** ${message.author}, você teve falha ao executar o código!`, { embeds: embed }); // Notificará ao usuário sobre o erro no eval
 			}; // Caso ocorra um erro, ele irá retornar essa ação
 		});
 	} // Executa p código do comando // Exporta o comando com todas as configurações e informações
