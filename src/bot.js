@@ -19,7 +19,17 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
 	}
 });
-
+client.once('ready', async (c) =>{
+	client.user.setPresence({activites: [{
+		name: ".help",
+		type: "PLAYING"
+		
+	}],
+	status: 'dnd'
+		
+	})
+	console.log(`Logado comk ${c.username}`)
+})
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
   if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
