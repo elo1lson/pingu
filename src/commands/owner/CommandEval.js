@@ -22,9 +22,8 @@ module.exports = new Command({
 				if (typeof result !== 'string') result = require('util').inspect(result); // Se retornar uma string, ele enviará o recado
 				let end = (Date.now() - beforeRunning); // Define o final do tempo
 
-				let embed = new Discord.MessageEmbed(message.author)
+				let embed = new Discord.MessageEmbed()
 					.setTimestamp()
-					.setAuthor(`Função executada por ${message.author.username}`)
 					.setColor(cor)
 					.addField('📩 Entrada', `\`\`\`js\n${args.join(" ")}\`\`\``)
 					.addField('🚩 Saída', `\`\`\`js\n${result.slice(0, 1010)}\n\`\`\``)
@@ -33,9 +32,8 @@ module.exports = new Command({
 
 				m.edit(`**|** ${message.author}, você teve sucesso ao executar o código!`, { embeds: embed }); // Notificará ao usuário sobe o eval
 			} catch (e) {
-				let embed = new Discord.MessageEmbed(message.author)
+				let embed = new Discord.MessageEmbed()
 					.setTimestamp()
-					.setAuthor(`Função executada por ${message.author.username}`)
 					.setDescription('```js\n' + e.stack.slice(0, 2000) + '```')
 					.setColor(cor)
 				m.edit(`**|** ${message.author}, você teve falha ao executar o código!`, { embeds: embed }); // Notificará ao usuário sobre o erro no eval
