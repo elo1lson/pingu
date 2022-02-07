@@ -6,7 +6,7 @@ module.exports = new Command({
 	author: 'tomori',
 	run: async (client, message, args, prefix, cor) => {
 		if (!args[0]) {
-			return message.channel.send(`**|** ${message.author}, insira um valor para executar o eval.`);
+			return message.channel.send(`**|** ${message.author}, insira um valor para executar o eval.`);}
 		await message.channel.send(`**|** Executando...`).then(async m => {
 			try {
 				let beforeRunning = Date.now(); // Define a data de execução
@@ -39,7 +39,7 @@ module.exports = new Command({
 				m.edit(`**|** ${message.author}, você teve falha ao executar o código!`, { embed: embed }); // Notificará ao usuário sobre o erro no eval
 			}; // Caso ocorra um erro, ele irá retornar essa ação
 		});
-	}} // Executa p código do comando // Exporta o comando com todas as configurações e informações
+} // Executa p código do comando // Exporta o comando com todas as configurações e informações
 })
 
 /*
