@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
@@ -27,24 +28,42 @@ module.exports = new Command({
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 			.setDescription(`Sou a <:toto:934042191414833173> ${client.user.username}, estou tentando trazer alegria para todos, atualmente eu faço parte de mais de **${client.guilds.cache.size}** servidores, e cuido de **${client.users.cache.size}** lindas pessoas, e já  executei **${Geral}** comandos desde que fui criada!\n\nFui desenolvida em <:js:935134807631999006>** [JavaScript](https://g.co/kgs/fiDGbJ)** utilizando <:djs:935139154340237322> **[Discord.js](https://github.com/discordjs/discord.js)**, e sou totalmente <:open_source:935141228889124875> **Open Source**! Se você quiser ver meu código fonte ou contribuir para a minha criação, clique [aqui](https://github.com/elo1lson/Open-Os_Bot)`)
 			.addFields(
-			{
-				name: '	Criador:',
-				value: '<:dev:935237634270310421> \`\`tomoriiz#8894\`\`'
-			},
-			{
-				name: 'Bibliotecas Utilizadas na minha criação:',
-				value: `**${newlib.substr(0, newcomp)}**`
-			},
-			{
-				name: 'Links Úteis:',
-				value: '<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)'
-			})
+				{
+					name: '	Criador:',
+					value: '<:dev:935237634270310421> \`\`tomoriiz#8894\`\`'
+				},
+				/*{
+					name: 'Bibliotecas Utilizadas na minha criação:',
+					value: `**${newlib.substr(0, newcomp)}**`
+				},*/
+				{
+					name: 'Links Úteis:',
+					value: '<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)'
+				})
+		const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+				.setCustomId('primary')
+				.setLabel('Próximo')
+				.setStyle('PRIMARY')
+				.setDisabled(true)
+			);
 		try {
-			message.reply({ embeds: [notsend] })
+			message.reply({ embeds: [notsend], components: [row] })
 		} catch (e) {
-			message.reply({content: '❌ Ocorreu um erro interno ao tentar executar esse comando' })
+			message.reply({ content: '❌ Ocorreu um erro interno ao tentar executar esse comando' })
 		}
 
 	}
 })
 //2022 - Eloilson
+
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	if (interaction.commandName === 'ping') {
+		
+
+		await interaction.reply({ content: 'Pong!', components: [row] });
+	}
+});
