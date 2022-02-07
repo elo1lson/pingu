@@ -1,3 +1,9 @@
+const firebase = require("firebase"); // Exporta a dependência do firebase
+const fs = require("fs"); // Exporta a dependência do fs(File System)
+const generatePassword = require("generate-password"); // Exporta a dependência do generate-password
+const fetch = require("node-fetch"); // Exporta a dependência do node-fetch
+const client_neko = require("nekos.life"); // Exporta a dependência da Nekos Life
+const database = firebase.database(); // Exporta a função de database do firebase
 const Discord = require('discord.js')
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 const Command = require('../../structures/command/command.js')
@@ -30,25 +36,15 @@ module.exports = new Command({
 
 				if (result.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${result.slice(1010, 2020)}\n\`\`\``); // Se o eval for maior que os 1010 de caracteris, ele adicionará um field
 
-				m.edit(`**|** ${message.author}, você teve sucesso ao executar o código!`, { embeds: embed }); // Notificará ao usuário sobe o eval
+				m.edit({embeds: embed }); // Notificará ao usuário sobe o eval
 			} catch (e) {
 				let embed = new Discord.MessageEmbed()
 					.setTimestamp()
 					.setDescription('```js\n' + e.stack.slice(0, 2000) + '```')
 					.setColor(cor)
-				m.edit(`**|** ${message.author}, você teve falha ao executar o código!`, { embeds: embed }); // Notificará ao usuário sobre o erro no eval
+				m.edit({embeds: embed}); // Notificará ao usuário sobre o erro no eval
 			}; // Caso ocorra um erro, ele irá retornar essa ação
 		});
 	} // Executa p código do comando // Exporta o comando com todas as configurações e informações
 })
 
-/*
-const Discord = require("discord.js"); // Exporta a dependência da discord.js
-const firebase = require("firebase"); // Exporta a dependência do firebase
-const fs = require("fs"); // Exporta a dependência do fs(File System)
-const generatePassword = require("generate-password"); // Exporta a dependência do generate-password
-const fetch = require("node-fetch"); // Exporta a dependência do node-fetch
-const client_neko = require("nekos.life"); // Exporta a dependência da Nekos Life
-const database = firebase.database(); // Exporta a função de database do firebase
-const neko = new client_neko(); // Cria um cliente para guscar na api da nekos
-*/
