@@ -1,8 +1,4 @@
- // Exporta a dependência do firebase
-const fs = require("fs"); // Exporta a dependência do fs(File System)
-const generatePassword = require("generate-password"); // Exporta a dependência do generate-password
-const fetch = require("node-fetch"); // Exporta a dependência do node-fetch
-const client_neko = require("nekos.life"); // Exporta a dependência da Nekos Life
+
 const Discord = require('discord.js')
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 const Command = require('../../structures/command/command.js')
