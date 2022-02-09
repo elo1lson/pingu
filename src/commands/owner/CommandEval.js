@@ -14,7 +14,7 @@ module.exports = new Command({
 			let result = eval(args.join(' ')); // Gera os argumentos do eval
 			//		message.reply({content: '```js\n' + result + '```'})
 			if (result instanceof Promise) {
-				message.edit('O código retornou uma promise - aguardando ela ser resolvida...')
+				message.reply('O código retornou uma promise - aguardando ela ser resolvida...')
 				await result
 			}; // Se retorna Promise, ele enviará o recado
 
@@ -24,10 +24,10 @@ module.exports = new Command({
 			let embed = new Discord.MessageEmbed()
 				.setTimestamp()
 				.setColor(cor)
-				.addField('📩 Entrada', `\`\`\`js\n${args.join(" ")}\`\`\``)
-				.addField('🚩 Saída', `\`\`\`js\n${result.slice(0, 1010)}\n\`\`\``)
+			//	.addField('📩 Entrada', `\`\`\`js\n${args.join(" ")}\`\`\``)
+			//	.addField('🚩 Saída', `\`\`\`js\n${result.slice(0, 1010)}\n\`\`\``)
 
-			if (result.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${result.slice(1010, 2020)}\n\`\`\``); // Se o eval for maior que os 1010 de caracteris, ele adicionará um field
+		//	if (result.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${result.slice(1010, 2020)}\n\`\`\``); // Se o eval for maior que os 1010 de caracteris, ele adicionará um field
 
 			message.reply({ embeds: embed }); // Notificará ao usuário sobe o eval
 		} catch (e) {
