@@ -14,34 +14,33 @@ module.exports = new Command({
 	author: 'tomori',
 	run: async (client, message, args, prefix, cor) => {
 		let mencao = message.mentions.users.first()
-		if(!mencao){
-			return message.reply({content: 'Marque alguem para fazer kiss kiss'})
+		if (!mencao) {
+			return message.reply({ content: 'Marque alguem para dar uma beijoca' })
 		}
-		if(mencao == client.user){
-			return message.reply({content: '☺ Sou casada sabia? Não posso aceitar isso'})
+		if (mencao == client.user) {
+			return message.reply({ content: '☺ Sou casada sabia? Não posso aceitar isso' })
 		}
-		if(mencao == message.author){
-			return message.reply({content: 'Esquizofrênia amigo(a)?'})
+		if (mencao == message.author) {
+			return message.reply({ content: 'Esquizofrênia amigo(a)?' })
 		}
-		/*let array = [
-			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK5isPRtOdV5YvaW9bpeZVv1HuoQqKzgMmqQ&usqp=CAU",
-			"https://acegif.com/wp-content/uploads/anime-kiss-m.gif",
-			"https://acegif.com/wp-content/uploads/anime-kissin-1.gif",
-			"https://acegif.com/wp-content/uploads/anime-kissin-2.gif",
-			"https://acegif.com/wp-content/uploads/anime-kissin-3.gif",
-			"https://acegif.com/wp-content/uploads/anime-kissin-4.gif",
-			"https://acegif.com/wp-content/uploads/anime-kissin-5.gif"
-			]*/
-			
-		let i = Math.floor(Math.random() *19)
+		if (args[1]) return
+
+		//Mini sistema de pegar gif	
+		let i = Math.floor(Math.random() * 19)
 		let url = `https://acegif.com/wp-content/uploads/anime-kissin-${i}.gif`
 		let u = message.author
 		let embed = new Embed(u)
-		.setColor(cor)
-		.setDescription(`${message.author} fez Kiss Kiss em ${mencao}`)
-		.setImage(`${url}`)
+			.setTitle('❤ Beijocas')
+			.setColor(cor)
+			.setThumbnail("https://cdn-icons.flaticon.com/png/512/210/premium/210545.png?token=exp=1644435176~hmac=ad95cdf7ddeb81d14ff73d72ee79e94d")
+			.setDescription(`${message.author} fez kiss kiss em ${mencao}`)
+			.setImage(`${url}`)
 		try {
-			message.reply({embeds: [embed] })
+			message.reply({
+				embeds: [embed]
+			}).then(m => {
+				m.react('❤')
+			})
 		} catch (e) {
 			console.log('Erro no comando Kiss: ' + e)
 			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
