@@ -6,6 +6,9 @@ module.exports = new Command({
 	aliases: ['eval'],
 	author: 'tomori',
 	run: async (client, message, args, prefix, cor) => {
+		if(message.author.id != '539945189901336586'){
+			return message.reply({content: "Quer me fuder é seu filho da puta? Vai usar eval com a tua mãe"})
+		}
 		if (!args[0]) {
 			return message.reply(`Insira um valor para executar o eval.`);
 		}
@@ -32,11 +35,12 @@ module.exports = new Command({
 
 		//	message.reply({ embeds: embed }); // Notificará ao usuário sobe o eval
 		} catch (e) {
-			let embed = new Discord.MessageEmbed()
-				.setTimestamp()
-				.setDescription('```js\n' + e.stack.slice(0, 2000) + '```')
-				.setColor(cor)
-			message.reply({ embeds: embed }); // Notificará ao usuário sobre o erro no eval
+						message.reply({content: 'Toma aqui teu eval seu filho da puta\n```js\n' + result + '```'})
+		//	let embed = new Discord.MessageEmbed()
+			//	.setTimestamp()
+		//		.setDescription('```js\n' + e.stack.slice(0, 2000) + '```')
+		//		.setColor(cor)
+	//		message.reply({ embeds: embed }); // Notificará ao usuário sobre o erro no eval
 		}; // Caso ocorra um erro, ele irá retornar essa ação
 	} // Executa p código do comando // Exporta o comando com todas as configurações e informações
 })
