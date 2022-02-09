@@ -20,7 +20,7 @@ module.exports = new Command({
 			.addFields(
 			{
 				name: ':books: Exemplos:',
-				value: `\`\`${prefix}avatar\`\` ${client.user}\n\`\`${prefix}$avatar\`\``
+				value: `\`\`${prefix}avatar\`\` ${client.user}\n\`\`${prefix}avatar\`\``
 			},
 			{
 				name: ':twisted_rightwards_arrows: Aliases:',

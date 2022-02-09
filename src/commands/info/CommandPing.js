@@ -18,7 +18,7 @@ module.exports = new Command({
 			message.reply({ embeds: [embed] }).then(m => {
 				var embedtwo = new Embed(u)
 					.setTitle('🏓 Pong!')
-					.setDescription(`💻 | Api: ${m.createdTimestamp - message.createdTimestamp}ms\n⏱ | Gateway: ${client.ws.ping}ms\n🛰 | Shard: ${client.shards}`)
+					.setDescription(`💻 | Api: ${m.createdTimestamp - message.createdTimestamp}ms\n⏱ | Gateway: ${client.ws.ping}ms\n🛰 | Shard: ${client.cluster.id}`)
 				m.edit({ embeds: [embedtwo] })
 				m.react('🖥')
 			})
