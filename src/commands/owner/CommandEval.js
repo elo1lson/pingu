@@ -2,12 +2,12 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 module.exports = new Command({
-	name: 'sr',
-	aliases: ['mn'],
+	name: 'ev',
+	aliases: ['eval'],
 	author: 'tomori',
 	run: async (client, message, args, prefix, cor) => {
 		if (!args[0]) {
-			return message.channel.send(`**|** ${message.author}, insira um valor para executar o eval.`);
+			return message.reply(`Insira um valor para executar o eval.`);
 		}
 		try {
 			let beforeRunning = Date.now(); // Define a data de execução
@@ -39,3 +39,63 @@ module.exports = new Command({
 		}; // Caso ocorra um erro, ele irá retornar essa ação
 	} // Executa p código do comando // Exporta o comando com todas as configurações e informações
 })
+/*
+const Discord = require('discord.js')
+const c = require("../../infs.js")
+
+
+const currencyFormatter = require('currency-formatter');
+
+function clean(text) { if (typeof(text) === "string") return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+	else return text; };
+
+let buzina = require("../../handler/index.js")
+
+module.exports = {
+		name: "eval",
+		description: "🔮 ┊ Run JavaScript code",
+		type: 'CHAT_INPUT',
+		options: [{
+			name: 'text',
+			type: 'STRING',
+			description: 'Code.',
+			required: true,
+}],
+		run: async (client, interaction, args) => {
+
+
+			const firebase = require('firebase');
+			const database = firebase.database();
+
+
+			if (interaction.user.id !== '857360582158974987' && interaction.user.id !== "905896087783604305") return interaction.followUp(`> **:erro: ❱ Somente meu criador (\`JeffinBR#7203\`) pode usar esse comando.**`)
+
+
+			const msg = interaction;
+
+
+			try {
+				const code = interaction.options.getString('text')
+				let evaled = eval(code)
+
+				if (typeof evaled !== "string")
+					evaled = require("util").inspect(evaled);
+				const embed = new Discord.MessageEmbed()
+					.setTitle("✅ Executado!")
+					.setColor("#FF0C00")
+					.addField(`📥 Entrada`, ' 
+						' + (code) + '
+						')
+						.addField(`📤 Saida:`, '' + clean(evaled) + '') msg.followUp({ embeds: [embed] })
+					}
+				catch (err) {
+					var code = interaction.options.getString("text")
+					const embed = new Discord.MessageEmbed()
+						.setTitle("❎ Erro")
+						.setColor(c.color)
+						.addField(`📥 Entrada`, '' + (code) + '')
+						.addField(`📤 Saida:`, '' + clean(err) + '')
+					msg.followUp({ embeds: [embed] })
+				}
+			}
+		}*/
