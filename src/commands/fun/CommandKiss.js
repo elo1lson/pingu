@@ -21,21 +21,25 @@ module.exports = new Command({
 			return message.reply({content: '☺ Sou casada sabia? Não posso aceitar isso'})
 		}
 		if(mencao == message.author){
-			message.reply({content: 'Esquizofrênia amigo(a)?'})
+			return message.reply({content: 'Esquizofrênia amigo(a)?'})
 		}
-		let array = [
+		/*let array = [
 			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK5isPRtOdV5YvaW9bpeZVv1HuoQqKzgMmqQ&usqp=CAU",
 			"https://acegif.com/wp-content/uploads/anime-kiss-m.gif",
-			"https://animesher.com/orig/1/167/1673/16736/animesher.com_gif-couple-kiss-1673657.gif",
-			"https://animesher.com/orig/1/123/1235/12354/animesher.com_anime-boy-anime-couple-shin-1235427.gif",
-			"https://animesher.com/orig/1/140/1404/14046/animesher.com_gif-manga-kissing-1404608.gif"
-			]
-		let i = Math.floor(Math.random() * array.length)
+			"https://acegif.com/wp-content/uploads/anime-kissin-1.gif",
+			"https://acegif.com/wp-content/uploads/anime-kissin-2.gif",
+			"https://acegif.com/wp-content/uploads/anime-kissin-3.gif",
+			"https://acegif.com/wp-content/uploads/anime-kissin-4.gif",
+			"https://acegif.com/wp-content/uploads/anime-kissin-5.gif"
+			]*/
+			
+		let i = Math.floor(Math.random() *19)
+		let url = `https://acegif.com/wp-content/uploads/anime-kissin-${i}.gif`
 		let u = message.author
 		let embed = new Embed(u)
 		.setColor(cor)
 		.setDescription(`${message.author} fez Kiss Kiss em ${mencao}`)
-		.setImage(`${array[i]}`)
+		.setImage(`${url}`)
 		try {
 			message.reply({embeds: [embed] })
 		} catch (e) {
