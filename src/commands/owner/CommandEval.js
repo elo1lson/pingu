@@ -12,7 +12,7 @@ module.exports = new Command({
 		try {
 			let beforeRunning = Date.now(); // Define a data de execução
 			let result = eval(args.join(' ')); // Gera os argumentos do eval
-			message.reply({content: `\`\`\`Toma aqui teu eval seu filho da puta\njs\n ${result}\`\`\``})
+			message.reply({content: 'Toma aqui teu eval seu filho da puta\n\n```js\n ${result}```'})
 			//		message.reply({content: '```js\n' + result + '```'})
 	//		if (result instanceof Promise) {
 	//			message.reply('O código retornou uma promise - aguardando ela ser resolvida...')
