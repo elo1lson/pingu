@@ -26,7 +26,7 @@ module.exports = new Command({
 				name: ':twisted_rightwards_arrows: Aliases:',
 				value: `\`\`pfp, avt\`\``
 			})
-		let user = message.mentions.users.first()
+		let user	= message.mentions.users.first()
 
 		if (args.length > 0 && !message.mentions.users.first()) {
 			return message.reply({
@@ -50,6 +50,9 @@ module.exports = new Command({
 			format: 'png',
 			size: 2048
 		})
+		if(avatar == null){
+			avatar = user.avatarURL()
+		}
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
