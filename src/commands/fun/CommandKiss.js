@@ -37,7 +37,7 @@ module.exports = new Command({
 		.setDescription(`${message.author} fez Kiss Kiss em ${mencao}`)
 		.setImage(`${array[i]}`)
 		try {
-			message.reply({ content: [embed] })
+			message.reply({embeds: [embed] })
 		} catch (e) {
 			console.log('Erro no comando Kiss: ' + e)
 			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
