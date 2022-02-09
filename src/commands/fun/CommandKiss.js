@@ -32,7 +32,7 @@ module.exports = new Command({
 		let embed = new Embed(u)
 			.setTitle('❤ Beijocas')
 			.setColor(cor)
-			.setThumbnail("https://cdn-icons.flaticon.com/png/512/210/premium/210545.png?token=exp=1644435176~hmac=ad95cdf7ddeb81d14ff73d72ee79e94d")
+			.setThumbnail(`https://cdn-icons.flaticon.com/png/512/210/premium/210545.png?token=exp=1644435176~hmac=ad95cdf7ddeb81d14ff73d72ee79e94d`)
 			.setDescription(`${message.author} fez kiss kiss em ${mencao}`)
 			.setImage(`${url}`)
 		try {

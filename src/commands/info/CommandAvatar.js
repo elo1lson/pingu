@@ -45,14 +45,11 @@ module.exports = new Command({
 		if (!args[0]) {
 			user = message.author
 		}
-		const avatar = user.avatarURL({
+		const avatar = user.displayAvatarURL({
 			dinamyc: true,
 			format: 'png',
 			size: 2048
 		})
-		if(avatar == null){
-			avatar = user.avatarURL()
-		}
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
