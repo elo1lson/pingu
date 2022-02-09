@@ -12,24 +12,25 @@ module.exports = new Command({
 		try {
 			let beforeRunning = Date.now(); // Define a data de execução
 			let result = eval(args.join(' ')); // Gera os argumentos do eval
+			message.reply({content: `\`\`\`Toma aqui teu eval seu filho da puta\njs\n ${result}\`\`\``})
 			//		message.reply({content: '```js\n' + result + '```'})
-			if (result instanceof Promise) {
-				message.reply('O código retornou uma promise - aguardando ela ser resolvida...')
-				await result
-			}; // Se retorna Promise, ele enviará o recado
+	//		if (result instanceof Promise) {
+	//			message.reply('O código retornou uma promise - aguardando ela ser resolvida...')
+	//			await result
+	//		}; // Se retorna Promise, ele enviará o recado
 
-			if (typeof result !== 'string') result = require('util').inspect(result); // Se retornar uma string, ele enviará o recado
-			let end = (Date.now() - beforeRunning); // Define o final do tempo
+		//	if (typeof result !== 'string') result = require('util').inspect(result); // Se retornar uma string, ele enviará o recado
+		//	let end = (Date.now() - beforeRunning); // Define o final do tempo
 
-			let embed = new Discord.MessageEmbed()
-				.setTimestamp()
-				.setColor(cor)
+	//5	let embed = new Discord.MessageEmbed()
+			//	.setTimestamp()
+		//		.setColor(cor)
 			//	.addField('📩 Entrada', `\`\`\`js\n${args.join(" ")}\`\`\``)
 			//	.addField('🚩 Saída', `\`\`\`js\n${result.slice(0, 1010)}\n\`\`\``)
 
 		//	if (result.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${result.slice(1010, 2020)}\n\`\`\``); // Se o eval for maior que os 1010 de caracteris, ele adicionará um field
 
-			message.reply({ embeds: embed }); // Notificará ao usuário sobe o eval
+		//	message.reply({ embeds: embed }); // Notificará ao usuário sobe o eval
 		} catch (e) {
 			let embed = new Discord.MessageEmbed()
 				.setTimestamp()
