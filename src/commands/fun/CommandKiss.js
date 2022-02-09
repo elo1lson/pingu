@@ -34,7 +34,7 @@ module.exports = new Command({
 		let u = message.author
 		let embed = new Embed(u)
 		.setColor(cor)
-		.setDescription(`${message.author} fez Kiss Kiss`)
+		.setDescription(`${message.author} fez Kiss Kiss em ${mencao}`)
 		.setImage(`${array[i]}`)
 		try {
 			message.reply({ content: [embed] })
