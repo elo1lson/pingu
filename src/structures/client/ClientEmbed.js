@@ -8,7 +8,7 @@ module.exports = class Embed extends(
 		this.setColor(process.env.COLOR);
 		this.setFooter({
 			text: `${user.tag}`,
-			url: `${client.user.displayAvatarURL()}`
+			url: `${user.displayAvatarURL()}`
 		})
 	}
 };
