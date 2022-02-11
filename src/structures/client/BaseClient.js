@@ -1,6 +1,5 @@
 const { Collection, Client } = require('discord.js');
 const Cluster = require('discord-hybrid-sharding');
-const {connect} = require('moongose')
 class Baseclient extends Client {
 	constructor(opts) {
 		super({
