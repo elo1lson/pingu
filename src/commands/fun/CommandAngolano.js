@@ -18,7 +18,7 @@ module.exports = new Command({
 		try {
 			message.reply({ content: `${text}` })
 		} catch (e) {
-			console.log('Erro no comando Avatar: ' + e)
+			console.log('Erro no comando Angolano: ' + e)
 			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
 		}
 	}

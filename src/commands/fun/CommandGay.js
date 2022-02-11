@@ -11,16 +11,16 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-		if (args[2]) return
+		if (args[1]) return
 		let m = message.mentions.users.first()
 
 		let embed = new Discord.MessageEmbed()
 		embed.color = "GREEN"
 
 		let p = Math.floor(Math.random() * 100)
-		if(m.id == '539945189901336586'){
+		if (m.id == '539945189901336586') {
 			embed.description = 'Esse cara é muitho matcho💪'
-			return message.reply({embeds: [embed]})
+			return message.reply({ embeds: [embed] })
 		}
 		if (p == 100) {
 			if (m) {
