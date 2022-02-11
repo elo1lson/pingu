@@ -15,6 +15,7 @@ module.exports = new Command({
 		let m = message.mentions.users.first()
 
 		let embed = new Discord.MessageEmbed()
+		embed.color = "GREEN"
 
 		let p = Math.floor(Math.random() * 100)
 		if(m.id == '539945189901336586'){
