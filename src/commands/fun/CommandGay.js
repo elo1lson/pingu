@@ -1,27 +1,28 @@
 const Discord = require('discord.js')
-const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
-	name: 'invite',
-	description: 'Meu link de convite',
-	category: 'Bot',
-	aliases: ['convite'],
+	name: 'gay',
+	description: 'Quantos % vc é gay?',
+	category: 'Fun',
+	aliases: ['howgay'],
 	usage: {
 		ob: "none",
 		op: "none"
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-		if (args.length > 0) return
 		let u = message.author
 		let embed = new Embed(u)
-			.setDescription('Que tal me adicionar em outros servidores do Discord?\nClique [aqui](https://discord.com/oauth2/authorize?client_id=856578187504254976&permissions=8&scope=applications.commands%20bot) para fazer isso')
 
+		let p = Math.floor(Math.random() * 100)
+		if (p == 100) {
+			embed.description = "Cara, você é completamente gay kkkj"
+		} else {
+			embed.description = `Cara, você é ${p}% gay`
+		}
 		try {
-			message.reply({ embeds: [embed] }).then(m => {
-				m.react('❤')
-			})
+			message.reply({ embeds: [embed] })
 		} catch (e) {
 			console.log('Erro no comando Invite ' + e)
 			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
