@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'gay',
 	description: 'Quantos % vc é gay?',
@@ -12,19 +11,33 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-		let u = message.author
-		let embed = new Embed(u)
+		if (args[2]) return
+		let m = message.mentions.users.first()
+
+		let embed = new Discord.MessageEmbed()
 
 		let p = Math.floor(Math.random() * 100)
+		if(m.id == '539945189901336586'){
+			return embed.description = 'Esse cara é muitho matcho💪'
+		}
 		if (p == 100) {
-			embed.description = "Cara, você é completamente gay kkkj"
+			if (m) {
+				embed.description = `${m} é ${p}% gay d+}`
+			} else {
+				embed.description = "Cara, você é completamente gay kkkj"
+			}
 		} else {
-			embed.description = `Cara, você é ${p}% gay`
+			if (m) {
+				embed.description = `${m} é ${p}% gay d+}`
+
+			} else {
+				embed.description = `Cara, você é ${p}% gay`
+			}
 		}
 		try {
 			message.reply({ embeds: [embed] })
 		} catch (e) {
-			console.log('Erro no comando Invite ' + e)
+			console.log('Erro no comando Gay ' + e)
 			message.reply({ content: '❌ Ocorreu um erro ao tentar executar esse comando' })
 		}
 	}
