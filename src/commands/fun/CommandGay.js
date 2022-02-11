@@ -19,18 +19,18 @@ module.exports = new Command({
 
 		let p = Math.floor(Math.random() * 100)
 		if(m.id == '539945189901336586'){
-			return embed.description = 'Esse cara é muitho matcho💪'
+			embed.description = 'Esse cara é muitho matcho💪'
+			return message.reply({embeds: [embed]})
 		}
 		if (p == 100) {
 			if (m) {
-				embed.description = `${m} é ${p}% gay d+}`
+				embed.description = `${m} é ${p}% gay		`
 			} else {
 				embed.description = "Cara, você é completamente gay kkkj"
 			}
 		} else {
 			if (m) {
 				embed.description = `${m} é ${p}% gay d+}`
-
 			} else {
 				embed.description = `Cara, você é ${p}% gay`
 			}
