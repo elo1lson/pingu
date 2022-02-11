@@ -13,17 +13,7 @@ class Baseclient extends Client {
 		this.aliases = new Collection();
 		this.description = new Collection();
 		this.author = opts.author;
-		this.connectToDatabase()
 
-	}
-	async connectToDatabase() {
-		const connection = await connect('mongodb+srv://Eloilson:@Elo1503@cluster0.cozes.mongodb.net/database?retryWrites=true&w=majority', {
-			useNewUrlParser: true,	
-			useUnifiedTopology: true,
-			useFindAndModify: false,
-			useCreateIndex: true
-		})
-		console.log('Database conectada com sucesso!')
 	}
 }
 module.exports = Baseclient

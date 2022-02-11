@@ -5,10 +5,10 @@ module.exports = class Embed extends(
 ) {
 	constructor(user, data = {}) {
 		super(data);
-		this.setTimestamp();
 		this.setColor(process.env.COLOR);
 		this.setFooter({
-			text: `${user.tag}`
+			text: `${user.tag}`,
+			url: `${client.user.displayAvatarURL()}`
 		})
 	}
 };
