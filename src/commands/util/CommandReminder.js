@@ -3,7 +3,7 @@ const Command = require('../../structures/command/command.js')
 
 module.exports = new Command({
 	name: 'reminder',
-	category: 'Fun',
+	category: 'Util',
 	description: 'Quer que eu te lembre de algo?',
 	aliases: ['lembrar'],
 	usage: {
