@@ -16,8 +16,8 @@ module.exports = new Command({
 		if (args.length > 0) return
 		let u = message.author
 		let embed = new Embed(u)
-			.setDescription('Que tal me adicionar em outros servidores do Discord?\nClique (aqui)[https://discord.com/oauth2/authorize?client_id=856578187504254976&permissions=8&scope=applications.commands%20bot] para fazer isso')
-		message.reply({ embeds: embed }).then(m => {
+			.setDescription('Que tal me adicionar em outros servidores do Discord?\nClique [aqui](https://discord.com/oauth2/authorize?client_id=856578187504254976&permissions=8&scope=applications.commands%20bot) para fazer isso')
+		message.reply({ embeds: [embed]}).then(m => {
 			m.react('❤')
 		})
 	}
