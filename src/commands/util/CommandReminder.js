@@ -18,7 +18,7 @@ module.exports = new Command({
 
 		if (!time) return message.reply({ content: 'Não posso te lembrar se você não definir um tempo...' });
 		if (!reminder) return message.reply({ content: 'Você esqueceu de inserir uma mensagem!' });
-	
+
 		// This will not work if the bot is restarted or stopped
 
 		time = await time.toString();
@@ -39,11 +39,11 @@ module.exports = new Command({
 			return message.reply({ content: 'O tempo deve ser númerico [s/m/h/d]' });
 		}
 		let embed = new Embed(u)
-		.setTitle(`<:calendar:941847920829939774> Lembretes`)
-		.setDescription('Eu irei te lembrar na dm😉')
-		.addFields(`${reminder}`,`${time}`)
+			.setTitle(`<:calendar:941847920829939774> Lembretes`)
+			.setDescription('Eu irei te lembrar na dm😉')
+			.addField(`${reminder}`, `${time}`)
 		try {
-			message.reply({embeds: [embed]})
+			message.reply({ embeds: [embed] })
 			setTimeout(function() {
 				message.author.send({
 					embeds: [{
