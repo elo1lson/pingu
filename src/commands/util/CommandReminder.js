@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-
+const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'reminder',
 	category: 'Util',
@@ -12,8 +12,8 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
-		var time = args[0];
-		var reminder = args.splice(1).join(' ');
+		let time = args[0];
+		let reminder = args.splice(1).join(' ');
 
 		if (!time) return message.reply({ content: 'Não posso te lembrar se você não definir um tempo...' });
 		if (!reminder) return message.reply({ content: 'Você esqueceu de inserir uma mensagem!' });
@@ -23,28 +23,31 @@ module.exports = new Command({
 		time = await time.toString();
 
 		if (time.indexOf('s') !== -1) { // Seconds
-			var timesec = await time.replace(/s.*/, '');
-			var timems = await timesec * 1000;
+			let timesec = await time.replace(/s.*/, '');
+			let timems = await timesec * 1000;
 		} else if (time.indexOf('m') !== -1) { // Minutes
-			var timemin = await time.replace(/m.*/, '');
+			let timemin = await time.replace(/m.*/, '');
 			timems = await timemin * 60 * 1000;
 		} else if (time.indexOf('h') !== -1) { // Hours
-			var timehour = await time.replace(/h.*/, '');
+			let timehour = await time.replace(/h.*/, '');
 			timems = await timehour * 60 * 60 * 1000;
 		} else if (time.indexOf('d') !== -1) { // Days
-			var timeday = await time.replace(/d.*/, '');
+			let timeday = await time.replace(/d.*/, '');
 			timems = await timeday * 60 * 60 * 24 * 1000;
 		} else {
 			return message.reply({ content: 'O tempo deve ser númerico [s/m/h/d]' });
 		}
+		let embed = new Embed(u)
+		embed.title(`<:calendar:941847920829939774> Lembretes`)
+		embed.description('Eu irei te lembrar na dm😉')
+		embed.fields(`${reminder}`,`${time}`)
 		try {
-			message.reply({ content: `Eu vou lembrar você de \`${reminder}\` daqui \`${time}\` na sua dm!` });
-
+			message.reply({embeds: [embed]})
 			setTimeout(function() {
 				message.author.send({
 					embeds: [{
 						color: 3447003,
-						description: `Você me pediu para te lembrar de \`${reminder}\` `
+						description: `Você me pediu para te lembrar de \`${reminder}\`, pse eu lembrei, ja você...`
 }]
 				});
 			}, parseInt(timems));
