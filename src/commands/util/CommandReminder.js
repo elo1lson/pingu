@@ -12,9 +12,9 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args, prefix) => {
-		let time = args[0];
-		let reminder = args.splice(1).join(' ');
-		let u = message.author
+		var time = args[0];
+		var reminder = args.splice(1).join(' ');
+		var u = message.author
 
 		if (!time) return message.reply({ content: 'Não posso te lembrar se você não definir um tempo...' });
 		if (!reminder) return message.reply({ content: 'Você esqueceu de inserir uma mensagem!' });
@@ -24,21 +24,21 @@ module.exports = new Command({
 		time = await time.toString();
 
 		if (time.indexOf('s') !== -1) { // Seconds
-			let timesec = await time.replace(/s.*/, '');
-			let timems = await timesec * 1000;
+			var timesec = await time.replace(/s.*/, '');
+			var timems = await timesec * 1000;
 		} else if (time.indexOf('m') !== -1) { // Minutes
-			let timemin = await time.replace(/m.*/, '');
+			var timemin = await time.replace(/m.*/, '');
 			timems = await timemin * 60 * 1000;
 		} else if (time.indexOf('h') !== -1) { // Hours
-			let timehour = await time.replace(/h.*/, '');
+			var timehour = await time.replace(/h.*/, '');
 			timems = await timehour * 60 * 60 * 1000;
 		} else if (time.indexOf('d') !== -1) { // Days
-			let timeday = await time.replace(/d.*/, '');
+			var timeday = await time.replace(/d.*/, '');
 			timems = await timeday * 60 * 60 * 24 * 1000;
 		} else {
 			return message.reply({ content: 'O tempo deve ser númerico [s/m/h/d]' });
 		}
-		let embed = new Embed(u)
+		var embed = new Embed(u)
 			.setTitle(`<:calendar:941847920829939774> Lembretes`)
 			.setDescription('Eu irei te lembrar na dm😉')
 			.addField(`${reminder}`, `${time}`)
