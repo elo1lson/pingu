@@ -42,15 +42,13 @@ module.exports = new Command({
 			.setTitle(`<:calendar:941847920829939774> Lembretes`)
 			.setDescription('Eu irei te lembrar na dm😉')
 			.addField(`${reminder}`, `${time}`)
+		var send = new Embed(u)
+			.setDescription(`Você me pediu para te lembrar de \`${reminder}\`, pse eu lembrei, já você...`)
+
 		try {
 			message.reply({ embeds: [embed] })
 			setTimeout(function() {
-				message.author.send({
-					embeds: [{
-						color: 3447003,
-						description: `Você me pediu para te lembrar de \`${reminder}\`, pse eu lembrei, ja você...`
-}]
-				});
+				message.author.send({ embeds: [send] });
 			}, parseInt(timems));
 
 		} catch (e) {
