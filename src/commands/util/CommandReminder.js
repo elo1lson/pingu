@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
-const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'reminder',
 	category: 'Util',
@@ -14,12 +13,9 @@ module.exports = new Command({
 	run: async (client, message, args, prefix) => {
 		var time = args[0];
 		var reminder = args.splice(1).join(' ');
-		var u = message.author
 
 		if (!time) return message.reply({ content: 'Não posso te lembrar se você não definir um tempo...' });
 		if (!reminder) return message.reply({ content: 'Você esqueceu de inserir uma mensagem!' });
-
-		// This will not work if the bot is restarted or stopped
 
 		time = await time.toString();
 
@@ -38,13 +34,11 @@ module.exports = new Command({
 		} else {
 			return message.reply({ content: 'O tempo deve ser númerico [s/m/h/d]' });
 		}
-		var embed = new Embed(u)
+		var embed = new Discord.MessageEmbed()
 			.setTitle(`<:calendar:941847920829939774> Lembretes`)
-			.setDescription('Eu irei te lembrar na dm😉')
-			.addField(`${reminder}`, `${time}`)
-		var send = new Embed(u)
+			.setDescription(`Eu irei te lembrar na dm de ${reminder} daqui a ${time}`)
+		var send = new Discord.MessageEmbed()
 			.setDescription(`Você me pediu para te lembrar de \`${reminder}\`, pse eu lembrei, já você...`)
-
 		try {
 			message.reply({ embeds: [embed] })
 			setTimeout(function() {
