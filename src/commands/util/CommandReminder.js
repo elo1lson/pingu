@@ -14,6 +14,7 @@ module.exports = new Command({
 	run: async (client, message, args, prefix) => {
 		let time = args[0];
 		let reminder = args.splice(1).join(' ');
+		let u = message.author
 
 		if (!time) return message.reply({ content: 'Não posso te lembrar se você não definir um tempo...' });
 		if (!reminder) return message.reply({ content: 'Você esqueceu de inserir uma mensagem!' });
