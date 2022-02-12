@@ -36,7 +36,7 @@ module.exports = new Command({
 		}
 		var embed = new Discord.MessageEmbed()
 			.setTitle(`<:calendar:941847920829939774> Lembretes`)
-			.setDescription(`Eu irei te lembrar na dm de ${reminder} daqui a ${time}`)
+			.setDescription(`Eu irei te lembrar na dm de \`\`${reminder}\`\` daqui a \`\`${time}\`\``)
 		var send = new Discord.MessageEmbed()
 			.setDescription(`Você me pediu para te lembrar de \`${reminder}\`, pse eu lembrei, já você...`)
 		try {
