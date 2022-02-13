@@ -41,7 +41,7 @@ module.exports = new Command({
 			.setDescription(`Você me pediu para te lembrar de \`${reminder}\`, pse eu lembrei, já você...`)
 		try {
 			message.reply({ embeds: [embed] })
-			setTimeout(function() {
+			setTimeout(function() {	
 				message.author.send({ embeds: [send] });
 			}, parseInt(timems));
 
