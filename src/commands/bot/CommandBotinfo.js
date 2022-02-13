@@ -25,7 +25,7 @@ module.exports = new Command({
 		client.commands.map((cmd) => {
 			c + 1
 		})
-
+		let boby = `\`\`Bobycake#8894\`\``
 		let comp = newlib.length
 		let newcomp = comp - 28
 		let user = message.author
@@ -35,8 +35,8 @@ module.exports = new Command({
 			.setDescription(`Sou a <:toto:934042191414833173> ${client.user.username}, estou tentando trazer alegria para todos com meus ${c} comandos,	 atualmente eu faço parte de mais de **${client.guilds.cache.size}** servidores, e cuido de **${client.users.cache.size}** lindas pessoas, e já  executei **${Geral}** comandos desde que fui criada!\n\nFui desenolvida em <:js:935134807631999006>** [JavaScript](https://g.co/kgs/fiDGbJ)** utilizando <:djs:935139154340237322> **[Discord.js](https://github.com/discordjs/discord.js)**, e sou totalmente <:open_source:935141228889124875> **Open Source**! Se você quiser ver meu código fonte ou contribuir para a minha criação, clique [aqui](https://github.com/elo1lson/Open-Os_Bot)`)
 			.addFields(
 				{
-					name: '	Criador:',
-					value: '<:dev:935237634270310421> \`\`tomoriiz#8894\`\`'
+					name: lang.embed.fieldone.name,
+					value: lang.embed.fieldone.value
 				},
 				/*{
 					name: 'Bibliotecas Utilizadas na minha criação:',
