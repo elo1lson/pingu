@@ -1,4 +1,4 @@
-const lang = require('../../locales/pt-Br/info')
+const lang = require('../../locales/pt-Br/info/avatar.json')
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
@@ -27,7 +27,7 @@ module.exports = new Command({
 				name: ':twisted_rightwards_arrows: Aliases:',
 				value: `\`\`pfp, avt\`\``
 			})
-		let user	= message.mentions.users.first()
+		let user = message.mentions.users.first()
 
 		if (args.length > 0 && !message.mentions.users.first()) {
 			return message.reply({
@@ -64,7 +64,7 @@ module.exports = new Command({
 		try {
 			message.reply({ embeds: [EmbedAvatar], components: [row] })
 		} catch (e) {
-			message.reply({content: '❌ Ocorreu um erro ao tentar executar esse comando'})
+			message.reply({ content: ' Ocorreu um erro ao tentar executar esse comando'})
 			console.log('Erro no comando Avatar: ' + e)
 		}
 	}
