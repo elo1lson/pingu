@@ -1,3 +1,4 @@
+const lang = require('../../locales/pt-Br/info')
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
@@ -58,7 +59,7 @@ module.exports = new Command({
 				.setStyle('LINK')
 			);
 		const EmbedAvatar = new Embed(u)
-			.setDescription(`**📸 Olha aqui seu avatar**`)
+			.setDescription(lang.embed.description)
 			.setImage(`${avatar}`)
 		try {
 			message.reply({ embeds: [EmbedAvatar], components: [row] })
