@@ -30,14 +30,14 @@ module.exports = new Command({
 				dices[i] = Math.floor(Math.random() * 6) + 1;
 				dice_string += `🎲 Dado ${i + 1}: **${dices[i]}**\n`;
 			}
-
+			let u = message.author
 			let values = new Embed(u)
 			embed.addField('🏆 Resultado dos dados jogados', `**${dice_string}**`)
 			return message.reply({ embeds: [values] })
 
 		} else {
 			var dice = Math.floor(Math.random() * 6) + 1;
-			return message.reply({content: `Você jogou	o dado e parou em **${dice}**`});
+			return message.reply({content: `Você jogou o dado e parou em **${dice}**`});
 		}
 	}
 
