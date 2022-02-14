@@ -28,11 +28,12 @@ module.exports = new Command({
 		let boby = `\`\`Bobycake#8894\`\``
 		let comp = newlib.length
 		let newcomp = comp - 28
+		let botname = client.lang.BOTINFO.embed.description.replace("%BOTNAME%", client.user.username)
 		let user = message.author
 		let notsend = new Embed(user)
 			.setTitle('🐊 Sobre')
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
-			.setDescription(client.lang.BOTINFO.embed.description)
+			.setDescription(botname)
 			.addFields(
 				{
 					name: "Criador",
