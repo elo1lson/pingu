@@ -6,7 +6,7 @@ const client = require('./structures/client/NewClient.js');
 const { prefix, token, cor } = require("./config.js");
 
 client.on('interactionCreate', async interaction => {
-  console.log("Interação criada")
+	console.log("Interação criada")
 	if (!interaction.isCommand()) return;
 
 	const { commandName } = interaction;
@@ -19,31 +19,27 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
 	}
 });
-client.once('ready', async (c) =>{
-	client.user.setActivity(".help", {type: "PLAYING"})
+client.once('ready', async (c) => {
+	client.user.setActivity(".help", { type: "PLAYING" })
 	client.user.setStatus('dnd')
 	console.log(`Logado comk ${c}`)
 })
 client.on("messageCreate", async (message) => {
-  if (message.author.bot) return;
-  if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  let cmd = args.shift().toLowerCase()
-
-  if (cmd.length === 0) return;
-  let command = client.commands.get(cmd)
-  if (!command) command = client.commands.get(client.aliases.get(cmd))
-  try {
-    command.run(client, message, args, prefix, cor)/*.then(setcmd =>{
-    	setcmd = new bot.Stats(command.name)
-    	console.log(setcmd)
-    })*/
-  } catch (err) {
-    console.error('Erro:' + err);
-  }
+	const args = message.content.slice(prefix.length).trim().split(/ +/g);
+	client.lang = require(`./locales/${dir}/command.json`)
+	let cmd = args.shift().toLowerCase()
+	if (message.author.bot) return;
+	if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
+	if (message.author.bot) return;
+	if (!message.content.startsWith(prefix)) return;
+	if (cmd.length === 0) return;
+	let command = client.commands.get(cmd)
+	if (!command) command = client.commands.get(client.aliases.get(cmd))
+	try {
+		command.run(client, message, args, prefix, cor)
+	} catch (err) {
+		console.error('Erro:' + err);
+	}
 });
 
 client.login(token);

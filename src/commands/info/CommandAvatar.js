@@ -1,4 +1,3 @@
-const lang = require('../../locales/pt-Br/info/avatar.json')
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js')
 const Command = require('../../structures/command/command.js')
@@ -59,7 +58,7 @@ module.exports = new Command({
 				.setStyle('LINK')
 			);
 		const EmbedAvatar = new Embed(u)
-			.setDescription(lang.embed.description)
+			.setDescription(client.lang.AVATAR.embed.description)
 			.setImage(`${avatar}`)
 		try {
 			message.reply({ embeds: [EmbedAvatar], components: [row] })
@@ -68,4 +67,4 @@ module.exports = new Command({
 			console.log('Erro no comando Avatar: ' + e)
 		}
 	}
-})
+})	
