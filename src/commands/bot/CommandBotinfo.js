@@ -37,7 +37,7 @@ module.exports = new Command({
 		send = send.replace("%TOTALCOMMANDS%", "999")
 		send = send.replace("%JS%", "[JavaScript](https://pt.m.wikipedia.org/wiki/JavaScript)")
 		send = send.replace("%DJS%", "[Discord.js](https://github.com/discordjs/discord.js)")
-		send = send.replace("%OPENSOURCE%	", "[Open Source](https://www.google.com/search?q=open+source&oq=open+so&aqs=chrome.4.69i57j69i61j69i60l2j0i433i512j46i199i433i465i512j69i59j0i512.3507j0j4&client=ms-android-samsung-gj-rev1&sourceid=chrome-mobile&ie=UTF-8)")
+		send = send.replace("%OPENSOURCE%", "[Open Source](https://www.google.com/search?q=open+source&oq=open+so&aqs=chrome.4.69i57j69i61j69i60l2j0i433i512j46i199i433i465i512j69i59j0i512.3507j0j4&client=ms-android-samsung-gj-rev1&sourceid=chrome-mobile&ie=UTF-8)")
 		send = send.replace("%LINK%", "[aqui](https://github.com/tomoriOpen/Tomori)")
 
 		let user = message.author
