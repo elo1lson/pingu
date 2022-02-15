@@ -21,12 +21,14 @@ client.on('interactionCreate', async interaction => {
 });
 client.once('ready', async (c) => {
 	client.user.setActivity(".help", { type: "PLAYING" })
-	client.user.setStatus('dnd')
-	console.log(`Logado comk ${c}`)
+	client.user.setStatus('online')
+	console.log(`Logado como ${c.username}`)
 })
 client.on("messageCreate", async (message) => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
-	client.lang = require(`./locales/pt-Br/commands.json`)
+	client.lang = {
+		commands: require(`./locales/pt-Br/commands.json`)
+	}
 	let cmd = args.shift().toLowerCase()
 	if (message.author.bot) return;
 	if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
