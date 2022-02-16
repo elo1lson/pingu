@@ -4,7 +4,7 @@ const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'botinfo',
-	description: client.lang.examples.BOTINFO.description,
+	description: "client.lang.examples.BOTINFO.description",
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {

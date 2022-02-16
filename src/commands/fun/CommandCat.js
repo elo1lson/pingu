@@ -5,7 +5,7 @@ const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
 	name: 'cat',
-	description: client.lang.examples.CAT.description,
+	description: "client.lang.examples.CAT.description",
 	category: 'Fun',
 	aliases: ['gato'],
 	usage: {
