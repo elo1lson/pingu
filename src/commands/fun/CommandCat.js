@@ -1,9 +1,8 @@
-const superagent = require('superagent');
-const Discord = require('discord.js')
-const { MessageActionRow, MessageButton } = require('discord.js');
+const snekfetch = require('snekfetch');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 module.exports = new Command({
+
 	name: 'cat',
 	description: "client.lang.examples.CAT.description",
 	category: 'Fun',
@@ -14,11 +13,13 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-		let { body } = await superagent.get(`http://aws.random.cat/meow`);
+		if(args.lenght > 0) return
+		let url = "http://aws.random.cat/meow"
+		let req = await snekfetch.get(url)
 		let u = message.author
-		let catembed = new Embed(u)
-			.setTitle("Gatos 🐱")
-			.setImage(body.file);
-		message.channel.send({ embeds: [catembed] });
-	}	
+		let embed = new Embed(u)
+		embed.setTitle(client.lang.commands.CAT.embed.title)
+		embed.setImage(req.body.file)
+		message.reply({embeds: [embed]}).then(m => m.react('😻'))
+	}
 })

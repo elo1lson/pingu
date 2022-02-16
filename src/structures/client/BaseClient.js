@@ -1,4 +1,4 @@
-const { Collection, Client } = require('discord.js');
+	const { Collection, Client } = require('discord.js');
 const Cluster = require('discord-hybrid-sharding');
 class Baseclient extends Client {
 	constructor(opts) {
