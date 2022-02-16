@@ -21,7 +21,7 @@ module.exports = new Command({
 			newlib += i + '\n<:chip:935164784154935326> '
 		}
 		let c = 0
-		client.context.map((cmd) => {
+		client.commands.map((cmd) => {
 			c + 1
 		})
 		let boby = `\`\`Bobycake#8894\`\``
