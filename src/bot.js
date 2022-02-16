@@ -2,8 +2,8 @@ const db = require('quick.db');
 const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
 const client = require('./structures/client/NewClient.js');
-
 const { prefix, token, cor } = require("./config.js");
+const helper = require('./locales/pt-Br/helper.json')
 
 client.on('interactionCreate', async interaction => {
 	console.log("Interação criada")
@@ -28,7 +28,6 @@ client.on("messageCreate", async (message) => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	client.lang = {
 		context: require(`./locales/pt-Br/context.json`),
-		examples: require('./locales/pt-Br/helper.json')
 	}
 	let cmd = args.shift().toLowerCase()
 	if (message.author.bot) return;

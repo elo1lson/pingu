@@ -2,9 +2,10 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
+const helper = require('../../bot.js')
 module.exports = new Command({
 	name: 'botinfo',
-	description: "client.lang.examples.BOTINFO.description",
+	description: helper.BOTINFO.description,
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
