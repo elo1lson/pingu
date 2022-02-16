@@ -27,7 +27,7 @@ client.once('ready', async (c) => {
 client.on("messageCreate", async (message) => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	client.lang = {
-		commands: require(`./locales/pt-Br/context.json`),
+		context: require(`./locales/pt-Br/context.json`),
 		examples: require('./locales/pt-Br/helper.json')
 	}
 	let cmd = args.shift().toLowerCase()

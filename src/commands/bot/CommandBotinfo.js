@@ -20,10 +20,6 @@ module.exports = new Command({
 		for (var i in libs) {
 			newlib += i + '\n<:chip:935164784154935326> '
 		}
-		let c = 0
-		client.commands.map((cmd) => {
-			c + 1
-		})
 		let boby = `\`\`Bobycake#8894\`\``
 		let comp = newlib.length
 		let newcomp = comp - 28
