@@ -19,6 +19,6 @@ module.exports = new Command({
 		let catembed = new Embed(u)
 			.setTitle("Gatos 🐱")
 			.setImage(body.file);
-		message.channel.send(catembed);
+		message.channel.send({ embeds: [catembed] });
 	}
 })

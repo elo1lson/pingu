@@ -2,6 +2,9 @@
 	"BOTINFO":{
 		"description":"",
 		"usage": ""
+	},
+	"CAT":{
+		"description": "Uma foto de gato"
 	}
 }
 
