@@ -21,14 +21,14 @@ module.exports = new Command({
 			newlib += i + '\n<:chip:935164784154935326> '
 		}
 		let c = 0
-		client.commands.map((cmd) => {
+		client.context.map((cmd) => {
 			c + 1
 		})
 		let boby = `\`\`Bobycake#8894\`\``
 		let comp = newlib.length
 		let newcomp = comp - 28
-		let send = client.lang.commands.BOTINFO.embed.description.replace("%BOTNAME%", client.user.username)
-		//let fieldtwovalue = client.lang.commands.BOTINFO.embed.fieldtwo.value
+		let send = client.lang.context.BOTINFO.embed.description.replace("%BOTNAME%", client.user.username)
+		//let fieldtwovalue = client.lang.context.BOTINFO.embed.fieldtwo.value
 
 		send = send.replace("%COMMANDS%", "16")
 		send = send.replace("%GUILDS%", client.guilds.cache.size)
@@ -41,13 +41,13 @@ module.exports = new Command({
 
 		let user = message.author
 		let notsend = new Embed(user)
-			.setTitle(client.lang.commands.BOTINFO.embed.title)
+			.setTitle(client.lang.context.BOTINFO.embed.title)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 			.setDescription(send)
 			.addFields(
 				{
-					name: client.lang.commands.BOTINFO.embed.fieldone.name,
-					value: `\`\`${client.lang.commands.BOTINFO.embed.fieldone.value
+					name: client.lang.context.BOTINFO.embed.fieldone.name,
+					value: `\`\`${client.lang.context.BOTINFO.embed.fieldone.value
 					}\`\``
 				},
 				/*{
@@ -55,14 +55,14 @@ module.exports = new Command({
 					value: `**${newlib.substr(0, newcomp)}**`
 				},*/
 				{
-					name: client.lang.commands.BOTINFO.embed.fieldtwo.name,
+					name: client.lang.context.BOTINFO.embed.fieldtwo.name,
 					value: '<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)'
 				})
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
 				.setCustomId('primary')
-				.setLabel(client.lang.commands.BOTINFO.button.one)
+				.setLabel(client.lang.context.BOTINFO.button.one)
 				.setStyle('PRIMARY')
 				.setDisabled(true)
 			);
