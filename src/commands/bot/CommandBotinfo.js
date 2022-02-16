@@ -2,10 +2,9 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
-//const lang.commands = require('../../locales/pt-BR/bot/info.json')
 module.exports = new Command({
 	name: 'botinfo',
-	description: 'Informações sobre o bot',
+	description: client.lang.examples.BOTINFO.description,
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
@@ -76,3 +75,4 @@ module.exports = new Command({
 	}
 })
 //2022 - Eloilson
+
