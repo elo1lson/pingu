@@ -1,4 +1,4 @@
-const superagent = require("superagent");
+const superagent = require('superagent');
 const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
@@ -20,5 +20,5 @@ module.exports = new Command({
 			.setTitle("Gatos 🐱")
 			.setImage(body.file);
 		message.channel.send({ embeds: [catembed] });
-	}
+	}	
 })
