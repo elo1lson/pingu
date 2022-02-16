@@ -13,13 +13,13 @@ module.exports = new Command({
 	},
 	author: 'tomori',
 	run: async (client, message, args) => {
-		if(args.lenght > 0) return
+		if (args.lenght > 0) return
 		let url = "http://aws.random.cat/meow"
 		let req = await snekfetch.get(url)
 		let u = message.author
 		let embed = new Embed(u)
 		embed.setTitle(client.lang.commands.CAT.embed.title)
 		embed.setImage(req.body.file)
-		message.reply({embeds: [embed]}).then(m => m.react('😻'))
+		message.reply({ embeds: [embed] }).then(m => m.react('😻'))
 	}
 })
