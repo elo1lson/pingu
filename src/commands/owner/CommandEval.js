@@ -16,10 +16,20 @@
 				let beforeRunning = Date.now(); // Define a data de execução
 				let result = eval(args.join(' ')); // Gera os argumentos do eval
 				if (result instanceof Promise) {
-					m.edit('O código retornou uma promise - aguardando ela ser resolvida...')
+					message.channel.send('O código retornou uma promise - aguardando ela ser resolvida...')
 					await result
 				}
-				message.reply({ content: 'Toma aqui teu eval seu filho da puta\n```js\n' + result + '```' })
+				if (typeof result !== 'string') result = require('util').inspect(result);
+
+				console.log(typeof result)
+				let end = (Date.now() - beforeRunning); // Define o final do tempo
+				let embd = new Discord.MessageEmbed()
+					.addField("📥 Entrada", "```js\n" + args.join(' ') + "```")
+					.addField("📩 Saída", "```js\n" + result.slice(0, 1010) + "```")
+				result.length > 1010 ? embd.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```") : embd.setTimestamp("Em:", `\`\`${end}ms\`\``)
+				result.length > 2020 ? embd.addField("\u200b","```js\n" + result.slice(2020, 3030) + "````") : embd.setTimestamp("Em:", `\`\`${end}ms\`\``)
+				message.reply({ embeds: [embd] })
+				//message.reply({ content: 'Toma aqui teu eval seu filho da puta\n```js\n' + result + '```' })
 				//		message.reply({content: '```js\n' + result + '```'})
 				//		if (result instanceof Promise) {
 				//			message.reply('O código retornou uma promise - aguardando ela ser resolvida...')
@@ -27,7 +37,7 @@
 				//		}; // Se retorna Promise, ele enviará o recado
 
 				//	if (typeof result !== 'string') result = require('util').inspect(result); // Se retornar uma string, ele enviará o recado
-				//	let end = (Date.now() - beforeRunning); // Define o final do tempo
+				//	
 
 				//5	let embed = new Discord.MessageEmbed()
 				//	.setTimestamp()
