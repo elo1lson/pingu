@@ -1,5 +1,5 @@
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=elo1lson&repo=Tomori)](https://github.com/elo1lson/Tomori)
 
+![tomori](https://images-ext-1.discordapp.net/external/5afy1tBggsffkQwXzW_uc0q17yGCY-vUL2xP_S7qOWI/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/856578187504254976/176a70578661105fed51bc8b5cc284be.png)
 ### Sobre
 
 Tomori é um bot em desenvolvimento por mim, dedico a maior parte do meu tempo neste repositório, e estudando novas maneiras de progamar
