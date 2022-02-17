@@ -13,4 +13,8 @@ Alem de um guia para caso você queira participar desse incrivel projeto
 
 ### Clones & Downloads
 
-Peco encarecidamente para as pessoas que forem clonar esse repositorio para uso PRÓPRIO, deixe ao menos uma star no projeto, e se você não entender algo, como pastas, arquivos, codigos, eu NÃO IREI LHE FORNECER AJUDA de como funcionam cada coisa
+Peço encarecidamente para as pessoas que forem clonar esse repositorio para uso PRÓPRIO, deixe ao menos uma star no projeto, e se você não entender algo, como pastas, arquivos, codigos, eu NÃO IREI LHE FORNECER AJUDA de como funcionam cada coisa
+
+### Contribuir
+
+Estou totalmete a disposição para contribuições, reporte bugs, dê sugestões, etc.... você me ajudaria bastante, faça isso e seu nome sera lembrado. Seria legal entrar pra lista de desenvolvedores da tomori não é mesmo? E que tal ganhar uns mimos da tomori?
