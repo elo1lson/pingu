@@ -1,7 +1,10 @@
 {
 	"BOTINFO":{
-		"description":"",
-		"usage": ""
+		"description":"Que tal sabe + sobre mim?",
+		"usage": "none"
+	},
+	"HELP":{
+		"description": "Prefisa de uma ajudinha?"
 	},
 	"CAT":{
 		"description": "Uma foto de gato"

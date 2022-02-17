@@ -1,10 +1,12 @@
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
+const extra = require('../../extra.js')
+
 module.exports = new Command({
 	category: 'Bot',
 	name: 'help',
-	description: 'Mostra a ajuda do bot',
+	description: extra.helper.details.HELP.description,
 	aliases: ['ajuda'],
 	usage: {
 		op: 'none',

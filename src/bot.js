@@ -3,7 +3,6 @@ const Cluster = require('discord-hybrid-sharding');
 const fs = require('fs')
 const client = require('./structures/client/NewClient.js');
 const { prefix, token, cor } = require("./config.js");
-const helper = require('./locales/pt-Br/helper.json')
 
 client.on('interactionCreate', async interaction => {
 	console.log("Interação criada")
