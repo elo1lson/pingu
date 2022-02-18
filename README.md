@@ -21,3 +21,7 @@ Peço encarecidamente para as pessoas que forem clonar esse repositorio para uso
 ### Contribuir
 
 Estou totalmete a disposição para contribuições, reporte bugs, dê sugestões, etc.... você me ajudaria bastante, faça isso e seu nome sera lembrado. Seria legal entrar pra lista de desenvolvedores da tomori não é mesmo? E que tal ganhar uns mimos da tomori?
+
+### Dúvidas? 
+
+Como eu disse em um dos tópicos acima, eu não darei suporte a pessoas que clonem, copiem ou peguem algo desse repositório para seu uso, para aqueles que são criadores de bot ou interessados no projeto, eu darei total suporte, explicando para que serve cada coisa, e o que for preciso
