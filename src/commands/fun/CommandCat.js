@@ -18,7 +18,7 @@ module.exports = new Command({
 		let req = await snekfetch.get(url)
 		let u = message.author
 		let embed = new Embed(u)
-			.setTitle(client.lang.commands.CAT.embed.title)
+			.setTitle(client.context.commands.CAT.embed.title)
 			.setImage(req.body.file)
 		message.reply({ embeds: [embed] }).then(m => m.react('😻'))
 	}
