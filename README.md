@@ -7,6 +7,8 @@
 
 Tomori é um bot em desenvolvimento por mim, dedico a maior parte do meu tempo neste repositório, e estudando novas maneiras de progamar
 
+Atualmete esta sendo gerenciada e mantida SOMENTE POR MIM
+
 Totalmente Open source, caso alguém queira contribuir ou usar o repositório fique a vontade
 
 ### Documentações
