@@ -1,11 +1,12 @@
 const Discord = require('discord.js')
+const locales = require('../../extra.js')
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 const extra = require('../../extra.js')
 module.exports = new Command({
 	name: 'botinfo',
-	description: extra.helper.BOTINFO.description,
+	description: extra.descriptions.BOTINFO.description,
 	category: 'Bot	',
 	aliases: ['infobot'],
 	usage: {
@@ -24,8 +25,8 @@ module.exports = new Command({
 		let boby = `\`\`Bobycake#8894\`\``
 		let comp = newlib.length
 		let newcomp = comp - 28
-		let send = client.lang.context.BOTINFO.embed.description.replace("%BOTNAME%", client.user.username)
-		//let fieldtwovalue = client.lang.context.BOTINFO.embed.fieldtwo.value
+		let send = locales.run.BOTINFO.embed.description.replace("%BOTNAME%", client.user.username)
+		//let fieldtwovalue = locales.run.BOTINFO.embed.fieldtwo.value
 
 		send = send.replace("%COMMANDS%", "16")
 		send = send.replace("%GUILDS%", client.guilds.cache.size)
@@ -38,13 +39,13 @@ module.exports = new Command({
 
 		let user = message.author
 		let notsend = new Embed(user)
-			.setTitle(client.lang.context.BOTINFO.embed.title)
+			.setTitle(locales.run.BOTINFO.embed.title)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 			.setDescription(send)
 			.addFields(
 				{
-					name: client.lang.context.BOTINFO.embed.fieldone.name,
-					value: `\`\`${client.lang.context.BOTINFO.embed.fieldone.value
+					name: locales.run.BOTINFO.embed.fieldone.name,
+					value: `\`\`${locales.run.BOTINFO.embed.fieldone.value
 					}\`\``
 				},
 				/*{
@@ -52,14 +53,14 @@ module.exports = new Command({
 					value: `**${newlib.substr(0, newcomp)}**`
 				},*/
 				{
-					name: client.lang.context.BOTINFO.embed.fieldtwo.name,
+					name: locales.run.BOTINFO.embed.fieldtwo.name,
 					value: '<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)'
 				})
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
 				.setCustomId('primary')
-				.setLabel(client.lang.context.BOTINFO.button.one)
+				.setLabel(locales.run.BOTINFO.button.one)
 				.setStyle('PRIMARY')
 				.setDisabled(true)
 			);
