@@ -8,7 +8,7 @@ module.exports = new Command({
 		let guild = client.guilds.cache.sort((a, b) => b.memberCount - a.memberCount).first(30);
 		let u = message.author
 		let embed = new Embed(u)
-		embed.setDescription(guild.map((guild, index) => `🏴**${index + 1}**  \`${guild.name}\` | ${guild.memberCount} membros`).join('\n'))
+		embed.setDescription(guild.map((guild, index) => `🏴 **${index + 1}**  \`${guild.name}\`  (${guild.memberCount})`).join('\n'))
 		message.reply({ embeds: [embed] }).then(m =>{
 			m.react('👌')
 		})
