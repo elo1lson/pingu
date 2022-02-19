@@ -19,18 +19,34 @@ module.exports = new Command({
 				new MessageButton()
 				.setCustomId('pt')
 				.setEmoji('🇧🇷')
-				.setLabel('Primary')
-				.setStyle('PRIMARY')
+				.setLabel('Português')
+				.setStyle('SUCCESS')
+			)
+			.addComponents(
+				new MessageButton()
+				.setCustomId('pth')
+				.setEmoji('🇺🇲')
+				.setLabel('English')
+				.setStyle('DANGER')
 			)
 		let u = message.author
 		let mainembed = new Embed(u)
 		mainembed.setTitle(extra.run.SETLANG.embed.title)
 		mainembed.setDescription(extra.run.SETLANG.embed.description)
-		mainembed.addField(extra.run.SETLANG.embed.fieldone.name,extra.run.SETLANG.embed.fieldone.value)
-		
+		mainembed.addField(extra.run.SETLANG.embed.fieldone.name, extra.run.SETLANG.embed.fieldone.value)
+
 		message.reply({ embeds: [mainembed], components: [row] })
 
 		const filter = i => i.customId === 'pt' && i.user.id === message.author.id;
+		const filter = i => i.customId === 'pt' && i.user.id != message.author.id;
+		const collectorerro = message.channel.createMessageComponentCollector({ filter, time: 15000 });
+		
+		collectorerro.on('collect', async i => {
+			if (i.customId === 'pt') {
+				await i.update({content: "Foi mal amiguinho, não foi você que solicitou esse comando",components: [], ephemeral: true});
+			}
+		});
+
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
 		collector.on('collect', async i => {
 			console.log("333")
