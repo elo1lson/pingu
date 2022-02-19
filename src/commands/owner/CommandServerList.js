@@ -12,6 +12,5 @@ module.exports = new Command({
 			m.react('👌')
 		})
 	}
-
 })
 	
