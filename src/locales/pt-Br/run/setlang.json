@@ -1,0 +1,10 @@
+{
+	"embed": {
+		"title": "🌎 Mude meu idoma!",
+		"description": "Para alterar meu idioma neste servidor, selecione o botão correspondente",
+		"fieldone": {
+			"name": "Idiomas disponíveis atualmente",
+			"value": "🇧🇷 Português(pt-Br)"
+		}
+	}
+}

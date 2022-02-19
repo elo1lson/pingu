@@ -1,12 +1,11 @@
-
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Discord = require('discord.js')
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
-//const lang = require('../../locales/pt-BR/bot/info.json')
+const extra = require('../../extra.js')
 module.exports = new Command({
-	name: 'q',
-	description: 'Informações sobre o bot',
+	name: 'setlang',
+	description: extra.description.SETLANG.description,
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
@@ -18,13 +17,20 @@ module.exports = new Command({
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
-				.setCustomId('primary')
+				.setCustomId('pt')
+				.setEmoji('🇧🇷')
 				.setLabel('Primary')
 				.setStyle('PRIMARY')
-			);
-		message.reply({ content: "¥", components: [row] })
+			)
+		let u = message.author
+		let mainembed = new Embed(u)
+		mainembed.setTitle(extra.run.SETLANG.embed.title)
+		mainembed.setDescription(extra.run.SETLANG.embed.description)
+		main.addField(extra.run.SETLANG.embed.fieldone.name, extra.run.SETLANG.fieldone.value)
+		
+		message.reply({ embeds: [mainembed], components: [row] })
 
-		const filter = i => i.customId === 'primary' && i.user.id === '539945189901336586';
+		const filter = i => i.customId === 'pt' && i.user.id === message.author.id;
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
 		collector.on('collect', async i => {
 			console.log("333")

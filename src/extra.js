@@ -2,7 +2,8 @@ const locales = {
 	run: {
 		BOTINFO: require('./locales/pt-Br/run/botinfo.json'),
 		HELP: require('./locales/pt-Br/run/help.json'),
-		INVITE: require('./locales/pt-Br/run/help.json')
+		INVITE: require('./locales/pt-Br/run/invite.json'),
+		SETLANG: require('./locales/pt-Br/run/setlang.json')
 	}, 
 	descriptions: {
 		BOTINFO: require('./locales/pt-Br/descriptions/botinfo.json'),

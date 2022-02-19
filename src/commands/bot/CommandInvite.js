@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
 const extra = require('../../extra.js')
