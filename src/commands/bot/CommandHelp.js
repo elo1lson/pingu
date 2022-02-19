@@ -23,8 +23,7 @@ module.exports = new Command({
 			// agora eu preciso fazer o sort... deixa eu pensar
 			if (!cmd.category) return
 			if (cmd.category === undefined) return // não funciona adicionar a categoria aqui por padrão
-
-
+			
 			if (categories[cmd.category] === undefined) {
 				categories[cmd.category] = new Array()
 			}
@@ -40,6 +39,7 @@ module.exports = new Command({
 			// })
 		})
 		let u = message.author
+		let send = extra.run.HELP.embed.description.replace('%AUTHOR%', message.author)
 		let msgembed = new Embed(u)
 			.setTitle(extra.run.HELP.embed.title)
 			.setDescription(extra.run.HELP.embed.description)
