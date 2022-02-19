@@ -64,15 +64,13 @@ module.exports = new Command({
 						let simple = eval(args.join(' '))
 						let simpler = new Embed(u)
 						simpler.addField("📥 Entrada", "```js\n" + args.join(' ') + "```")
-						simpler.addField("📩 Saída", "```js\n" + simpler.slice(0, 1010) + "```")
-										if (simpler.length > 1010) {
-											embd.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```")
-										}
+						simpler.addField("📩 Saída", "```js\n" + simple + "```")
+
 						simpler.setFooter({
 							text: `Time: ${end}ms`,
 							IconURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAY24-TSTqg2C9tlU2TpNpRnLW11kx8m4Mzw&usqp=CAU'
 						})
-						
+
 						await i.update({ embeds: [simpler], components: [] })
 
 					}
