@@ -46,9 +46,12 @@ module.exports = new Command({
 		message.reply({ embeds: [mainembed], components: [row] })
 
 		let pt = new Embed(u)
-		en.setTitle('✅ Sucesso')
-		en.setDescription('Agora meus comandos serão todos em português')
+		pt.setTitle('✅ Sucesso')
+		pt.setDescription('Agora meus comandos serão todos em português')
 		
+		let es = new Embed(u)
+		es.setTitle('✅ Éxito')
+		es.setDescription('Ahora mis comandos estarán todos en español')
 		const filter = i => i.user.id === message.author.id;
 
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
@@ -59,6 +62,9 @@ module.exports = new Command({
 			}
 			if (i.customId === 'en') {
 				await i.update({ embeds: [en], components: [] })
+			}
+			if (i.customId === 'es') {
+				await i.update({ embeds: [es], components: [] })
 			}
 		});
 	}
