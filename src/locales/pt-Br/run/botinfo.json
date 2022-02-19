@@ -1,0 +1,16 @@
+{
+	"embed": {
+		"title": "ℹ Sobre mim",
+		"description": "Sou a <:toto:934042191414833173> **%BOTNAME%**, estou tentando trazer alegria para todos com meus **%COMMANDS%** comandos, atualmete faço parte de **%GUILDS%**, cuidando de **%USERS%** lindas pessoas, e ja executei **%TOTALCOMMANDS%** desde que fui criada\n\nFui desenvolvida em <:js:935134807631999006> %JS%, utilizando <:djs:935139154340237322> %DJS%, sou totalmete <:open_source:935141228889124875> %OPENSOURCE%, caso você queira ver como eu fui desenvolvida ou ate mesmo ajudar no meu desenvolvimento, clique %LINK%",
+		"fieldone": {
+			"name": "Criador",
+			"value": "bobycake#8894"
+		},
+		"fieldtwo": {
+			"name": "Links Úteis"
+		}
+	},
+	"button": {
+		"one": "Próximo"
+	}
+}
