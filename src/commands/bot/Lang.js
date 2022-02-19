@@ -5,7 +5,7 @@ const Embed = require('../../structures/client/ClientEmbed.js')
 const extra = require('../../extra.js')
 module.exports = new Command({
 	name: 'setlang',
-	description: extra.description.SETLANG.description,
+	description: extra.descriptions.SETLANG.description,
 	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
@@ -26,7 +26,7 @@ module.exports = new Command({
 		let mainembed = new Embed(u)
 		mainembed.setTitle(extra.run.SETLANG.embed.title)
 		mainembed.setDescription(extra.run.SETLANG.embed.description)
-		main.addField(extra.run.SETLANG.embed.fieldone.name, extra.run.SETLANG.fieldone.value)
+		mainembed.addField(extra.run.SETLANG.embed.fieldone.name,extra.run.SETLANG.embed.fieldone.value)
 		
 		message.reply({ embeds: [mainembed], components: [row] })
 
@@ -34,8 +34,8 @@ module.exports = new Command({
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
 		collector.on('collect', async i => {
 			console.log("333")
-			if (i.customId === 'primary') {
-				await i.update({ content: 'A button was clicked!', components: [row] });
+			if (i.customId === 'pt') {
+				await i.update({ components: [row] });
 			}
 		});
 	}
