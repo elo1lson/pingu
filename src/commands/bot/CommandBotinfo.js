@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-//const locales = require('../../extra.js')
+const locales = require('../../extra.js')
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
