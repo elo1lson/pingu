@@ -40,10 +40,15 @@ module.exports = new Command({
 		const filter = i => i.customId === 'pt' && i.user.id === message.author.id;
 		const erro = i => i.customId === 'pt' && i.user.id != message.author.id;
 		const collectorerro = message.channel.createMessageComponentCollector({ erro, time: 15000 });
-		
+
 		collectorerro.on('collect', async i => {
 			if (i.customId === 'pt') {
-				await i.update({content: "Foi mal amiguinho, não foi você que solicitou esse comando",components: [], ephemeral: true});
+				await i.update({
+					content: "Foi mal amiguinho, não foi você que solicitou esse comando",
+					embeds: [],
+					components: [],
+					ephemeral: true
+				});
 			}
 		});
 
