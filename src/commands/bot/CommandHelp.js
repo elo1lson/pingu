@@ -6,7 +6,7 @@ const extra = require('../../extra.js')
 module.exports = new Command({
 	category: 'Bot',
 	name: 'help',
-	description: extra.helper.HELP.description,
+	description: extra.descriptions.HELP.description,
 	aliases: ['ajuda'],
 	usage: {
 		op: 'none',
@@ -41,8 +41,8 @@ module.exports = new Command({
 		})
 		let u = message.author
 		let msgembed = new Embed(u)
-			.setTitle(`Lista de comandos`)
-			.setDescription(`${message.author} confira minha lista de comandos separadas por categorias\n\n`)
+			.setTitle(extra.run.HELP.embed.title)
+			.setDescription(extra.run.HELP.embed.description)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
 
 		for (let cat in categories) {
@@ -52,7 +52,7 @@ module.exports = new Command({
 			// .addField('Inline field title', 'Some value here', true)
 			msgembed.addField(`:bookmark: ${cat}`, `\`\`${cmds.join(' - ')}\`\``, true)
 		}
-		msgembed.addField(`:link: Links Úteis:`, `<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)`)
+		msgembed.addField(extra.run.HELP.embed.fieldone.title, `<:github:935233776227856415> [Github](https://github.com/elo1lson/Open-Os_Bot)\n<:sac:935235170552909965> [Suporte](https://discord.gg/NAdSr57Few)\n<:dev:935237634270310421> [Developer](https://github.com/elo1lson)`)
 		try {
 			message.reply({ embeds: [msgembed] })
 		} catch (e) {
