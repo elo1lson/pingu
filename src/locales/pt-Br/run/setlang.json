@@ -5,6 +5,10 @@
 		"fieldone": {
 			"name": "Idiomas disponíveis atualmente",
 			"value": "🇧🇷 Português(pt-Br)"
+		},
+		"fieldtwo":{
+			"name":"Idiomas disponíveis em breve",
+			"value":"🇺🇲 English\n🇪🇸 Español"
 		}
 	}
 }
