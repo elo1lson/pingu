@@ -38,8 +38,8 @@ module.exports = new Command({
 		message.reply({ embeds: [mainembed], components: [row] })
 
 		const filter = i => i.customId === 'pt' && i.user.id === message.author.id;
-		const filter = i => i.customId === 'pt' && i.user.id != message.author.id;
-		const collectorerro = message.channel.createMessageComponentCollector({ filter, time: 15000 });
+		const erro = i => i.customId === 'pt' && i.user.id != message.author.id;
+		const collectorerro = message.channel.createMessageComponentCollector({ erro, time: 15000 });
 		
 		collectorerro.on('collect', async i => {
 			if (i.customId === 'pt') {
