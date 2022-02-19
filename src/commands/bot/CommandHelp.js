@@ -27,7 +27,7 @@ module.exports = new Command({
 			if (categories[cmd.category] === undefined) {
 				categories[cmd.category] = new Array()
 			}
-
+			
 			// Mais simples
 			categories[cmd.category].push(cmd.name)
 			// Mais elaborado
@@ -42,9 +42,9 @@ module.exports = new Command({
 		let send = extra.run.HELP.embed.description.replace('%AUTHOR%', message.author)
 		let msgembed = new Embed(u)
 			.setTitle(extra.run.HELP.embed.title)
-			.setDescription(extra.run.HELP.embed.description)
+			.setDescription(send)
 			.setThumbnail(`${client.user.avatarURL({dinamyc: true})}`)
-
+			
 		for (let cat in categories) {
 			// aqui vc tá indo categoria por categoria
 			// constribuir a mensagem aqui

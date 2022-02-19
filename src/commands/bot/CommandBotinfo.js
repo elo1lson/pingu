@@ -7,7 +7,7 @@ const extra = require('../../extra.js')
 module.exports = new Command({
 	name: 'botinfo',
 	description: extra.descriptions.BOTINFO.description,
-	category: 'Bot	',
+	category: 'Bot',
 	aliases: ['infobot'],
 	usage: {
 		ob: "none",

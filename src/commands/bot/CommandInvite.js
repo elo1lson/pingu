@@ -2,9 +2,11 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageButton } = require('discord.js');
 const Command = require('../../structures/command/command.js')
 const Embed = require('../../structures/client/ClientEmbed.js')
+const extra = require('../../extra.js')
+
 module.exports = new Command({
 	name: 'invite',
-	description: 'Meu link de convite',
+	description: extra.descriptions.INVITE.description,
 	category: 'Bot',
 	aliases: ['convite'],
 	usage: {
@@ -15,8 +17,9 @@ module.exports = new Command({
 	run: async (client, message, args) => {
 		if (args.length > 0) return
 		let u = message.author
+		let send = extra.run.INVITE.embed.description.replace('%AUTHOR%', '[aqui](https://discord.com/oauth2/authorize?client_id=856578187504254976&permissions=8&scope=applications.commands%20bot)')
 		let embed = new Embed(u)
-			.setDescription('Que tal me adicionar em outros servidores do Discord?\nClique [aqui](https://discord.com/oauth2/authorize?client_id=856578187504254976&permissions=8&scope=applications.commands%20bot) para fazer isso')
+		.setDescription(send)
 
 		try {
 			message.reply({ embeds: [embed] }).then(m => {
