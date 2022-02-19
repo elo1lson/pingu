@@ -19,14 +19,18 @@ module.exports = new Command({
 				new MessageButton()
 				.setCustomId('pt')
 				.setEmoji('🇧🇷')
-				.setLabel('Português')
 				.setStyle('SUCCESS')
 			)
 			.addComponents(
 				new MessageButton()
-				.setCustomId('pth')
+				.setCustomId('en')
 				.setEmoji('🇺🇲')
-				.setLabel('English')
+				.setStyle('DANGER')
+			)
+			.addComponents(
+				new MessageButton()
+				.setCustomId('es')
+				.setEmoji('🇪🇸')
 				.setStyle('DANGER')
 			)
 		let u = message.author
@@ -34,31 +38,28 @@ module.exports = new Command({
 		mainembed.setTitle(extra.run.SETLANG.embed.title)
 		mainembed.setDescription(extra.run.SETLANG.embed.description)
 		mainembed.addField(extra.run.SETLANG.embed.fieldone.name, extra.run.SETLANG.embed.fieldone.value)
+		mainembed.addField(extra.run.SETLANG.embed.fieldtwo.name, extra.run.SETLANG.embed.fieldtwo.value)
 
+		let en = new Embed(u)
+		en.setTitle('✅ Sucess!')
+		en.setDescription('Now my commands will all be in English')
 		message.reply({ embeds: [mainembed], components: [row] })
 
-		const filter = i => i.customId === 'pt' && i.user.id === message.author.id;
-		const erro = i => i.customId === 'pt' && i.user.id != message.author.id;
-		const collectorerro = message.channel.createMessageComponentCollector({ erro, time: 15000 });
-
-		collectorerro.on('collect', async i => {
-			if (i.customId === 'pt') {
-				await i.update({
-					content: "Foi mal amiguinho, não foi você que solicitou esse comando",
-					embeds: [],
-					components: [],
-					ephemeral: true
-				});
-			}
-		});
+		let pt = new Embed(u)
+		en.setTitle('✅ Sucesso')
+		en.setDescription('Agora meus comandos serão todos em português')
+		
+		const filter = i => i.user.id === message.author.id;
 
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
+
 		collector.on('collect', async i => {
-			console.log("333")
 			if (i.customId === 'pt') {
-				await i.update({ components: [row] });
+				await i.update({ embeds: [pt], components: [] });
+			}
+			if (i.customId === 'en') {
+				await i.update({ embeds: [en], components: [] })
 			}
 		});
 	}
-
 })
