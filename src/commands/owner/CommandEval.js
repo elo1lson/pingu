@@ -27,7 +27,6 @@ module.exports = new Command({
 		stageone.setDescription('Escolha o modo de execução do codigo')
 
 		let result = eval(args.join(' '));
-		let simple = eval(args.join(' '))
 		const filter = i => i.user.id === message.author.id;
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
 
@@ -40,18 +39,9 @@ module.exports = new Command({
 				if (result instanceof Promise) {
 					await message.edit('O código retornou uma promise - aguardando ela ser resolvida...')
 					await result
-					await simple
 				}
 				if (typeof result !== 'string') result = require('util').inspect(result);
 				let end = (Date.now() - beforeRunning); // Define o final do tempo
-
-				let simpler = new Embed(u)
-				simpler.addField("📥 Entrada", "```js\n" + args.join(' ') + "```")
-				simpler.addField("📩 Saída", "```js\n" + result.slice(0, 1010) + "```")
-				simpler.setFooter({
-					text: `Time: ${end}ms`,
-					IconURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAY24-TSTqg2C9tlU2TpNpRnLW11kx8m4Mzw&usqp=CAU'
-				})
 
 				let embd = new Embed(u)
 				embd.addField("📥 Entrada", "```js\n" + args.join(' ') + "```")
@@ -62,19 +52,28 @@ module.exports = new Command({
 				})
 				if (result.length > 1010) {
 					embd.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```")
-					simpler.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```")
 				}
 				if (result.length > 2020) {
 					embd.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```")
-					simpler.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```")
-
 				}
 				if (result.length > 3030) {
 					embd.addField("Continuação", "```js\n" + result.slice(2020, 3030) + "```")
 				}
 				collector.on('collect', async i => {
 					if (i.customId === 'lup') {
-							await i.update({ embeds: [simpler], components: [] })
+						let simple = eval(args.join(' '))
+						let simpler = new Embed(u)
+						simpler.addField("📥 Entrada", "```js\n" + args.join(' ') + "```")
+						simpler.addField("📩 Saída", "```js\n" + simpler.slice(0, 1010) + "```")
+										if (simpler.length > 1010) {
+											embd.addField("Continuação", "```js\n" + result.slice(1010, 2020) + "```")
+										}
+						simpler.setFooter({
+							text: `Time: ${end}ms`,
+							IconURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAY24-TSTqg2C9tlU2TpNpRnLW11kx8m4Mzw&usqp=CAU'
+						})
+						
+						await i.update({ embeds: [simpler], components: [] })
 
 					}
 					if (i.customId === 'pc') {
