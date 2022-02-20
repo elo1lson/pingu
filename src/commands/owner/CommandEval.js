@@ -9,6 +9,9 @@ module.exports = new Command({
 		if (message.author.id != process.env.KEY) {
 			return message.reply({ content: "Quer me fuder é seu filho da puta? Vai usar eval com a tua mãe", ephemeral: true })
 		}
+		if (!args[0]) {
+			return message.edit(`Insira um valor para executar o eval.`);
+		}
 		var row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
@@ -25,17 +28,14 @@ module.exports = new Command({
 		let u = message.author
 		let stageone = new Embed(u)
 		stageone.setDescription('Escolha o modo de execução do codigo')
-
-		let result = eval(args.join(' '));
 		const filter = i => i.user.id === message.author.id;
 		const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
 
 		message.reply({ embeds: [stageone], components: [row] }).then(async message => {
-			if (!args[0]) {
-				return message.edit(`Insira um valor para executar o eval.`);
-			}
+			
 			try {
 				let beforeRunning = Date.now(); // Define a data de execução
+				let result = eval(args.join(' '));
 				if (result instanceof Promise) {
 					await message.edit('O código retornou uma promise - aguardando ela ser resolvida...')
 					await result
