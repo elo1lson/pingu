@@ -1,9 +1,0 @@
-{
-	"embed":{
-		"title":"Lista de comandos",
-		"description": "%AUTHOR% confira a minha lista de comandos",
-		"fieldone":{
-			"title":":link: Links Úteis"
-		}
-	}
-}
