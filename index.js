@@ -1,4 +1,4 @@
-import Base from './scr/core/client.js'
+import Base from './src/core/client.js'
 
 import { config } from 'dotenv'
 

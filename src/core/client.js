@@ -1,6 +1,9 @@
 import { Client, Collection } from 'discord.js';
 import fs from 'fs'
 import path from 'path'
+import * as url from 'url';
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 class Base extends Client {
     constructor(options) {
@@ -16,25 +19,24 @@ class Base extends Client {
         this.slash = new Collection()
         this.aliases = new Collection()
     }
-    loadVanilla(folderParam) {
+     loadVanilla(folderParam) {
         try {
-            let folder = path.resolve(__dirname, folderParam)
-            console.log(folder);
+            let folder = path.resolve(process.cwd(), folderParam)
+
             let categoryPath = fs.readdirSync(folder);
-            console.log(categoryPath);
 
-            /*categoryPath.array.forEach(fileName => {
+            categoryPath.forEach(fileName => {
                 let commands = fs.readdirSync(`${folder}/${fileName}`)
-
-                commands.array.forEach(fileContent => {
-                    let fileClass = import(`${commands}/${fileContent}`)
-                    console.log(fileClass);
-                });
-            });*/
+                for (let i of commands) {
+                    (async () => {
+                        let fileClass = await import(`${folder}/${fileName}/${i}`)
+                        this.vanilla.set(fileClass.name, fileClass)
+                    })()
+                }
+            });
         } catch (error) {
             console.log(error);
         }
-
     }
 }
 
