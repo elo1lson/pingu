@@ -7,28 +7,31 @@
 */
 
 export default class Vanilla {
-  
+
   /** 
    * Class base for make commands
    * 
-   * @param {Object} ctx
-   * @param ctx.message 
+   * @param {Object} ctx Object contains message, client, args
+   * @param  {Object} ctx.message argument message
    * @param {Object} ctx.client  
    * @param {Object} ctx.args
-   * @param {Object} opts
+   * @param {Object} opts Config object for command
    * @param {String} opts.name 
    * @param {Array} opts.aliases
    * @param {Boolean} opts.avaliable 
    */
-   
-  constructor(ctx, opts) {
-    this.ctx = ctx
-    this.name = opts.name || null
-    this.aliases = opts.aliases
-    this.avaliable = true || opts.avaliable
-  }
-  static config(options){
-    name: options.name
 
+  constructor(ctx, opts) {
+
+    if (ctx) {  
+
+      this.ctx = ctx
+      this.message = ctx.message
+      this.args = ctx.args
+      this.client = ctx.client
+    }
+
+    this.name = opts.name
+    this.aliases = opts.aliases
   }
 }

@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 /**
- * @class
+ * @extends {Base}
  */
 
 class Base extends Client {
@@ -47,14 +47,12 @@ class Base extends Client {
             let fileClass = await import(`${folder}/${fileName}/${i}`)
             if (typeParam == 'command') {
 
-             let instanceClass = new fileClass.default()
-             console.log(instanceClass);
+              let instanceClass = new fileClass.default()
               this.vanilla.set(instanceClass.name, fileClass)
               return
 
             }
             if (typeParam == 'event') {
-              console.log(fileClass);
               let evt = new fileClass.default(this)
               this.on(evt.name, evt.execute)
               return
@@ -68,21 +66,11 @@ class Base extends Client {
   }
 
   async loadEvents(folder) {
-    try {
-      await this.#loadDir(folder, 'event')
-      console.log('✅[Events]: Eventos carregados!')
-    } catch (e) {
-      console.log('❌[Events]: Erro ao carregar os eventos: ' + e)
-    }
-  }
-  loadVanilla(folder) {
-    try {
-      this.#loadDir(folder, 'command')
-    } catch (error) {
-      console.log(e);
-      console.log('comando deu erro');
+    await this.#loadDir(folder, 'event')
 
-    }
+  }
+  async loadVanilla(folder) {
+    await this.#loadDir(folder, 'command')
 
   }
 }

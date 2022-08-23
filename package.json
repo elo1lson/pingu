@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/shard.js"
+    "dev": "nodemon ./src/pingu.js"
   },
   "keywords": [],
   "author": "elo1lson",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/elo1lson/dracula#readme",
   "dependencies": {
     "discord.js": "^14.2.0",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
   }
 }
