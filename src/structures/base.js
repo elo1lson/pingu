@@ -4,12 +4,15 @@ import path from 'path'
 import * as url from 'url';
 
 /**
- * Create a new Client
- * @class 
+ * @class
  */
-
+ 
 class Base extends Client {
 
+  /**
+   * @param {Object} options
+   * @constructor options
+   */
   constructor(options) {
     super({
       intents: 32727,
@@ -25,10 +28,11 @@ class Base extends Client {
     this.aliases = new Collection()
   }
 
-  /**
-   * @param {string} folderParam - Folder with commands
-   */
 
+  /**
+   * @param {string} folderParam
+   */
+   
   #loadDir(folderParam, typeParam) {
     try {
       let folder = path.resolve(process.cwd(), folderParam)
@@ -38,7 +42,7 @@ class Base extends Client {
       categoryPath.forEach(fileName => {
         let commands = fs.readdirSync(`${folder}/${fileName}`)
         for (let i of commands) {
-         
+
           (async () => {
             let fileClass = await import(`${folder}/${fileName}/${i}`)
             if (typeParam == 'command') {
