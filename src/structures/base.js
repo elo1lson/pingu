@@ -1,21 +1,21 @@
 import { Client, Collection } from 'discord.js';
 import fs from 'fs'
 import path from 'path'
-import * as url from 'url';
 
 /**
  * @class
  */
- 
+
 class Base extends Client {
 
   /**
    * @param {Object} options
    * @constructor options
    */
+
   constructor(options) {
     super({
-      intents: 32727,
+      intents: 3276799,
       allowedMentions: {
         parse: ['users', 'roles'],
         repliedUser: false,
@@ -23,8 +23,8 @@ class Base extends Client {
       },
       ...options
     })
-    this.vanilla = new Array()
-    this.slash = new Collection()
+    this.vanilla = new Collection()
+    this.slash = new Array()
     this.aliases = new Collection()
   }
 
@@ -32,7 +32,7 @@ class Base extends Client {
   /**
    * @param {string} folderParam
    */
-   
+
   #loadDir(folderParam, typeParam) {
     try {
       let folder = path.resolve(process.cwd(), folderParam)
@@ -46,9 +46,12 @@ class Base extends Client {
           (async () => {
             let fileClass = await import(`${folder}/${fileName}/${i}`)
             if (typeParam == 'command') {
-              console.log(fileClass);
-              this.vanilla.set(fileClass.name, fileClass)
+
+             let instanceClass = new fileClass.default()
+             console.log(instanceClass);
+              this.vanilla.set(instanceClass.name, fileClass)
               return
+
             }
             if (typeParam == 'event') {
               console.log(fileClass);
@@ -77,6 +80,8 @@ class Base extends Client {
       this.#loadDir(folder, 'command')
     } catch (error) {
       console.log(e);
+      console.log('comando deu erro');
+
     }
 
   }
