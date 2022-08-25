@@ -1,1 +1,1 @@
-<img align=center width=150 src="./assets/docs/pingu.png"</>
+<img align=center width=150 src="./assets/docs/pingu.png"/>
