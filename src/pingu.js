@@ -8,4 +8,4 @@ let client = new BaseClient()
 
 client.loadVanilla('src/commands/vanilla/')
 client.loadEvents('src/events')
-client.login('ODU2NTc4MTg3NTA0MjU0OTc2.GezLCR.edqkBPLcZYzOlKi7eTp--4vVOLOyZU1QoRw0l0')
+client.login(process.env.TOKEN)
