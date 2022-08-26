@@ -1,3 +1,5 @@
-<img algin=center width=150 style="border-radius:4px" src="./assets/docs/pingu.png"/>
-
 ![](./assets/docs/pingu.png)
+
+## Pingu?
+
+Pingu é um projeto pessoal em desenvolvimento por mim, com um propósito de divertir servidores

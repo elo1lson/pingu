@@ -1,10 +1,10 @@
 'use strict'
 
-import Base from './structures/base.js'
+import BaseClient from './imports.js'
 import { config } from 'dotenv'
 config()
 
-let client = new Base()
+let client = new BaseClient()
 
 client.loadVanilla('src/commands/vanilla/')
 client.loadEvents('src/events')
