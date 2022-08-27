@@ -24,8 +24,21 @@ export default class Avatar extends BasePrefix {
             .setImage(user.displayAvatarURL({ size: 2048, dinamyc: true, format: 'png' }))
 
         return this.message.reply({ embeds: [embed] }).then(async m => {
-            await m.react('✅')
             await m.react('❌')
+
+            let filter = (r, u) => {
+                return r.emoji.name === '❌' && u.id === this.message.author.id
+            }
+            let collector = m.createReactionCollector({
+                filter,
+                time: 15000
+            })
+            collector.on('collect', (reaction, user) => {
+                m.delete()
+                try {
+                    this.message.delete()
+                } catch (error) { }
+            })
         })
     }
 }

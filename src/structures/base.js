@@ -1,4 +1,6 @@
-import { Client, Collection } from 'discord.js';
+import { Application, Client, Collection } from 'discord.js';
+import { AntiCrash as load } from '../imports.js';
+
 import fs from 'fs'
 import path from 'path'
 
@@ -24,7 +26,7 @@ class Base extends Client {
       ...options
     })
     this.vanilla = new Collection()
-    this.slash = new Array()
+    this.commands = new Array()
     this.aliases = new Collection()
   }
 
@@ -32,6 +34,10 @@ class Base extends Client {
   /**
    * @param {string} folderParam
    */
+
+  static antiCrash() {
+    load()
+  }
 
   #loadDir(folderParam, typeParam) {
     try {
@@ -45,6 +51,13 @@ class Base extends Client {
 
           (async () => {
             let fileClass = await import(`${folder}/${fileName}/${i}`)
+            if (typeParam == 'slash') {
+
+              let instanceClass = new fileClass.default(this)
+              this.commands.push(instanceClass)
+              return
+
+            }
             if (typeParam == 'command') {
 
               let instanceClass = new fileClass.default()
@@ -66,13 +79,35 @@ class Base extends Client {
   }
 
   async loadEvents(folder) {
-    await this.#loadDir(folder, 'event')
-
+    try {
+      await this.#loadDir(folder, 'event')
+      console.log('Eventos carregados');
+    } catch (e) {
+      console.log(e, 'Erro ao carregar os eventos');
+    }
   }
   async loadVanilla(folder) {
-    await this.#loadDir(folder, 'command')
+    try {
+      await this.#loadDir(folder, 'command')
+      console.log('Comandos carregados');
 
+    } catch (e) {
+      console.log(e, 'Erro ao carregar os comandos');
+    }
   }
+  async loadSlash(folder) {
+    try {
+      await this.#loadDir(folder, 'slash')
+      console.log('Slash carregados');
+
+    } catch (e) {
+      console.log(e, 'Erro ao carregar os slash');
+    }
+  }
+  /*
+  setSlash(id) {
+    return id ? this.guilds.cache.get(id) : this.application.commands.set(this.commands)
+  }*/
 }
 
 export default Base
