@@ -21,13 +21,19 @@ Devido a isso, alguns comandos podem apresentar mal funcionamento, tradução er
 
 ## 📁 > Estrutura de pastas
 
- - `src/`
-   - `commands/`
-     - `vanilla/`
-     - `slash`
-   -  `events/`
-   -  `structures`
-
+ - src
+    ```
+    src
+    ├── commands
+    │     ├── slash
+    │     └── vanilla
+    ├── events
+    │     └── client
+    ├── structures
+    │     ├── command
+    │     └── event
+    └── README.md
+```
 
 ## 📚 › Licença
 
