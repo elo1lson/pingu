@@ -20,9 +20,32 @@ Este repositório está em constante desenvolvimento, esta versão é estavel, m
 Devido a isso, alguns comandos podem apresentar mal funcionamento, tradução errada ou falhas, conforme o tempo os erros irão ser corrigidos.
 
 ## 📁 > Estrutura de pastas
+ 
+### `/`
+Pasta raiz
 
- - src
-    ```
+```
+    /
+    ├── .github
+    ├── .vscode
+    ├── assets
+    ├── packages
+    └── src
+```
+
+### `packages`
+Pasta contento a maioria dos pacotes e módulos personalizado necessários para o **Pingu**
+
+```
+    packages
+    ├── embed
+    └── process
+```
+
+### `src`
+ Pasta contendo toda a base do codigo, estruturas, comandos, database
+ vscode
+```
     src
     ├── commands
     │     ├── slash
