@@ -19,6 +19,16 @@ Fazer parte do seu servidor seria uma honra, para me adicionar clique [**aqui**]
 Este repositório está em constante desenvolvimento, esta versão é estavel, mas não é oficial ainda não  foi concluida, mas estará disponível em breve<br>
 Devido a isso, alguns comandos podem apresentar mal funcionamento, tradução errada ou falhas, conforme o tempo os erros irão ser corrigidos.
 
+## 📁 > Estrutura de pastas
+
+ - `src/`
+   - `commands/`
+     - `vanilla/`
+     - `slash`
+   -  `events/`
+   -  `structures`
+
+
 ## 📚 › Licença
 
 Esse repositório está sob a licença **MIT**
