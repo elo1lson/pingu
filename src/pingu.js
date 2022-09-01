@@ -2,6 +2,8 @@
 
 import { BaseClient, AntiCrash } from './imports.js'
 import { config } from 'dotenv'
+import { yml } from "./ymlWrithe.js"
+yml()
 config()
 
 AntiCrash.all(true)

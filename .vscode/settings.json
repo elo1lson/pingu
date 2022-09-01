@@ -13,5 +13,12 @@
         "imbecil",
         "marca",
         "vento"
-    ]
+    ],
+    "cSpell.language": "en,pt-BR,en-US",
+    "yaml.schemas": {
+        "https://json.schemastore.org/yamllint.json": "file:///home/eloilson/%C3%81rea%20de%20trabalho/pingu/file.yml"
+    },
+    "editor.formatOnSave": true,
+    "vscode-yaml-sort.sortOnSave": true,
+    "vscode-yaml-sort.useAsFormatter": true
 }

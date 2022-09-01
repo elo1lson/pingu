@@ -1,5 +1,3 @@
-import { formatEmoji } from "discord.js";
-
 export { default as BasePrefix } from "./structures/command/vanilla.js";
 export { default as BaseSlash } from "./structures/command/slash.js";
 export { default as BaseEvent } from "./structures/event/event.js";

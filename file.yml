@@ -1,0 +1,5 @@
+util:
+  ping:
+    description:
+      - Meu ping está em `{ping}ms``
+  avatar: Avatar de {user}
