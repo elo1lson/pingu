@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/pingu.js"
+    "dev": "nodemon ./src/pingu.js && clear"
   },
   "keywords": [],
   "author": "elo1lson",
