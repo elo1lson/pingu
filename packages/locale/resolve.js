@@ -1,30 +1,16 @@
 'use strict'
 import yaml from "yaml"
 import fs from "fs"
-
-import { deflateSync } from "zlib"
 export default class Resolve {
-    constructor(lang) {
-        this.load()
+    constructor(path) {
         this.langs = []
+        this.#search(path)
 
     }
-    load() {
-        let temporaryLangs []
-
+    #search(path) {
         fs.readdirSync(path).forEach(folder => {
-            temporaryLangs.push(folder)
-
+            this.langs.push(folder)
         })
-
-    }
-    get traduce() {
-
-    }
-    get messages() {
-
-    }
-    get error() {
-
+        return this.langs
     }
 }
