@@ -2,7 +2,7 @@
 
 
 /**
- * @class
+ * @class Vanilla
  * @constructor
 */
 

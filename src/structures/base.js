@@ -1,5 +1,4 @@
 import { Application, Client, Collection } from 'discord.js';
-import { AntiCrash as load } from '../imports.js';
 
 import fs from 'fs'
 import path from 'path'
@@ -21,9 +20,8 @@ class Base extends Client {
       allowedMentions: {
         parse: ['users', 'roles'],
         repliedUser: false,
-
+        ...options
       },
-      ...options
     })
     this.vanilla = new Collection()
     this.commands = new Array()
@@ -80,7 +78,7 @@ class Base extends Client {
 
   async loadEvents(folder) {
     try {
-      await this.#loadDir(folder, 'event')
+      this.#loadDir(folder, 'event')
       console.log('Eventos carregados');
     } catch (e) {
       console.log(e, 'Erro ao carregar os eventos');
@@ -88,7 +86,7 @@ class Base extends Client {
   }
   async loadVanilla(folder) {
     try {
-      await this.#loadDir(folder, 'command')
+      this.#loadDir(folder, 'command')
       console.log('Comandos carregados');
 
     } catch (e) {
@@ -97,17 +95,17 @@ class Base extends Client {
   }
   async loadSlash(folder) {
     try {
-      await this.#loadDir(folder, 'slash')
+      this.#loadDir(folder, 'slash')
       console.log('Slash carregados');
 
     } catch (e) {
       console.log(e, 'Erro ao carregar os slash');
     }
   }
-  /*
+
   setSlash(id) {
-    return id ? this.guilds.cache.get(id) : this.application.commands.set(this.commands)
-  }*/
+    //  this.application.commands.set(this.commands)
+  }
 }
 
 export default Base

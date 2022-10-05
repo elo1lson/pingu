@@ -1,6 +1,7 @@
 'use strict'
 
-import { BaseSlash, Embed } from "../../../imports.js"
+import { EmbedBuilder } from "discord.js"
+import { BaseSlash } from "../../../imports.js"
 export default class Ping extends BaseSlash {
     constructor(client) {
         super(client, {
@@ -10,7 +11,7 @@ export default class Ping extends BaseSlash {
 
     }
     async run(interaction) {
-        let embed = new Embed()
+        let embed = new EmbedBuilder()
             .setDescription(`Meu ping está em \`\`${this.client.ws.ping}ms\`\``)
         return interaction.reply({ embeds: [embed] })
     }

@@ -1,6 +1,7 @@
 'use strict'
 
-import { BasePrefix, Embed } from "../../../imports.js"
+import { EmbedBuilder } from "discord.js"
+import { BasePrefix } from "../../../imports.js"
 
 export default class Kiss extends BasePrefix {
     constructor(ctx) {
@@ -37,7 +38,7 @@ export default class Kiss extends BasePrefix {
         let i = Math.floor(Math.random() * array.length)
         let image = array[i]
 
-        let embed = new Embed()
+        let embed = new EmbedBuilder()
             .setAuthor({ name: 'Kiss kiss', iconURL: image })
             .setDescription(`${this.message.author} deu um beijo em ${mentionedUser}`)
             .setImage(image)

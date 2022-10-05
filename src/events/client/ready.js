@@ -5,12 +5,13 @@ class Ready extends Event {
         super(client, {
             name: 'ready'
         })
-    }
-    execute = async () => {
 
-        this.client.user.setActivity('Em desenvolvimento...', { type: "PLAYING" })
-        this.client.user.setStatus('online')
-        console.log(`${this.client.user.username} logado [${this.client.guilds.cache.size}] servs.`)
+    }
+    async execute() {
+        console.log(Object.keys(this.channels));
+        this.user.setActivity('Em desenvolvimento...', { type: "PLAYING" })
+        this.user.setStatus('online')
+        console.log(`${this.user.username} logado [${this.guilds.cache.size}] servs.`)
 
     }
 }

@@ -1,6 +1,7 @@
 'use strict'
 
-import { BasePrefix, Embed } from "../../../imports.js"
+import { EmbedBuilder } from "discord.js"
+import { BasePrefix } from "../../../imports.js"
 
 export default class Ping extends BasePrefix {
   constructor(ctx) {
@@ -16,7 +17,7 @@ export default class Ping extends BasePrefix {
     }
   }
   async run() {
-    let embed = new Embed()
+    let embed = new EmbedBuilder()
       .setDescription(`Meu ping está em \`\`${this.client.ws.ping}ms\`\``)
 
     return this.message.reply({ embeds: [embed] })

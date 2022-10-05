@@ -15,7 +15,7 @@ export let yml = async () => {
     fs.writeFile('file.yml', data, () => {
 
     })
-    const file = fs.readFileSync('./file.yml', 'utf8')
+    const file = fs.readFileSync('../file.yml', 'utf8')
     let touchFile = YAML.parse(file)
     console.log(touchFile);
 }
