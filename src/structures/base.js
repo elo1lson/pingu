@@ -1,7 +1,10 @@
+'use strict'
 import { Application, Client, Collection } from 'discord.js';
 
-import fs from 'fs'
-import path from 'path'
+import fs, { readdirSync, readSync } from 'fs'
+import path, { resolve } from 'path'
+import { cwd } from 'process';
+import { parseAllDocuments } from 'yaml';
 
 /**
  * @extends {Base}
@@ -26,15 +29,47 @@ class Base extends Client {
     this.vanilla = new Collection()
     this.commands = new Array()
     this.aliases = new Collection()
+    this.#vanilla()
   }
-
-
-  /**
-   * @param {string} folderParam
-   */
 
   static antiCrash() {
     load()
+  }
+
+  config(config) {
+    let { PREFIX, TOKEN, FOLDERS } = config
+
+    this.configs = {
+      PREFIX,
+      TOKEN
+
+    }
+  }
+
+  start(token) {
+    this.login(token)
+  }
+
+  async #vanilla() {
+    let _folder = resolve(cwd(), 'src/commands/vanilla')
+    let _category = readdirSync(_folder)
+
+    try {
+      _category.forEach(async fileName => {
+
+        let _command = readdirSync(`${_folder}/${fileName}`)
+
+        for (const iterator of _command) {
+
+          let fileClass = await import(`${_folder}/${fileName}/${iterator}`)
+          let vanilla = new fileClass.default()
+          this.vanilla.set(vanilla.name, fileClass)
+        }
+      })
+
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   #loadDir(folderParam, typeParam) {
@@ -73,6 +108,7 @@ class Base extends Client {
       });
     } catch (error) {
       console.log(error);
+      console.log(45678);
     }
   }
 

@@ -1,5 +1,4 @@
 'use strict'
-
 class Event {
     constructor(client, options) {
         this.client = client
