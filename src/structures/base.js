@@ -1,10 +1,9 @@
 'use strict'
-import { Application, Client, Collection } from 'discord.js';
 
-import fs, { readdirSync, readSync } from 'fs'
-import path, { resolve } from 'path'
+import { Client, Collection } from 'discord.js';
+import { readdirSync } from 'fs'
+import { resolve } from 'path'
 import { cwd } from 'process';
-import { parseAllDocuments } from 'yaml';
 
 /**
  * @extends {Base}
@@ -27,13 +26,8 @@ class Base extends Client {
       },
     })
     this.vanilla = new Collection()
-    this.commands = new Array()
+    this.commands = null
     this.aliases = new Collection()
-    this.#vanilla()
-  }
-
-  static antiCrash() {
-    load()
   }
 
   config(config) {
@@ -41,106 +35,72 @@ class Base extends Client {
 
     this.configs = {
       PREFIX,
-      TOKEN
-
+      TOKEN,
+      FOLDERS
     }
   }
 
-  start(token) {
-    this.login(token)
+  start() {
+
+    if (!this.config.TOKEN) {
+      console.log('❌ É necessário fornecer um token antes de tentar fazer login!')
+      process.exit(1)
+    }
+    this.login(this.config.TOKEN)
   }
 
-  async #vanilla() {
-    let _folder = resolve(cwd(), 'src/commands/vanilla')
+  #vanilla() {
+
+    let _folder = resolve(cwd(), this.config.FOLDERS.VANILLA || 'src/commands/vanilla')
     let _category = readdirSync(_folder)
+    let _command
+    let _vanilla
+    let _file
+    let _iterator
 
     try {
       _category.forEach(async fileName => {
+        _command = readdirSync(`${_folder}/${fileName}`)
 
-        let _command = readdirSync(`${_folder}/${fileName}`)
+        for (iterator of _command) {
 
-        for (const iterator of _command) {
-
-          let fileClass = await import(`${_folder}/${fileName}/${iterator}`)
-          let vanilla = new fileClass.default()
-          this.vanilla.set(vanilla.name, fileClass)
+          _file = await import(`${_folder}/${fileName}/${iterator}`)
+          _vanilla = new _file.default()
+          this.vanilla.set(_vanilla.name, _file)
         }
       })
 
     } catch (e) {
       console.log(e);
+      process.exit(1)
     }
   }
 
-  #loadDir(folderParam, typeParam) {
+  #event() {
+
+    let _folder = resolve(cwd(), this.config.FOLDERS.EVENT || 'src/commands/vanilla')
+    let _category = readdirSync(_folder)
+    let _Event
+    let _file
+    let _iterator
+    let Event
+
     try {
-      let folder = path.resolve(process.cwd(), folderParam)
+      _category.forEach(async fileName => {
+        _file = readdirSync(`${_folder}/${fileName}`)
 
-      let categoryPath = fs.readdirSync(folder);
+        for (iterator of _file) {
 
-      categoryPath.forEach(fileName => {
-        let commands = fs.readdirSync(`${folder}/${fileName}`)
-        for (let i of commands) {
-
-          (async () => {
-            let fileClass = await import(`${folder}/${fileName}/${i}`)
-            if (typeParam == 'slash') {
-
-              let instanceClass = new fileClass.default(this)
-              this.commands.push(instanceClass)
-              return
-
-            }
-            if (typeParam == 'command') {
-
-              let instanceClass = new fileClass.default()
-              this.vanilla.set(instanceClass.name, fileClass)
-              return
-
-            }
-            if (typeParam == 'event') {
-              let evt = new fileClass.default(this)
-              this.on(evt.name, evt.execute)
-              return
-            }
-          })()
+          _Event = await import(`${_folder}/${fileName}/${iterator}`)
+          let { name, execute } = new _Event.default(this)
+          this.on(name, execute)
         }
-      });
-    } catch (error) {
-      console.log(error);
-      console.log(45678);
-    }
-  }
-
-  async loadEvents(folder) {
-    try {
-      this.#loadDir(folder, 'event')
-      console.log('Eventos carregados');
-    } catch (e) {
-      console.log(e, 'Erro ao carregar os eventos');
-    }
-  }
-  async loadVanilla(folder) {
-    try {
-      this.#loadDir(folder, 'command')
-      console.log('Comandos carregados');
+      })
 
     } catch (e) {
-      console.log(e, 'Erro ao carregar os comandos');
+      console.log(e)
+      process.exit(1)
     }
-  }
-  async loadSlash(folder) {
-    try {
-      this.#loadDir(folder, 'slash')
-      console.log('Slash carregados');
-
-    } catch (e) {
-      console.log(e, 'Erro ao carregar os slash');
-    }
-  }
-
-  setSlash(id) {
-    //  this.application.commands.set(this.commands)
   }
 }
 
