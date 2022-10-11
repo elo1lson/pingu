@@ -11,11 +11,6 @@ export default class Kiss extends BasePrefix {
         })
 
     }
-    static config() {
-        return {
-            avaliable: true
-        }
-    }
 
     async run() {
         if (this.args.length > 1) return

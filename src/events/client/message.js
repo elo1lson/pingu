@@ -1,7 +1,7 @@
 'use strict'
 
 import Event from "../../structures/event/event.js"
-import Stats from "../../models/me/Stats.js"
+//import Stats from "../../models/me/Stats.js"
 export default class Message extends Event {
     constructor(client) {
         super(client, {

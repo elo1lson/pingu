@@ -10,14 +10,9 @@ export default class Ping extends BasePrefix {
       aliases: [],
     })
   }
-
-  static config() {
-    return {
-      avaliable: true
-    }
-  }
   async run() {
     let embed = new EmbedBuilder()
+      .setColor('Green')
       .setDescription(`Meu ping está em \`\`${this.client.ws.ping}ms\`\``)
 
     return this.message.reply({ embeds: [embed] })
