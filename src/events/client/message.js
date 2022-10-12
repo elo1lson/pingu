@@ -8,9 +8,9 @@ export default class Message extends Event {
             name: 'messageCreate'
         })
     }
-    execute = async (message) => {
+    async execute(message) {
 
-        const prefix = process.env.PREFIX || '-'
+        const prefix = this.configs.PREFIX || '-'
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const cmd = args.shift().toLowerCase()
 
@@ -19,13 +19,13 @@ export default class Message extends Event {
         if (!message.content.startsWith(prefix)) return;
         if (cmd.length === 0) return;
 
-        let command = this.client.vanilla.get(cmd)
+        let command = this.vanilla.get(cmd)
 
-        if (!command) command = this.client.vanilla.get(this.client.aliases.get(cmd))
+        if (!command) command = this.vanilla.get(this.aliases.get(cmd))
         if (!command) return
 
         let ctx = {
-            client: this.client,
+            client: this,
             message,
             args
         }

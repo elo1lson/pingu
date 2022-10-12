@@ -16,10 +16,9 @@ export default class Kiss extends BasePrefix {
         if (this.args.length > 1) return
 
         let mentionedUser = this.message.mentions.users.first()
-        console.log(mentionedUser);
         if (!mentionedUser) return this.message.reply({ content: 'Vc vai beijar o vento por acaso? marca alguem seu imbecil!' })
-        if (mentionedUser == this.message.author) return this.message.reply({ content: 'Ta carente? compra um hamirti carai' })
-        if (mentionedUser == this.client.user.id) return this.message.reply({ content: 'Sai fora seu gay' })
+        if (mentionedUser === this.message.author) return this.message.reply({ content: 'Ta carente? compra um hamirti carai' })
+        if (mentionedUser === this.client.user) return this.message.reply({ content: 'Sai fora seu gay' })
 
         let array = [
             'https://c.tenor.com/tEo2lRjrEuEAAAAj/love-it-kiss.gif',
