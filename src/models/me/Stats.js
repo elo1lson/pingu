@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-let { Schema, model } = mongoose
 
-let StatSchema = new Schema({
+const { Schema, model } = mongoose
+const StatSchema = new Schema({
   commandUsage: { type: Number, default: 55 }
 
 })
