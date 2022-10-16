@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "api": "nodemon ./api/app.js",
     "dev": "nodemon ./src/pingu.js && clear"
   },
   "keywords": [],
@@ -22,6 +23,7 @@
     "axios": "^0.27.2",
     "discord.js": "^14.2.0",
     "dotenv": "^16.0.1",
+    "express": "^4.18.2",
     "mongoose": "^6.5.4",
     "nodemon": "^2.0.19",
     "yaml": "^2.1.1"
