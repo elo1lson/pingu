@@ -1,0 +1,8 @@
+ping:
+  a:
+    - - ping
+    - - pong
+  ping:
+    description: l
+    b: w
+avatar: Avatar de {user}

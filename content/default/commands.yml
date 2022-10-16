@@ -1,0 +1,14 @@
+#please, not edit this file
+
+ping:
+  - Meu ping está em $ping
+kiss:
+  noargs: Vc vai beijar o vento por acaso? marca alguem seu imbecil!
+  user: Ta carente? compra um hamirti carai
+  bot: Sai fora seu gay!
+  embed:
+    title: $author deu um beijo em $mention
+avatar:
+  noargs: Marque um pessoa para poder ver o avatar
+  embed:
+    description: Avatar de $user

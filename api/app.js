@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import { config } from 'dotenv'
 import { route } from './src/routes/home.js'
+import { contentRoute } from './src/routes/content.js'
 config()
 
 const app = express()
@@ -19,6 +20,8 @@ mongoose.connect(process.env.MONGO, {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/', route)
+app.use('/content', contentRoute)
+
 app.on('ready', () => {
 
   app.listen(port, () => {
