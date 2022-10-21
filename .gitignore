@@ -1,4 +1,6 @@
 .env
+.replit
+replit*
 package-lock.json
 packages
 node_modules
