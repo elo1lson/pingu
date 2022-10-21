@@ -11,7 +11,7 @@ class Ready extends Event {
 }
 
 Ready.prototype.execute = async function () {
-    mongoose.connect(process.env.MONGO)
+    mongoose.connect(process.env.MONGODB)
         .then(r => console.log('Banco de dados online'))
         .catch(e => console.log(e, "Deu erro"))
 
